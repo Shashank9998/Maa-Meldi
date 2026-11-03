@@ -698,6 +698,66 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .choghadiya-home-section .choghadiya-panel { margin-top: 0; }
 .choghadiya-home-action { display: flex; justify-content: center; margin-top: 24px; }
 .choghadiya-home-action .button-maroon { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
+.choghadiya-heading-row { position: relative; margin-bottom: 24px; }
+.choghadiya-heading-row .section-heading { max-width: 690px; margin: 0 auto; }
+.calendar-toggle { position: absolute; top: 6px; right: 0; display: inline-flex; align-items: center; gap: 9px; padding: 12px 17px; border: 1px solid rgba(128,0,32,.2); border-radius: 999px; background: #fff; color: var(--maroon); font-family: "Noto Sans Gujarati",sans-serif; font-size: 14px; font-weight: 700; box-shadow: 0 7px 18px rgba(57,37,18,.07); transition: transform .2s ease, border-color .2s ease, background-color .2s ease; }
+.calendar-toggle i { color: var(--saffron); font-size: 17px; }
+.calendar-toggle:hover, .calendar-toggle:focus-visible, .calendar-toggle[aria-expanded="true"] { transform: translateY(-1px); border-color: rgba(212,175,55,.75); background: #fff8e7; }
+.gujarati-calendar-card { margin: 0 0 22px; padding: 23px; border: 1px solid rgba(212,175,55,.5); border-radius: 20px; background: linear-gradient(135deg,#fffdf8,#fff4da); box-shadow: 0 14px 34px rgba(57,37,18,.09); }
+.home-page section.gujarati-calendar-card { padding-block: 23px; }
+.gujarati-calendar-card[hidden] { display: none; }
+.calendar-card-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 19px; }
+.calendar-icon { display: grid; flex: 0 0 48px; width: 48px; height: 48px; place-items: center; border: 1px solid rgba(212,175,55,.4); border-radius: 15px; background: #fff; color: var(--maroon); font-size: 22px; }
+.calendar-place { margin: 0 0 3px; color: #98712b; font-size: 12px; font-weight: 700; letter-spacing: .025em; }
+.calendar-card-heading h3 { margin: 0; color: var(--maroon); font-family: "Noto Sans Gujarati",sans-serif; font-size: clamp(18px,2vw,23px); font-weight: 700; }
+.calendar-fields { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 10px; }
+.calendar-field { display: grid; gap: 7px; min-width: 0; padding: 14px; border: 1px solid rgba(194,143,39,.18); border-radius: 13px; background: rgba(255,255,255,.84); }
+.calendar-field span { color: #806f5c; font-size: 12px; }
+.calendar-field strong { overflow-wrap: anywhere; color: #5c1727; font-family: "Noto Sans Gujarati",sans-serif; font-size: 15px; }
+.calendar-field-note { color: #846f54; font-size: 11px; line-height: 1.45; }
+.calendar-status { margin: 13px 0 0; color: #806f5c; font-size: 13px; }
+.calendar-status:empty { display: none; }
+.calendar-retry { display: inline-flex; margin-top: 8px; padding: 7px 12px; border: 1px solid rgba(128,0,32,.2); border-radius: 999px; background: #fff; color: var(--maroon); font-size: 12px; font-weight: 700; }
+.calendar-retry[hidden] { display: none; }
+.calendar-retry:hover, .calendar-retry:focus-visible { border-color: rgba(212,175,55,.75); background: #fff8e7; }
+.calendar-credit { margin: 15px 0 0; color: #806f5c; font-size: 11px; }
+.calendar-credit a { color: var(--maroon); font-weight: 700; text-underline-offset: 2px; }
+.calendar-card-date { display: flex; align-items: center; gap: 14px; padding: 7px 4px 18px; border-bottom: 1px solid rgba(126,0,39,.13); }
+.calendar-date-copy { min-width: 0; }
+.calendar-date-copy .calendar-place { margin-bottom: 4px; }
+.calendar-label { display: block; color: #98712b; font-size: 13px; font-weight: 700; }
+.calendar-date-copy h3 { margin: 2px 0 0; color: #142133; font-size: clamp(18px,2.2vw,24px); font-weight: 800; line-height: 1.35; }
+.calendar-meta { display: grid; gap: 5px; padding: 14px 0 17px; border-bottom: 1px solid rgba(126,0,39,.13); }
+.calendar-meta p { margin: 0; color: #5a2419; font-family: "Noto Sans Gujarati","Hind Vadodara",sans-serif; font-size: 16px; font-weight: 700; line-height: 1.55; }
+.calendar-sun-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; margin: 17px 0; }
+.calendar-sun-tile { display: grid; justify-items: center; gap: 6px; min-width: 0; padding: 13px 8px 14px; border: 1px solid rgba(194,143,39,.35); border-radius: 16px; background: #fff; text-align: center; box-shadow: 0 5px 14px rgba(57,37,18,.04); }
+.calendar-sun-icon { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 50%; background: #fff1c9; color: #bd8315; font-size: 20px; }
+.calendar-sun-1 .calendar-sun-icon { background: #ffebd9; color: #d66b28; }
+.calendar-sun-2 .calendar-sun-icon, .calendar-sun-3 .calendar-sun-icon { background: #e7efff; color: #37588c; }
+.calendar-sun-tile > span:not(.calendar-sun-icon) { color: #6e4933; font-family: "Noto Sans Gujarati","Hind Vadodara",sans-serif; font-size: 13px; font-weight: 700; }
+.calendar-sun-tile > strong { color: #182233; font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.calendar-brahma { display: flex; align-items: center; gap: 12px; margin: 5px 0 18px; padding: 15px 17px; border: 1px solid #dc5e10; border-radius: 15px; background: linear-gradient(110deg,#a84b06,#d65e00); color: #fff8dc; box-shadow: 0 7px 17px rgba(164,70,4,.14); }
+.calendar-brahma[hidden] { display: none; }
+.calendar-brahma-icon { display: grid; flex: 0 0 42px; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: #fff3d6; color: #bb5c00; font-size: 18px; }
+.calendar-brahma-copy { display: grid; flex: 1; gap: 2px; min-width: 0; font-family: "Noto Sans Gujarati","Hind Vadodara",sans-serif; }
+.calendar-brahma-copy strong { font-size: 18px; }
+.calendar-brahma-copy span { font-size: 14px; font-weight: 700; }
+.calendar-brahma > b { font-family: "Noto Sans Gujarati","Hind Vadodara",sans-serif; font-size: 14px; }
+.calendar-details-card { margin-top: 14px; padding: 17px 20px 7px; border: 1px solid rgba(194,143,39,.35); border-radius: 17px; background: rgba(255,255,255,.92); }
+.calendar-details-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(126,0,39,.12); color: #561a16; font-family: "Noto Sans Gujarati","Hind Vadodara",sans-serif; font-size: 18px; font-weight: 800; }
+.calendar-method-badge { padding: 4px 8px; border: 1px solid rgba(212,175,55,.5); border-radius: 8px; color: #9a7021; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.calendar-detail-row { display: grid; grid-template-columns: 14px minmax(130px,.8fr) minmax(0,1.2fr); align-items: start; gap: 10px; padding: 13px 0; border-bottom: 1px solid rgba(126,0,39,.12); font-family: "Noto Sans Gujarati","Hind Vadodara",sans-serif; }
+.calendar-detail-row:last-child { border-bottom: 0; }
+.calendar-detail-marker { width: 9px; height: 9px; margin-top: 7px; border-radius: 50%; background: #d88100; }
+.calendar-detail-row.is-good .calendar-detail-marker { background: #0e9b62; }
+.calendar-detail-row.is-avoid .calendar-detail-marker { background: #d22c5d; }
+.calendar-detail-row > strong { color: #273343; font-size: 15px; line-height: 1.55; }
+.calendar-detail-value { display: grid; gap: 2px; min-width: 0; }
+.calendar-detail-value > strong { color: #4d1a13; font-size: 16px; font-weight: 800; line-height: 1.55; overflow-wrap: anywhere; }
+.calendar-detail-value > small { color: #68788c; font-size: 13px; font-weight: 700; line-height: 1.5; }
+@media (max-width: 767.98px) { .calendar-fields { grid-template-columns: repeat(3,minmax(0,1fr)); } .calendar-detail-row { grid-template-columns: 10px minmax(88px,.8fr) minmax(0,1.2fr); gap: 8px; } }
+@media (max-width: 767.98px) { .calendar-toggle { position: static; display: flex; width: fit-content; margin: 0 0 14px auto; } .choghadiya-heading-row .section-heading { margin-bottom: 20px; } }
+@media (max-width: 575.98px) { .calendar-toggle { gap: 6px; padding: 10px 12px; font-size: 12px; white-space: nowrap; } .calendar-fields { grid-template-columns: repeat(2,minmax(0,1fr)); } .home-page section.gujarati-calendar-card { padding: 16px; border-radius: 16px; } .calendar-field { padding: 12px; } .calendar-field strong { font-size: 14px; } .calendar-sun-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; } .calendar-sun-tile { padding: 11px 6px; } .calendar-details-card { padding: 14px 13px 5px; } .calendar-detail-row { grid-template-columns: 9px minmax(78px,.7fr) minmax(0,1.3fr); gap: 7px; padding: 11px 0; } .calendar-detail-row > strong { font-size: 14px; } .calendar-detail-value > strong { font-size: 15px; } .calendar-detail-value > small { font-size: 12px; } .calendar-details-heading { font-size: 16px; } .calendar-method-badge { font-size: 10px; } .calendar-brahma { gap: 8px; padding: 12px; } .calendar-brahma-copy strong { font-size: 16px; } .calendar-brahma-copy span, .calendar-brahma > b { font-size: 12px; } }
 
 .contact-modern { min-height: calc(100vh - var(--header-height)); padding: clamp(48px,7vw,88px) 22px; background: radial-gradient(ellipse at 8% 8%, rgba(212,175,55,.12), transparent 30%), radial-gradient(ellipse at 95% 80%, rgba(128,0,32,.05), transparent 34%), linear-gradient(135deg,#fffaf0,#fffdf9 55%,#fff6e6); }
 .contact-modern-shell { width: min(1180px,100%); margin: 0 auto; }
@@ -899,6 +959,24 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .live-aarti-link i { color: #e87500; }
 @media (max-width: 900px) { .live-page-layout { grid-template-columns: minmax(0, 1fr); max-width: 760px; margin: 0 auto; } .live-schedule-card { display: grid; grid-template-columns: auto 1fr; column-gap: 18px; } .live-schedule-icon { grid-row: 1 / 4; } .live-schedule-note { margin-bottom: 16px; } .live-aarti-times { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); } .live-aarti-link { grid-column: 1 / -1; margin-top: 8px; } }
 @media (max-width: 575.98px) { .live-darshan-page { padding: 38px 14px; } .live-page-heading { align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 20px; } .live-page-heading h1 { font-size: 31px; } .live-page-heading p { font-size: 15px; } .live-video-badge { padding: 8px 12px; } .live-page-layout { gap: 14px; } .live-player-card { padding: 11px; border-radius: 19px; } .live-player-topline { font-size: 12px; } .live-player-caption { align-items: flex-start; flex-wrap: wrap; padding: 14px 2px 2px; } .live-player-caption > div:not(.live-player-actions) { flex-basis: calc(100% - 60px); } .live-player-caption h2 { font-size: 15px; } .live-player-actions { width: 100%; flex-basis: auto; margin-left: 55px; } .live-youtube-button, .live-chat-button { padding: 9px 11px; } .live-chat-panel { margin-top: 14px; padding: 11px; border-radius: 15px; } .live-chat-heading p { max-width: 260px; } .live-schedule-card { display: block; align-self: start; padding: 21px; border-radius: 19px; } .live-schedule-icon { margin-bottom: 15px; } .live-aarti-times { grid-template-columns: 1fr; } .live-aarti-link { margin-top: 4px; } }
+
+/* Devotee FAQ section on the home page. */
+.faq-section { padding: clamp(58px, 7vw, 94px) 0; background: linear-gradient(180deg, #fffaf0, #fff 92%); border-top: 1px solid rgba(194,143,39,.16); }
+.faq-shell { max-width: 960px; }
+.faq-heading { margin-bottom: 34px; }
+.faq-list { display: grid; gap: 12px; }
+.faq-item { overflow: hidden; border: 1px solid rgba(126,0,39,.12); border-radius: 15px; background: #fff; box-shadow: 0 8px 24px rgba(61,28,16,.045); transition: border-color .2s ease, box-shadow .2s ease; }
+.faq-item[open] { border-color: rgba(194,143,39,.55); box-shadow: 0 12px 28px rgba(61,28,16,.08); }
+.faq-item summary { position: relative; padding: 19px 58px 19px 22px; color: #5c1727; font-size: 16px; font-weight: 700; line-height: 1.55; cursor: pointer; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; position: absolute; top: 50%; right: 20px; display: grid; width: 28px; height: 28px; place-items: center; transform: translateY(-50%); border: 1px solid rgba(194,143,39,.5); border-radius: 50%; color: #9b6814; font-size: 20px; font-weight: 500; line-height: 1; }
+.faq-item[open] summary::after { content: '−'; }
+.faq-answer { padding: 0 22px 20px; color: #62575a; font-size: 15px; line-height: 1.75; }
+.faq-answer p { margin: 0; }
+.faq-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 9px; color: #8d002c; font-size: 14px; font-weight: 700; text-decoration: none; }
+.faq-link::after { content: '↗'; font-size: 15px; }
+.faq-link:hover, .faq-link:focus-visible { color: #bd8315; text-decoration: underline; }
+@media (max-width: 575.98px) { .faq-section { padding: 48px 0; } .faq-heading { margin-bottom: 24px; } .faq-list { gap: 9px; } .faq-item summary { padding: 16px 50px 16px 16px; font-size: 15px; } .faq-item summary::after { right: 14px; } .faq-answer { padding: 0 16px 17px; font-size: 14px; } }
 @media (max-width: 1199.98px) {
   .profile-page { padding: 34px 20px; }
   .profile-shell { width: min(720px, 100%); }

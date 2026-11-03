@@ -2,6 +2,145 @@
   'use strict';
 
   const translations = window.templeTranslations || {};
+  const faqContent = {
+    gu: {
+      eyebrow: 'ભક્તો માટે ઉપયોગી માહિતી', title: 'વારંવાર પૂછાતા પ્રશ્નો', intro: 'દર્શન, આરતી, સ્થળ અને સેવા વિશેની માહિતી અહીં મેળવો.',
+      items: [
+        ['મંદિરમાં દર્શનનો સમય શું છે?', 'સવારે 5:30 થી બપોરે 12:00 અને સાંજે 4:00 થી 9:00 સુધી દર્શન કરી શકાય છે. બપોરે 12:00 થી 4:00 દરમિયાન દર્શન બંધ રહે છે.'],
+        ['સવાર અને સાંજની આરતી ક્યારે થાય છે?', 'સવારની આરતી 6:00 વાગ્યે અને સાંજની આરતી 6:30 વાગ્યે થાય છે.'],
+        ['માઁ મેલડી ધામ ક્યાં આવેલું છે?', 'માઁ મેલડી ધામ જાસલપુર, ગુજરાતમાં આવેલું છે. સંપર્ક પેજ પરથી Google Mapsમાં માર્ગ જોઈ શકો છો.', 'contact.html', 'સ્થળ અને માર્ગ જુઓ'],
+        ['લાઈવ દર્શન ક્યાં જોઈ શકું?', 'લાઈવ દર્શન અને આરતી પેજ પર વિડિયો જુઓ. YouTube પર પ્રસારણ ચાલુ હોય ત્યારે લાઈવ દર્શન ઉપલબ્ધ રહેશે.', 'live-darshan.html', 'લાઈવ દર્શન ખોલો'],
+        ['ઉત્સવો અને કાર્યક્રમોની માહિતી ક્યાં મળશે?', 'આગામી ઉત્સવો અને કાર્યક્રમોની તારીખો માટે કાર્યક્રમો પેજ જુઓ.', 'events.html', 'કાર્યક્રમો જુઓ'],
+        ['દાન કે સેવા વિશે કેવી રીતે જાણવું?', 'દાન અને સેવા પેજ પર આપેલી માહિતી જુઓ. વધુ વિગતો માટે સંપર્ક પેજ મારફતે મંદિરનો સંપર્ક કરો.', 'donation.html', 'દાન અને સેવા જુઓ'],
+        ['બીજો પ્રશ્ન હોય તો મંદિરનો સંપર્ક કેવી રીતે કરવો?', 'સંપર્ક પેજ પરનું ફોર્મ ભરીને તમારી પૂછપરછ મોકલો.', 'contact.html', 'સંપર્ક પેજ ખોલો']
+      ]
+    },
+    hi: {
+      eyebrow: 'भक्तों के लिए उपयोगी जानकारी', title: 'अक्सर पूछे जाने वाले प्रश्न', intro: 'दर्शन, आरती, स्थान और सेवा से जुड़ी जानकारी यहाँ पाएँ।',
+      items: [
+        ['मंदिर में दर्शन का समय क्या है?', 'सुबह 5:30 से दोपहर 12:00 बजे तक और शाम 4:00 से 9:00 बजे तक दर्शन कर सकते हैं। दोपहर 12:00 से 4:00 बजे तक दर्शन बंद रहते हैं।'],
+        ['सुबह और शाम की आरती कब होती है?', 'सुबह की आरती 6:00 बजे और शाम की आरती 6:30 बजे होती है।'],
+        ['माँ मेलडी धाम कहाँ स्थित है?', 'माँ मेलडी धाम जसालपुर, गुजरात में स्थित है। संपर्क पेज से Google Maps में रास्ता देख सकते हैं।', 'contact.html', 'स्थान और रास्ता देखें'],
+        ['लाइव दर्शन कहाँ देख सकते हैं?', 'लाइव दर्शन और आरती पेज पर वीडियो देखें। YouTube पर प्रसारण चालू होने पर लाइव दर्शन उपलब्ध होंगे।', 'live-darshan.html', 'लाइव दर्शन खोलें'],
+        ['उत्सव और आयोजनों की जानकारी कहाँ मिलेगी?', 'आगामी उत्सवों और आयोजनों की तारीखों के लिए आयोजन पेज देखें।', 'events.html', 'आयोजन देखें'],
+        ['दान या सेवा के बारे में कैसे जानें?', 'दान और सेवा पेज पर दी गई जानकारी देखें। अधिक जानकारी के लिए संपर्क पेज से मंदिर से संपर्क करें।', 'donation.html', 'दान और सेवा देखें'],
+        ['अन्य प्रश्न के लिए मंदिर से कैसे संपर्क करें?', 'संपर्क पेज पर दिया गया फ़ॉर्म भरकर अपनी पूछताछ भेजें।', 'contact.html', 'संपर्क पेज खोलें']
+      ]
+    },
+    en: {
+      eyebrow: 'Helpful information for devotees', title: 'Frequently Asked Questions', intro: 'Find information about darshan, aarti, directions, and seva.',
+      items: [
+        ['What are the mandir darshan hours?', 'Darshan is available from 5:30 AM to 12:00 PM and from 4:00 PM to 9:00 PM. Darshan is closed from 12:00 PM to 4:00 PM.'],
+        ['When are the morning and evening aartis?', 'Morning aarti is at 6:00 AM and evening aarti is at 6:30 PM.'],
+        ['Where is Maa Meldi Dham?', 'Maa Meldi Dham is in Jasalpur, Gujarat. Open the Contact page to get directions in Google Maps.', 'contact.html', 'View location and directions'],
+        ['Where can I watch live darshan?', 'Visit the Live Darshan & Aarti page. Live darshan is available when the YouTube stream is live.', 'live-darshan.html', 'Open Live Darshan'],
+        ['Where can I find festival and event information?', 'Check the Events page for upcoming festival and event dates.', 'events.html', 'View events'],
+        ['How can I learn about donations or seva?', 'See the Donation & Seva page. Contact the mandir through the Contact page for more details.', 'donation.html', 'View Donation & Seva'],
+        ['How can I contact the mandir with another question?', 'Send your enquiry using the form on the Contact page.', 'contact.html', 'Open Contact page']
+      ]
+    }
+  };
+  const dailyThoughts = {
+    gu: [
+      'સેવા, શ્રદ્ધા અને સદભાવથી જીવન સુંદર બને છે.',
+      'સાચા મનથી કરેલી પ્રાર્થના હંમેશાં હિંમત આપે છે.',
+      'દયા અને પ્રેમથી દરેક હૃદય જીતી શકાય છે.',
+      'સારા વિચારો જીવનને સાચી દિશા આપે છે.',
+      'માતાજી પર શ્રદ્ધા રાખો અને કર્મ કરતા રહો.',
+      'નમ્રતા એ ભક્તિનું સુંદર આભૂષણ છે.',
+      'બીજાની મદદ કરવી એ પણ માતાજીની સેવા છે.',
+      'ધીરજ રાખો; દરેક સવાર નવી આશા લઈને આવે છે.',
+      'મન સ્વચ્છ હોય તો દરેક કાર્ય પૂજા બની જાય છે.',
+      'આભાર માનતું હૃદય હંમેશાં આનંદી રહે છે.',
+      'સત્ય અને સદાચારનો માર્ગ હંમેશાં શ્રેષ્ઠ છે.',
+      'ક્ષમા કરવાથી મન હળવું અને સંબંધ મજબૂત બને છે.',
+      'નાની નાની ખુશીઓમાં પણ માતાજીની કૃપા જુઓ.',
+      'શાંતિ બહાર નહીં, આપણા મનમાં વસે છે.',
+      'પ્રેમથી બોલાયેલો શબ્દ કોઈના દિવસને સુંદર બનાવી શકે છે.',
+      'વિશ્વાસ રાખો; મુશ્કેલી પછી સરળતા જરૂર આવે છે.',
+      'સેવા નિઃસ્વાર્થ હોય ત્યારે તેનું ફળ પવિત્ર બને છે.',
+      'દરેક દિવસ માતાજીનો આભાર માનવાની નવી તક છે.',
+      'સંયમ અને સમજદારીથી જીવનમાં સુખ વધે છે.',
+      'ભક્તિ મનને બળ અને જીવનને આશા આપે છે.',
+      'પરિશ્રમ કરો અને પરિણામ માતાજીને અર્પણ કરો.',
+      'બીજાનું સુખ જોઈને ખુશ થવું પણ મોટું પુણ્ય છે.',
+      'મીઠાં વચન સંબંધોમાં માધુર્ય ભરે છે.',
+      'સારા કર્મો જ જીવનની સાચી સંપત્તિ છે.',
+      'ચિંતા છોડો, શ્રદ્ધા સાથે આજનું કર્તવ્ય કરો.',
+      'મનથી કરેલી નાની સેવા પણ અમૂલ્ય છે.',
+      'આશા અને હિંમતથી અઘરો રસ્તો પણ સરળ બને છે.',
+      'દરેક જીવમાં માતાજીનો અંશ જોઈને પ્રેમ કરો.',
+      'શાંતિથી સાંભળવું પણ એક સુંદર સેવા છે.',
+      'ભક્તિમાં અહંકાર નહીં, સમર્પણ હોવું જોઈએ.',
+      'આજનો સદવિચાર આવતીકાલનું સુંદર કર્મ બને છે.'
+    ],
+    hi: [
+      'सेवा, श्रद्धा और सद्भाव से जीवन सुंदर बनता है।',
+      'सच्चे मन से की गई प्रार्थना हमेशा हिम्मत देती है।',
+      'दया और प्रेम से हर दिल जीता जा सकता है।',
+      'अच्छे विचार जीवन को सही दिशा देते हैं।',
+      'माताजी पर विश्वास रखें और अपना कर्म करते रहें।',
+      'विनम्रता भक्ति का सुंदर आभूषण है।',
+      'दूसरों की मदद करना भी माताजी की सेवा है।',
+      'धैर्य रखें; हर सुबह नई आशा लेकर आती है।',
+      'मन साफ हो तो हर काम पूजा बन जाता है।',
+      'कृतज्ञ हृदय हमेशा आनंदित रहता है।',
+      'सत्य और सदाचार का मार्ग हमेशा श्रेष्ठ है।',
+      'क्षमा से मन हल्का और रिश्ते मजबूत होते हैं।',
+      'छोटी-छोटी खुशियों में भी माताजी की कृपा देखें।',
+      'शांति बाहर नहीं, हमारे मन में बसती है।',
+      'प्रेम से कहा एक शब्द किसी का दिन सुंदर बना सकता है।',
+      'विश्वास रखें; कठिनाई के बाद सरलता जरूर आती है।',
+      'निःस्वार्थ सेवा का फल पवित्र होता है।',
+      'हर दिन माताजी का आभार मानने का नया अवसर है।',
+      'संयम और समझदारी से जीवन में सुख बढ़ता है।',
+      'भक्ति मन को बल और जीवन को आशा देती है।',
+      'परिश्रम करें और परिणाम माताजी को अर्पित करें।',
+      'दूसरों की खुशी में खुश होना भी बड़ा पुण्य है।',
+      'मीठे वचन रिश्तों में मिठास भरते हैं।',
+      'अच्छे कर्म ही जीवन की सच्ची संपत्ति हैं।',
+      'चिंता छोड़ें और श्रद्धा से आज का कर्तव्य करें।',
+      'मन से की गई छोटी सेवा भी अनमोल है।',
+      'आशा और हिम्मत से कठिन रास्ता भी आसान बनता है।',
+      'हर जीव में माताजी का अंश देखकर प्रेम करें।',
+      'शांति से सुनना भी एक सुंदर सेवा है।',
+      'भक्ति में अहंकार नहीं, समर्पण होना चाहिए।',
+      'आज का सद्विचार कल का सुंदर कर्म बनता है।'
+    ],
+    en: [
+      'Service, faith, and kindness make life beautiful.',
+      'A sincere prayer always gives us courage.',
+      'Kindness and love can win every heart.',
+      'Good thoughts give life the right direction.',
+      'Trust in Mataji and keep doing your duty.',
+      'Humility is a beautiful ornament of devotion.',
+      'Helping others is also a way to serve Mataji.',
+      'Be patient; every morning brings fresh hope.',
+      'When the heart is pure, every task becomes worship.',
+      'A grateful heart is always joyful.',
+      'The path of truth and integrity is always best.',
+      'Forgiveness lightens the heart and strengthens bonds.',
+      'See Mataji’s grace in life’s little joys.',
+      'Peace lives within us, not outside us.',
+      'A loving word can brighten someone’s day.',
+      'Have faith; ease follows hardship.',
+      'Selfless service brings a sacred reward.',
+      'Every day is a new chance to thank Mataji.',
+      'Patience and wisdom bring more joy to life.',
+      'Devotion gives strength to the heart and hope to life.',
+      'Work hard and offer the result to Mataji.',
+      'Finding joy in another’s happiness is a great virtue.',
+      'Kind words bring warmth to every relationship.',
+      'Good deeds are life’s truest wealth.',
+      'Let go of worry and do today’s duty with faith.',
+      'Even a small act of heartfelt service is precious.',
+      'Hope and courage make a hard road easier.',
+      'Love every being and see Mataji’s presence in all.',
+      'Listening with peace is also a beautiful service.',
+      'Devotion calls for surrender, not pride.',
+      'A good thought today becomes a good deed tomorrow.'
+    ]
+  };
   const pageKey = document.body.dataset.page || 'home';
   const languageOptions = [...document.querySelectorAll('.language-option')];
   const languageButton = document.getElementById('languageMenu');
@@ -103,7 +242,7 @@
     const videoUrl = 'https://www.youtube.com/embed/RiUkaehpG-k?si=9UcJttA9mnbOs5LW';
     const watchUrl = 'https://www.youtube.com/watch?v=RiUkaehpG-k';
     const chatUrl = `https://www.youtube.com/live_chat?v=RiUkaehpG-k&embed_domain=${encodeURIComponent(window.location.hostname)}`;
-    return `<section class="live-darshan-page"><div class="live-page-shell"><header class="live-page-heading"><div><span class="section-eyebrow">${words.liveEyebrow || ''}</span><h1>${words.liveHeading || words.liveTitle || ''}</h1><p>${words.liveDescription || words.liveIntro || ''}</p></div><span class="live-video-badge"><i class="bi bi-camera-video-fill" aria-hidden="true"></i>${words.liveVideoLabel || ''}</span></header><div class="live-page-layout"><article class="live-player-card"><div class="live-player-topline"><span><i class="bi bi-play-circle-fill" aria-hidden="true"></i>${words.liveVideoLabel || ''}</span><span class="live-platform-label"><i class="bi bi-youtube" aria-hidden="true"></i>YouTube</span></div><div class="live-video live-page-video"><iframe src="${videoUrl}" title="Meldi Dham Jasalpur darshan video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="live-player-caption"><span class="live-caption-icon"><i class="bi bi-flower1" aria-hidden="true"></i></span><div><h2>${words.liveHeading || ''}</h2><p>${words.liveVideoHint || ''}</p></div><div class="live-player-actions"><a class="live-youtube-button" href="${watchUrl}" target="_blank" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i><span>${words.liveWatchYoutube || ''}</span></a><button class="live-chat-button" type="button" data-live-chat-toggle aria-expanded="false" aria-controls="liveChatPanel"><i class="bi bi-chat-dots-fill" aria-hidden="true"></i><span>${words.liveChat || ''}</span></button></div></div><section class="live-chat-panel" id="liveChatPanel" data-live-chat-panel data-chat-url="${chatUrl}" hidden><header class="live-chat-heading"><div><span class="live-chat-heading-icon"><i class="bi bi-chat-square-text-fill" aria-hidden="true"></i></span><div><h2>${words.liveChat || ''}</h2><p>${words.liveChatNote || ''}</p></div></div><button class="live-chat-close" type="button" data-live-chat-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button></header><div class="live-chat-frame"><iframe title="Meldi Dham YouTube live chat" loading="lazy" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" data-live-chat-frame></iframe></div></section></article><aside class="live-schedule-card"><div class="live-schedule-icon"><i class="bi bi-bell-fill" aria-hidden="true"></i></div><span class="live-schedule-eyebrow">${words.aartiEyebrow || ''}</span><h2>${words.liveScheduleHeading || ''}</h2><p class="live-schedule-note">${words.liveScheduleNote || ''}</p><div class="live-aarti-times"><div class="live-aarti-time"><span class="live-time-icon"><i class="bi bi-sunrise-fill" aria-hidden="true"></i></span><span><small>${words.morningAarti || ''}</small><strong>${words.morningAartiTime || ''}</strong></span></div><div class="live-aarti-time"><span class="live-time-icon evening"><i class="bi bi-sunset-fill" aria-hidden="true"></i></span><span><small>${words.eveningAarti || ''}</small><strong>${words.eveningAartiTime || ''}</strong></span></div></div><a class="live-aarti-link" href="index.html#aarti"><span>${words.aartiTitle || ''}</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></aside></div></div></section>`;
+    return `<section class="live-darshan-page"><div class="live-page-shell"><header class="live-page-heading"><div><span class="section-eyebrow">${words.liveEyebrow || ''}</span><h1>${words.liveHeading || words.liveTitle || ''}</h1><p>${words.liveDescription || words.liveIntro || ''}</p></div><span class="live-video-badge"><i class="bi bi-camera-video-fill" aria-hidden="true"></i>${words.liveVideoLabel || ''}</span></header><div class="live-page-layout"><article class="live-player-card"><div class="live-player-topline"><span><i class="bi bi-play-circle-fill" aria-hidden="true"></i>${words.liveVideoLabel || ''}</span><span class="live-platform-label"><i class="bi bi-youtube" aria-hidden="true"></i>YouTube</span></div><div class="live-video live-page-video"><iframe src="${videoUrl}" title="Maa Meldi Dham Jasalpur darshan video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="live-player-caption"><span class="live-caption-icon"><i class="bi bi-flower1" aria-hidden="true"></i></span><div><h2>${words.liveHeading || ''}</h2><p>${words.liveVideoHint || ''}</p></div><div class="live-player-actions"><a class="live-youtube-button" href="${watchUrl}" target="_blank" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i><span>${words.liveWatchYoutube || ''}</span></a><button class="live-chat-button" type="button" data-live-chat-toggle aria-expanded="false" aria-controls="liveChatPanel"><i class="bi bi-chat-dots-fill" aria-hidden="true"></i><span>${words.liveChat || ''}</span></button></div></div><section class="live-chat-panel" id="liveChatPanel" data-live-chat-panel data-chat-url="${chatUrl}" hidden><header class="live-chat-heading"><div><span class="live-chat-heading-icon"><i class="bi bi-chat-square-text-fill" aria-hidden="true"></i></span><div><h2>${words.liveChat || ''}</h2><p>${words.liveChatNote || ''}</p></div></div><button class="live-chat-close" type="button" data-live-chat-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button></header><div class="live-chat-frame"><iframe title="Maa Meldi Dham YouTube live chat" loading="lazy" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" data-live-chat-frame></iframe></div></section></article><aside class="live-schedule-card"><div class="live-schedule-icon"><i class="bi bi-bell-fill" aria-hidden="true"></i></div><span class="live-schedule-eyebrow">${words.aartiEyebrow || ''}</span><h2>${words.liveScheduleHeading || ''}</h2><p class="live-schedule-note">${words.liveScheduleNote || ''}</p><div class="live-aarti-times"><div class="live-aarti-time"><span class="live-time-icon"><i class="bi bi-sunrise-fill" aria-hidden="true"></i></span><span><small>${words.morningAarti || ''}</small><strong>${words.morningAartiTime || ''}</strong></span></div><div class="live-aarti-time"><span class="live-time-icon evening"><i class="bi bi-sunset-fill" aria-hidden="true"></i></span><span><small>${words.eveningAarti || ''}</small><strong>${words.eveningAartiTime || ''}</strong></span></div></div><a class="live-aarti-link" href="index.html#aarti"><span>${words.aartiTitle || ''}</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></aside></div></div></section>`;
   }
 
   const safeReadLanguage = () => {
@@ -125,14 +264,53 @@
     [...element.childNodes].filter(node => node.nodeType === Node.TEXT_NODE && node !== textNode).forEach(node => node.remove());
   }
 
+  function renderFaqs(language) {
+    const section = document.querySelector('.faq-section');
+    const list = section?.querySelector('[data-faq-list]');
+    const content = faqContent[language] || faqContent.gu;
+    if (!section || !list) return;
+    section.querySelector('[data-faq-eyebrow]').textContent = content.eyebrow;
+    section.querySelector('[data-faq-title]').textContent = content.title;
+    section.querySelector('[data-faq-intro]').textContent = content.intro;
+    list.replaceChildren(...content.items.map(([question, answer, href, linkLabel], index) => {
+      const item = document.createElement('details');
+      item.className = 'faq-item';
+      if (index === 0) item.open = true;
+      const summary = document.createElement('summary');
+      summary.textContent = question;
+      const panel = document.createElement('div');
+      panel.className = 'faq-answer';
+      const paragraph = document.createElement('p');
+      paragraph.textContent = answer;
+      panel.append(paragraph);
+      if (href && linkLabel) {
+        const link = document.createElement('a');
+        link.href = href;
+        link.className = 'faq-link';
+        link.textContent = linkLabel;
+        panel.append(link);
+      }
+      item.append(summary, panel);
+      return item;
+    }));
+  }
+
   function applyLanguage(language, announce = false) {
     const code = translations[language] ? language : 'gu';
     const words = translations[code] || {};
     document.documentElement.lang = code;
+    renderFaqs(code);
     document.querySelectorAll('[data-i18n]').forEach(element => {
       const value = words[element.dataset.i18n];
       if (value !== undefined) setTranslatedText(element, value);
     });
+    const thought = document.querySelector('[data-i18n="thoughtText"]');
+    if (thought) {
+      const today = new Date();
+      const dayNumber = Math.floor(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) / 86400000);
+      const quotes = dailyThoughts[code] || dailyThoughts.gu;
+      thought.textContent = quotes[dayNumber % quotes.length];
+    }
     document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
       const value = words[element.dataset.i18nPlaceholder];
       if (value !== undefined) element.placeholder = value;
@@ -176,6 +354,7 @@
   }
 
   applyLanguage(safeReadLanguage() || 'gu');
+  setupGujaratiCalendar();
   languageOptions.forEach(option => option.addEventListener('click', () => applyLanguage(option.dataset.language, true)));
   document.addEventListener('input', event => {
     if (event.target instanceof HTMLInputElement && event.target.name === 'phone') event.target.value = event.target.value.replace(/\D/g, '').slice(0, 10);
@@ -316,7 +495,7 @@
       return;
     }
     const values = new FormData(form);
-    const subject = `[Meldi Dham] ${values.get('subject')}`;
+    const subject = `[Maa Meldi Dham] ${values.get('subject')}`;
     const body = `Name: ${values.get('name')}\nEmail: ${values.get('email')}\n\n${values.get('message')}`;
     window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     if (status) status.textContent = words.contactEmailOpened || 'Your email app opened with the message. Review it before sending.';
@@ -562,6 +741,149 @@
   }
   setupChoghadiya();
 
+  function setupGujaratiCalendar() {
+    const button = document.querySelector('[data-calendar-button]');
+    const card = document.getElementById('gujaratiCalendarCard');
+    if (!button || !card) return;
+    const copy = {
+      gu: { button:'ગુજરાતી પંચાંગ', place:'માઁ મેલડી ધામ · જાસલપુર', loading:'આજનું પંચાંગ મેળવી રહ્યા છીએ…', error:'પંચાંગ હમણાં મેળવી શકાયું નથી. ઇન્ટરનેટ જોડાણ તપાસીને ફરી પ્રયાસ કરો.', retry:'ફરી પ્રયાસ કરો', date:'તારીખ અને વાર', year:'સંવત્સર', monthLine:'માસ-પક્ષ-તિથિ', more:'અન્ય માહિતી', badge:'સૂક્ષ્મ પંચાંગ વિગતો', weekday:'gu-IN', paksha:{Shukla:'સુદ',Krishna:'વદ'}, tithis:['પડવો','બીજ','ત્રીજ','ચોથ','પાંચમ','છઠ્ઠ','સાતમ','આઠમ','નોમ','દસમ','અગિયારસ','બારસ','તેરસ','ચૌદસ','પૂનમ','અમાસ'], months:{Chaitra:'ચૈત્ર',Vaishakha:'વૈશાખ',Jyeshtha:'જેઠ',Ashadha:'અષાઢ',Shravana:'શ્રાવણ',Bhadrapada:'ભાદરવો',Ashwina:'આસો',Ashvina:'આસો',Ashwin:'આસો',Kartika:'કારતક',Margashirsha:'માગશર',Agrahayana:'માગશર',Pausha:'પોષ',Magha:'મહા',Phalguna:'ફાગણ'}, sun:['સૂર્યોદય','સૂર્યાસ્ત','ચંદ્રોદય','ચંદ્રાસ્ત'], muhurta:'શુભ સમય', inauspicious:'અશુભ સમય', ends:'સુધી', fields:{tithi:'તિથિ',nakshatra:'નક્ષત્ર',yoga:'યોગ',karana:'કરણ',moon:'ચંદ્રરાશિ',sun:'સૂર્યરાશિ',abhijit:'અભિજિત મુહૂર્ત',rahu:'રાહુકાળ',gulika:'ગુલિક કાળ',yamaganda:'યમગંડ'}, nakshatras:['અશ્વિની','ભરણી','કૃતિકા','રોહિણી','મૃગશીર્ષ','આર્દ્રા','પુનર્વસુ','પુષ્ય','આશ્લેષા','મઘા','પૂર્વા ફાલ્ગુની','ઉત્તરા ફાલ્ગુની','હસ્ત','ચિત્રા','સ્વાતિ','વિશાખા','અનુરાધા','જ્યેષ્ઠા','મૂળ','પૂર્વાષાઢા','ઉત્તરાષાઢા','શ્રવણ','ધનિષ્ઠા','શતભિષા','પૂર્વા ભાદ્રપદ','ઉત્તરા ભાદ્રપદ','રેવતી'], signs:{Aries:'મેષ',Taurus:'વૃષભ',Gemini:'મિથુન',Cancer:'કર્ક',Leo:'સિંહ',Virgo:'કન્યા',Libra:'તુલા',Scorpio:'વૃશ્ચિક',Sagittarius:'ધનુ',Capricorn:'મકર',Aquarius:'કુંભ',Pisces:'મીન'}, yogaNames:{Shukla:'શુક્લ',Brahma:'બ્રહ્મ',Priti:'પ્રીતિ',Ayushman:'આયુષ્માન',Saubhagya:'સૌભાગ્ય',Shobhana:'શોભન',Atiganda:'અતિગંડ',Sukarma:'સુકર્મા',Dhriti:'ધૃતિ',Shula:'શૂલ',Ganda:'ગંડ',Vriddhi:'વૃદ્ધિ',Dhruva:'ધ્રુવ',Vyaghata:'વ્યાઘાત',Harshana:'હર્ષણ',Vajra:'વજ્ર',Siddhi:'સિદ્ધિ',Vyatipata:'વ્યતિપાત',Variyana:'વરીયાન',Parigha:'પરિઘ',Shiva:'શિવ',Siddha:'સિદ્ધ',Sadhya:'સાધ્ય',Shubha:'શુભ',Indra:'ઇન્દ્ર',Vaidhriti:'વૈધૃતિ'}, karanaNames:{Bava:'બવ',Balava:'બાલવ',Kaulava:'કૌલવ',Taitila:'તૈતિલ',Garaja:'ગર',Gara:'ગર',Vanija:'વણિજ',Vishti:'વિષ્ટિ',Shakuni:'શકુનિ',Chatushpada:'ચતુષ્પદ',Naga:'નાગ',Kimstughna:'કિંસ્તુઘ્ન'} },
+      hi: { button:'गुजराती पंचांग',place:'माँ मेलडी धाम · जसालपुर',loading:'आज का पंचांग प्राप्त हो रहा है…',error:'पंचांग अभी प्राप्त नहीं हो सका। इंटरनेट जाँचकर फिर कोशिश करें।',retry:'फिर कोशिश करें',date:'तारीख और वार',year:'संवत्सर',monthLine:'मास-पक्ष-तिथि',more:'अन्य जानकारी',badge:'सूक्ष्म पंचांग विवरण',weekday:'hi-IN',paksha:{Shukla:'शुक्ल',Krishna:'कृष्ण'},tithis:['प्रतिपदा','द्वितीया','तृतीया','चतुर्थी','पंचमी','षष्ठी','सप्तमी','अष्टमी','नवमी','दशमी','एकादशी','द्वादशी','त्रयोदशी','चतुर्दशी','पूर्णिमा','अमावस्या'],months:{Chaitra:'चैत्र',Vaishakha:'वैशाख',Jyeshtha:'ज्येष्ठ',Ashadha:'आषाढ़',Shravana:'श्रावण',Bhadrapada:'भाद्रपद',Ashwina:'आश्विन',Ashvina:'आश्विन',Ashwin:'आश्विन',Kartika:'कार्तिक',Margashirsha:'मार्गशीर्ष',Agrahayana:'मार्गशीर्ष',Pausha:'पौष',Magha:'माघ',Phalguna:'फाल्गुन'},sun:['सूर्योदय','सूर्यास्त','चंद्रोदय','चंद्रास्त'],muhurta:'शुभ समय',inauspicious:'अशुभ समय',ends:'तक',fields:{tithi:'तिथि',nakshatra:'नक्षत्र',yoga:'योग',karana:'करण',moon:'चंद्र राशि',sun:'सूर्य राशि',abhijit:'अभिजित मुहूर्त',rahu:'राहु काल',gulika:'गुलिक काल',yamaganda:'यमगंड'},nakshatras:['अश्विनी','भरणी','कृत्तिका','रोहिणी','मृगशिरा','आर्द्रा','पुनर्वसु','पुष्य','आश्लेषा','मघा','पूर्वा फाल्गुनी','उत्तरा फाल्गुनी','हस्त','चित्रा','स्वाति','विशाखा','अनुराधा','ज्येष्ठा','मूल','पूर्वाषाढ़ा','उत्तराषाढ़ा','श्रवण','धनिष्ठा','शतभिषा','पूर्वा भाद्रपद','उत्तरा भाद्रपद','रेवती'],signs:{Aries:'मेष',Taurus:'वृषभ',Gemini:'मिथुन',Cancer:'कर्क',Leo:'सिंह',Virgo:'कन्या',Libra:'तुला',Scorpio:'वृश्चिक',Sagittarius:'धनु',Capricorn:'मकर',Aquarius:'कुंभ',Pisces:'मीन'},yogaNames:{Shukla:'शुक्ल',Brahma:'ब्रह्म',Priti:'प्रीति',Ayushman:'आयुष्मान',Saubhagya:'सौभाग्य',Shobhana:'शोभन',Atiganda:'अतिगंड',Sukarma:'सुकर्मा',Dhriti:'धृति',Shula:'शूल',Ganda:'गंड',Vriddhi:'वृद्धि',Dhruva:'ध्रुव',Vyaghata:'व्याघात',Harshana:'हर्षण',Vajra:'वज्र',Siddhi:'सिद्धि',Vyatipata:'व्यतिपात',Variyana:'वरीयान',Parigha:'परिघ',Shiva:'शिव',Siddha:'सिद्ध',Sadhya:'साध्य',Shubha:'शुभ',Indra:'इंद्र',Vaidhriti:'वैधृति'},karanaNames:{Bava:'बव',Balava:'बालव',Kaulava:'कौलव',Taitila:'तैतिल',Garaja:'गर',Gara:'गर',Vanija:'वणिज',Vishti:'विष्टि',Shakuni:'शकुनि',Chatushpada:'चतुष्पद',Naga:'नाग',Kimstughna:'किंस्तुघ्न'} },
+      en: { button:'Gujarati Panchang',place:'Maa Meldi Dham · Jasalpur',loading:'Fetching today’s panchang…',error:'Panchang could not be loaded. Check your connection and try again.',retry:'Try again',date:'Date and weekday',year:'Samvatsara',monthLine:'Month · paksha · tithi',more:'Other information',badge:'Panchang details',weekday:'en-IN',paksha:{Shukla:'Shukla',Krishna:'Krishna'},tithis:['Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami','Shashthi','Saptami','Ashtami','Navami','Dashami','Ekadashi','Dwadashi','Trayodashi','Chaturdashi','Purnima','Amavasya'],months:{Chaitra:'Chaitra',Vaishakha:'Vaishakha',Jyeshtha:'Jyeshtha',Ashadha:'Ashadha',Shravana:'Shravana',Bhadrapada:'Bhadrapada',Ashwina:'Ashwina',Ashvina:'Ashwina',Ashwin:'Ashwina',Kartika:'Kartika',Margashirsha:'Margashirsha',Agrahayana:'Margashirsha',Pausha:'Pausha',Magha:'Magha',Phalguna:'Phalguna'},sun:['Sunrise','Sunset','Moonrise','Moonset'],muhurta:'Favorable time',inauspicious:'Avoid',ends:'until',fields:{tithi:'Tithi',nakshatra:'Nakshatra',yoga:'Yoga',karana:'Karana',moon:'Moon sign',sun:'Sun sign',abhijit:'Abhijit Muhurta',rahu:'Rahu Kaal',gulika:'Gulika Kaal',yamaganda:'Yamaganda'},nakshatras:['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishtha','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'],signs:{Aries:'Aries',Taurus:'Taurus',Gemini:'Gemini',Cancer:'Cancer',Leo:'Leo',Virgo:'Virgo',Libra:'Libra',Scorpio:'Scorpio',Sagittarius:'Sagittarius',Capricorn:'Capricorn',Aquarius:'Aquarius',Pisces:'Pisces'},yogaNames:{Shukla:'Shukla',Brahma:'Brahma',Priti:'Priti',Ayushman:'Ayushman',Saubhagya:'Saubhagya',Shobhana:'Shobhana',Atiganda:'Atiganda',Sukarma:'Sukarma',Dhriti:'Dhriti',Shula:'Shula',Ganda:'Ganda',Vriddhi:'Vriddhi',Dhruva:'Dhruva',Vyaghata:'Vyaghata',Harshana:'Harshana',Vajra:'Vajra',Siddhi:'Siddhi',Vyatipata:'Vyatipata',Variyana:'Variyana',Parigha:'Parigha',Shiva:'Shiva',Siddha:'Siddha',Sadhya:'Sadhya',Shubha:'Shubha',Indra:'Indra',Vaidhriti:'Vaidhriti'},karanaNames:{Bava:'Bava',Balava:'Balava',Kaulava:'Kaulava',Taitila:'Taitila',Garaja:'Garaja',Gara:'Gara',Vanija:'Vanija',Vishti:'Vishti',Shakuni:'Shakuni',Chatushpada:'Chatushpada',Naga:'Naga',Kimstughna:'Kimstughna'} }
+    };
+    let latestData = null;
+    let failedDate = null;
+    const dateForIndia = () => Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit' }).formatToParts(new Date()).filter(part => part.type !== 'literal').map(part => [part.type,part.value]));
+    const dateLocale = () => document.documentElement.lang === 'hi' ? 'hi-IN' : document.documentElement.lang === 'en' ? 'en-IN' : 'gu-IN';
+    const tithiIndexFor = value => {
+      const names=['Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami','Shashthi','Saptami','Ashtami','Navami','Dashami','Ekadashi','Dwadashi','Trayodashi','Chaturdashi','Purnima','Amavasya'];
+      let index=names.findIndex(name => new RegExp(`\\b${name}\\b`,'i').test(String(value||'')));
+      if(index<0 && /\b(Sashti|Shashti)\b/i.test(String(value||''))) index=5;
+      return index;
+    };
+    const formatClock = value => {
+      if(!value || typeof value !== 'string') return '—';
+      const match=value.match(/(\d{1,2}):(\d{2})(?::\d{2})?/);
+      if(!match) return value;
+      const hour=Number(match[1]), minute=match[2];
+      const suffix=hour<12?'AM':'PM';
+      return `${hour%12||12}:${minute} ${suffix}${/\(\+1d\)/.test(value)?' (+1d)':''}`;
+    };
+    const formatEnd = (value, date) => {
+      if(!value) return '';
+      const match=String(value).match(/(\d{1,2}):(\d{2})(?::\d{2})?/);
+      if(!match) return String(value);
+      let dayOffset=/\(\+(\d+)d\)/.exec(String(value));
+      const clock=formatClock(value).replace(/ \(\+1d\)/,'');
+      const endDate=new Date(`${date}T12:00:00+05:30`);
+      if(dayOffset) endDate.setUTCDate(endDate.getUTCDate()+Number(dayOffset[1]));
+      const dateStr=new Intl.DateTimeFormat(dateLocale(),{timeZone:'Asia/Kolkata',day:'numeric',month:'short'}).format(endDate);
+      return `${dateStr} ${clock}`;
+    };
+    const interval = period => period?.start && period?.end ? `${formatClock(period.start)} – ${formatClock(period.end)}` : '—';
+    const translateName = (value, mapping) => mapping?.[value] || value || '—';
+    const detailRow = (container, label, value, meta='', tone='') => {
+      if(!value || value==='—') return;
+      const row=document.createElement('div'); row.className=`calendar-detail-row${tone?` is-${tone}`:''}`;
+      const marker=document.createElement('span'); marker.className='calendar-detail-marker';
+      const name=document.createElement('strong'); name.textContent=label;
+      const detail=document.createElement('div'); detail.className='calendar-detail-value';
+      const main=document.createElement('strong'); main.textContent=value; detail.append(main);
+      if(meta){ const note=document.createElement('small'); note.textContent=meta; detail.append(note); }
+      row.append(marker,name,detail); container.append(row);
+    };
+    const render = panchang => {
+      const language=copy[document.documentElement.lang]||copy.gu;
+      const locale=dateLocale();
+      const date=panchang.date;
+      const dateValue=new Date(`${date}T12:00:00+05:30`);
+      const weekday=new Intl.DateTimeFormat(locale,{timeZone:'Asia/Kolkata',weekday:'long'}).format(dateValue);
+      const numericDate=new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',day:'numeric',month:'numeric',year:'numeric'}).format(dateValue);
+      card.querySelector('[data-calendar-place]').textContent=language.place;
+      card.querySelector('[data-calendar-date-label]').textContent=language.date;
+      card.querySelector('[data-calendar-date]').textContent=`${numericDate} (${weekday})`;
+      const monthRaw=panchang.month?.purnimanta||panchang.month?.amanta||'';
+      const month=translateName(monthRaw,language.months);
+      const paksha=panchang.paksha||'';
+      const vikrama=Number(panchang.samvat?.vikrama);
+      const gujaratiSamvat=Number.isFinite(vikrama)?vikrama-(/ashwina|ashvina|ashwin/i.test(monthRaw)&&/krishna/i.test(paksha)?1:0):'—';
+      const vikramLabel=document.documentElement.lang==='gu'?'વિક્રમ સંવત':document.documentElement.lang==='hi'?'विक्रम संवत':'Vikram Samvat';
+      card.querySelector('[data-calendar-samvat]').textContent=`${language.year}: ${vikramLabel} ${gujaratiSamvat}`;
+      const tithiRaw=panchang.tithi?.name||'';
+      const tithiIndex=tithiIndexFor(tithiRaw);
+      const tithi=tithiIndex>=0?language.tithis[tithiIndex]:tithiRaw;
+      const tithiPhrase=`${month} ${translateName(paksha,language.paksha)} - ${tithi}`.trim();
+      card.querySelector('[data-calendar-month]').textContent=`${language.monthLine}: ${tithiPhrase}`;
+      const sunGrid=card.querySelector('[data-calendar-sun]');
+      const sunValues=[panchang.sunrise,panchang.sunset,panchang.moonrise,panchang.moonset];
+      sunGrid.replaceChildren(...language.sun.map((label,index)=>{
+        const item=document.createElement('div');item.className=`calendar-sun-tile calendar-sun-${index}`;
+        const icon=document.createElement('span');icon.className='calendar-sun-icon';icon.innerHTML=['<i class="bi bi-sunrise-fill" aria-hidden="true"></i>','<i class="bi bi-sunset-fill" aria-hidden="true"></i>','<i class="bi bi-moon-stars-fill" aria-hidden="true"></i>','<i class="bi bi-moon-fill" aria-hidden="true"></i>'][index];
+        const title=document.createElement('span');title.textContent=label;
+        const value=document.createElement('strong');value.textContent=formatClock(sunValues[index]);
+        item.append(icon,title,value);return item;
+      }));
+      const brahma=panchang.auspicious?.brahma_muhurta;
+      const brahmaBox=card.querySelector('[data-calendar-brahma]');
+      if(brahma?.start&&brahma?.end){
+        brahmaBox.hidden=false;brahmaBox.replaceChildren();
+        const icon=document.createElement('span');icon.className='calendar-brahma-icon';icon.innerHTML='<i class="bi bi-lamp-fill" aria-hidden="true"></i>';
+        const text=document.createElement('div');text.className='calendar-brahma-copy';
+        const title=document.createElement('strong');title.textContent=document.documentElement.lang==='hi'?'ब्रह्म मुहूर्त':document.documentElement.lang==='en'?'Brahma Muhurta':'બ્રહ્મ મુહૂર્ત';
+        const time=document.createElement('span');time.textContent=`${formatClock(brahma.start)} ${language.ends} ${formatClock(brahma.end)}`;
+        const quality=document.createElement('b');quality.textContent=language.muhurta;
+        text.append(title,time);brahmaBox.append(icon,text,quality);
+      }else brahmaBox.hidden=true;
+      card.querySelector('[data-calendar-more-title]').textContent=language.more;
+      card.querySelector('[data-calendar-method]').textContent=language.badge;
+      const list=card.querySelector('[data-calendar-details]');list.replaceChildren();
+      const tithiMeta=panchang.tithi?.end?`${formatEnd(panchang.tithi.end,date)} ${language.ends}`:'';
+      const nakMeta=panchang.nakshatra?.end?`${formatEnd(panchang.nakshatra.end,date)} ${language.ends}`:'';
+      const yogaMeta=panchang.yoga?.end?`${formatEnd(panchang.yoga.end,date)} ${language.ends}`:'';
+      const karanaMeta=panchang.karana?.end?`${formatEnd(panchang.karana.end,date)} ${language.ends}`:'';
+      detailRow(list,language.fields.tithi,`${translateName(paksha,language.paksha)} - ${tithi}`,tithiMeta);
+      const nIndex=language.nakshatras.findIndex((_,i)=>i===['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishtha','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'].indexOf(panchang.nakshatra?.name));
+      const nakName=nIndex>=0?language.nakshatras[nIndex]:panchang.nakshatra?.name;
+      detailRow(list,language.fields.nakshatra,nakName,nakMeta);
+      detailRow(list,language.fields.yoga,translateName(panchang.yoga?.name,language.yogaNames),yogaMeta);
+      detailRow(list,language.fields.karana,translateName(panchang.karana?.name,language.karanaNames),karanaMeta);
+      detailRow(list,language.fields.moon,translateName(panchang.signs?.moon?.name||panchang.signs?.moon,language.signs));
+      detailRow(list,language.fields.sun,translateName(panchang.signs?.sun?.name||panchang.signs?.sun,language.signs));
+      detailRow(list,language.fields.abhijit,interval(panchang.auspicious?.abhijit_muhurta),'', 'good');
+      detailRow(list,language.fields.rahu,interval(panchang.inauspicious?.rahu_kalam),'', 'avoid');
+      detailRow(list,language.fields.gulika,interval(panchang.inauspicious?.gulika_kalam),'', 'neutral');
+      detailRow(list,language.fields.yamaganda,interval(panchang.inauspicious?.yamaganda),'', 'neutral');
+      card.querySelector('[data-calendar-status]').textContent='';
+      const credit=card.querySelector('[data-calendar-credit]');credit.replaceChildren(document.createTextNode('Panchang data by '));
+      const source=document.createElement('a');source.href='https://horoscopes.today/api';source.target='_blank';source.rel='noopener noreferrer';source.textContent='Horoscopes.Today';credit.append(source);
+    };
+    const fetchData=async()=>{
+      const parts=dateForIndia();const date=`${parts.year}-${parts.month}-${parts.day}`;const status=card.querySelector('[data-calendar-status]');const retry=card.querySelector('[data-calendar-retry]');
+      failedDate=null;
+      status.textContent=(copy[document.documentElement.lang]||copy.gu).loading;retry.hidden=true;
+      card.querySelector('[data-calendar-place]').textContent=(copy[document.documentElement.lang]||copy.gu).place;
+      try{
+        const response=await fetch('https://jagannatha-hora-359167915530.europe-west1.run.app/panchang',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({date,latitude:23.36026124473463,longitude:72.33835438863909,timezone:5.5,place:'Jasalpur, Gujarat'})});
+        if(!response.ok)throw new Error(`Panchang request failed (${response.status})`);
+        const result=await response.json();const panchang=result.panchang;
+        if(!panchang?.date||!panchang?.tithi?.name)throw new Error('Panchang response was incomplete');
+        latestData=panchang;render(panchang);
+      }catch{
+        failedDate=date;
+        status.textContent=(copy[document.documentElement.lang]||copy.gu).error;retry.textContent=(copy[document.documentElement.lang]||copy.gu).retry;retry.hidden=false;
+      }
+    };
+    const updateButton=()=>{button.querySelector('[data-calendar-button-label]').textContent=(copy[document.documentElement.lang]||copy.gu).button;};
+    button.addEventListener('click',async()=>{
+      const opening=card.hidden;card.hidden=!opening;button.setAttribute('aria-expanded',String(opening));
+      if(!opening)return;
+      const p=dateForIndia();const today=`${p.year}-${p.month}-${p.day}`;
+      if(latestData?.date===today)render(latestData);else await fetchData();
+    });
+    card.querySelector('[data-calendar-retry]').addEventListener('click',fetchData);
+    document.addEventListener('temple:languagechange',()=>{updateButton();if(!card.hidden&&latestData)render(latestData);});
+    window.setInterval(()=>{if(card.hidden)return;const p=dateForIndia();const today=`${p.year}-${p.month}-${p.day}`;if(latestData?.date===today)render(latestData);else if(failedDate!==today)fetchData();},60000);
+    updateButton();
+  }
   const galleryModalElement = document.getElementById('galleryLightbox');
   if (galleryModalElement) {
     const galleryModal = bootstrap.Modal.getOrCreateInstance(galleryModalElement);
