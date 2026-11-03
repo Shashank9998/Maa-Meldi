@@ -550,9 +550,6 @@
     const audioButton = document.getElementById('audioToggle');
     if (!video || !playButton || !audioButton) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const videoPaths = ['assets/videos/MaaMeldi%20video.mp4', 'assets/videos/Video.mp4', 'assets/videos/Maa%20Meldi%20aarti.mpeg'];
-    let videoPathIndex = 0;
-    let failedSourceAttempts = 0;
     const words = () => translations[document.documentElement.lang] || translations.gu || {};
     const setPlayButton = () => {
       const isPaused = video.paused;
@@ -564,19 +561,6 @@
       audioButton.setAttribute('aria-label', words()[video.muted ? 'audioUnmute' : 'audioMute'] || (video.muted ? 'Unmute audio' : 'Mute audio'));
     };
     if (reducedMotion) video.pause();
-    const loadPlaylistVideo = index => {
-      videoPathIndex = index % videoPaths.length;
-      video.src = videoPaths[videoPathIndex];
-      video.load();
-      if (!reducedMotion) video.play().catch(() => {});
-    };
-    video.addEventListener('playing', () => { failedSourceAttempts = 0; });
-    video.addEventListener('ended', () => loadPlaylistVideo(videoPathIndex + 1));
-    video.addEventListener('error', () => {
-      failedSourceAttempts += 1;
-      if (failedSourceAttempts >= videoPaths.length) return;
-      loadPlaylistVideo(videoPathIndex + 1);
-    });
     video.addEventListener('play', setPlayButton);
     video.addEventListener('pause', setPlayButton);
     playButton.addEventListener('click', () => {

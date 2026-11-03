@@ -1,3 +1,1 @@
-assets/videos/Video.mp4 filter=lfs diff=lfs merge=lfs -text
 assets/videos/MaaMeldi[[:space:]]video.mp4 filter=lfs diff=lfs merge=lfs -text
-assets/videos/Maa[[:space:]]Meldi[[:space:]]aarti.mpeg filter=lfs diff=lfs merge=lfs -text
