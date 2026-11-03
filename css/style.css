@@ -505,7 +505,7 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .home-hero { width: 100%; padding: 0; background: linear-gradient(180deg, #fff8e7 0%, #fffdf7 100%); }
 .home-carousel { position: relative; width: 100%; height: clamp(430px, 57vw, 650px); min-height: 430px; margin: 0; overflow: hidden; border: 0; border-bottom: 1px solid rgba(212,175,55,.7); border-radius: 0; background: #45161d; box-shadow: 0 12px 32px rgba(65,28,19,.14); isolation: isolate; }
 .home-carousel .carousel-inner, .home-carousel .carousel-item { height: 100%; }
-.hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; background: radial-gradient(ellipse at 72% 40%, rgba(245,124,0,.35), transparent 24%), linear-gradient(125deg, #37121e, #7e2524 52%, #321822); }
+.hero-image { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center; background: radial-gradient(ellipse at 72% 40%, rgba(245,124,0,.35), transparent 24%), linear-gradient(125deg, #37121e, #7e2524 52%, #321822); }
 .hero-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(28,12,20,.88) 0%, rgba(42,17,24,.74) 42%, rgba(36,14,20,.19) 100%), linear-gradient(0deg, rgba(25,10,16,.3), transparent 44%); }
 .hero-content { position: relative; display: flex; width: min(760px, 72%); height: 100%; flex-direction: column; align-items: flex-start; justify-content: center; padding: 70px clamp(36px, 8vw, 120px) 90px; color: var(--white); }
 .hero-kicker { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 20px; color: #f1cf73; font-family: "Noto Sans Gujarati", "Hind Vadodara", sans-serif; font-size: 16px; font-weight: 600; letter-spacing: .05em; }

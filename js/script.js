@@ -544,39 +544,6 @@
     });
   });
 
-  function setupHeroVideo() {
-    const video = document.getElementById('homeHeroVideo');
-    const playButton = document.getElementById('videoToggle');
-    const audioButton = document.getElementById('audioToggle');
-    if (!video || !playButton || !audioButton) return;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const words = () => translations[document.documentElement.lang] || translations.gu || {};
-    const setPlayButton = () => {
-      const isPaused = video.paused;
-      playButton.innerHTML = isPaused ? '<i class="bi bi-play-fill" aria-hidden="true"></i>' : '<i class="bi bi-pause-fill" aria-hidden="true"></i>';
-      playButton.setAttribute('aria-label', words()[isPaused ? 'videoPlay' : 'videoPause'] || (isPaused ? 'Play video' : 'Pause video'));
-    };
-    const setAudioButton = () => {
-      audioButton.innerHTML = video.muted ? '<i class="bi bi-volume-mute-fill" aria-hidden="true"></i>' : '<i class="bi bi-volume-up-fill" aria-hidden="true"></i>';
-      audioButton.setAttribute('aria-label', words()[video.muted ? 'audioUnmute' : 'audioMute'] || (video.muted ? 'Unmute audio' : 'Mute audio'));
-    };
-    if (reducedMotion) video.pause();
-    video.addEventListener('play', setPlayButton);
-    video.addEventListener('pause', setPlayButton);
-    playButton.addEventListener('click', () => {
-      if (video.paused) video.play().catch(() => {});
-      else video.pause();
-    });
-    audioButton.addEventListener('click', () => {
-      video.muted = !video.muted;
-      if (!video.muted && video.paused) video.play().catch(() => {});
-      setAudioButton();
-    });
-    setPlayButton();
-    setAudioButton();
-  }
-  setupHeroVideo();
-
   function setupAartiPlayers() {
     const formatTime = seconds => {
       if (!Number.isFinite(seconds)) return '--:--';
@@ -746,9 +713,9 @@
     const card = document.getElementById('gujaratiCalendarCard');
     if (!button || !card) return;
     const copy = {
-      gu: { button:'ગુજરાતી પંચાંગ', place:'માઁ મેલડી ધામ · જાસલપુર', loading:'આજનું પંચાંગ મેળવી રહ્યા છીએ…', error:'પંચાંગ હમણાં મેળવી શકાયું નથી. ઇન્ટરનેટ જોડાણ તપાસીને ફરી પ્રયાસ કરો.', retry:'ફરી પ્રયાસ કરો', date:'તારીખ અને વાર', year:'સંવત્સર', monthLine:'માસ-પક્ષ-તિથિ', more:'અન્ય માહિતી', badge:'સૂક્ષ્મ પંચાંગ વિગતો', weekday:'gu-IN', paksha:{Shukla:'સુદ',Krishna:'વદ'}, tithis:['પડવો','બીજ','ત્રીજ','ચોથ','પાંચમ','છઠ્ઠ','સાતમ','આઠમ','નોમ','દસમ','અગિયારસ','બારસ','તેરસ','ચૌદસ','પૂનમ','અમાસ'], months:{Chaitra:'ચૈત્ર',Vaishakha:'વૈશાખ',Jyeshtha:'જેઠ',Ashadha:'અષાઢ',Shravana:'શ્રાવણ',Bhadrapada:'ભાદરવો',Ashwina:'આસો',Ashvina:'આસો',Ashwin:'આસો',Kartika:'કારતક',Margashirsha:'માગશર',Agrahayana:'માગશર',Pausha:'પોષ',Magha:'મહા',Phalguna:'ફાગણ'}, sun:['સૂર્યોદય','સૂર્યાસ્ત','ચંદ્રોદય','ચંદ્રાસ્ત'], muhurta:'શુભ સમય', inauspicious:'અશુભ સમય', ends:'સુધી', fields:{tithi:'તિથિ',nakshatra:'નક્ષત્ર',yoga:'યોગ',karana:'કરણ',moon:'ચંદ્રરાશિ',sun:'સૂર્યરાશિ',abhijit:'અભિજિત મુહૂર્ત',rahu:'રાહુકાળ',gulika:'ગુલિક કાળ',yamaganda:'યમગંડ'}, nakshatras:['અશ્વિની','ભરણી','કૃતિકા','રોહિણી','મૃગશીર્ષ','આર્દ્રા','પુનર્વસુ','પુષ્ય','આશ્લેષા','મઘા','પૂર્વા ફાલ્ગુની','ઉત્તરા ફાલ્ગુની','હસ્ત','ચિત્રા','સ્વાતિ','વિશાખા','અનુરાધા','જ્યેષ્ઠા','મૂળ','પૂર્વાષાઢા','ઉત્તરાષાઢા','શ્રવણ','ધનિષ્ઠા','શતભિષા','પૂર્વા ભાદ્રપદ','ઉત્તરા ભાદ્રપદ','રેવતી'], signs:{Aries:'મેષ',Taurus:'વૃષભ',Gemini:'મિથુન',Cancer:'કર્ક',Leo:'સિંહ',Virgo:'કન્યા',Libra:'તુલા',Scorpio:'વૃશ્ચિક',Sagittarius:'ધનુ',Capricorn:'મકર',Aquarius:'કુંભ',Pisces:'મીન'}, yogaNames:{Shukla:'શુક્લ',Brahma:'બ્રહ્મ',Priti:'પ્રીતિ',Ayushman:'આયુષ્માન',Saubhagya:'સૌભાગ્ય',Shobhana:'શોભન',Atiganda:'અતિગંડ',Sukarma:'સુકર્મા',Dhriti:'ધૃતિ',Shula:'શૂલ',Ganda:'ગંડ',Vriddhi:'વૃદ્ધિ',Dhruva:'ધ્રુવ',Vyaghata:'વ્યાઘાત',Harshana:'હર્ષણ',Vajra:'વજ્ર',Siddhi:'સિદ્ધિ',Vyatipata:'વ્યતિપાત',Variyana:'વરીયાન',Parigha:'પરિઘ',Shiva:'શિવ',Siddha:'સિદ્ધ',Sadhya:'સાધ્ય',Shubha:'શુભ',Indra:'ઇન્દ્ર',Vaidhriti:'વૈધૃતિ'}, karanaNames:{Bava:'બવ',Balava:'બાલવ',Kaulava:'કૌલવ',Taitila:'તૈતિલ',Garaja:'ગર',Gara:'ગર',Vanija:'વણિજ',Vishti:'વિષ્ટિ',Shakuni:'શકુનિ',Chatushpada:'ચતુષ્પદ',Naga:'નાગ',Kimstughna:'કિંસ્તુઘ્ન'} },
-      hi: { button:'गुजराती पंचांग',place:'माँ मेलडी धाम · जसालपुर',loading:'आज का पंचांग प्राप्त हो रहा है…',error:'पंचांग अभी प्राप्त नहीं हो सका। इंटरनेट जाँचकर फिर कोशिश करें।',retry:'फिर कोशिश करें',date:'तारीख और वार',year:'संवत्सर',monthLine:'मास-पक्ष-तिथि',more:'अन्य जानकारी',badge:'सूक्ष्म पंचांग विवरण',weekday:'hi-IN',paksha:{Shukla:'शुक्ल',Krishna:'कृष्ण'},tithis:['प्रतिपदा','द्वितीया','तृतीया','चतुर्थी','पंचमी','षष्ठी','सप्तमी','अष्टमी','नवमी','दशमी','एकादशी','द्वादशी','त्रयोदशी','चतुर्दशी','पूर्णिमा','अमावस्या'],months:{Chaitra:'चैत्र',Vaishakha:'वैशाख',Jyeshtha:'ज्येष्ठ',Ashadha:'आषाढ़',Shravana:'श्रावण',Bhadrapada:'भाद्रपद',Ashwina:'आश्विन',Ashvina:'आश्विन',Ashwin:'आश्विन',Kartika:'कार्तिक',Margashirsha:'मार्गशीर्ष',Agrahayana:'मार्गशीर्ष',Pausha:'पौष',Magha:'माघ',Phalguna:'फाल्गुन'},sun:['सूर्योदय','सूर्यास्त','चंद्रोदय','चंद्रास्त'],muhurta:'शुभ समय',inauspicious:'अशुभ समय',ends:'तक',fields:{tithi:'तिथि',nakshatra:'नक्षत्र',yoga:'योग',karana:'करण',moon:'चंद्र राशि',sun:'सूर्य राशि',abhijit:'अभिजित मुहूर्त',rahu:'राहु काल',gulika:'गुलिक काल',yamaganda:'यमगंड'},nakshatras:['अश्विनी','भरणी','कृत्तिका','रोहिणी','मृगशिरा','आर्द्रा','पुनर्वसु','पुष्य','आश्लेषा','मघा','पूर्वा फाल्गुनी','उत्तरा फाल्गुनी','हस्त','चित्रा','स्वाति','विशाखा','अनुराधा','ज्येष्ठा','मूल','पूर्वाषाढ़ा','उत्तराषाढ़ा','श्रवण','धनिष्ठा','शतभिषा','पूर्वा भाद्रपद','उत्तरा भाद्रपद','रेवती'],signs:{Aries:'मेष',Taurus:'वृषभ',Gemini:'मिथुन',Cancer:'कर्क',Leo:'सिंह',Virgo:'कन्या',Libra:'तुला',Scorpio:'वृश्चिक',Sagittarius:'धनु',Capricorn:'मकर',Aquarius:'कुंभ',Pisces:'मीन'},yogaNames:{Shukla:'शुक्ल',Brahma:'ब्रह्म',Priti:'प्रीति',Ayushman:'आयुष्मान',Saubhagya:'सौभाग्य',Shobhana:'शोभन',Atiganda:'अतिगंड',Sukarma:'सुकर्मा',Dhriti:'धृति',Shula:'शूल',Ganda:'गंड',Vriddhi:'वृद्धि',Dhruva:'ध्रुव',Vyaghata:'व्याघात',Harshana:'हर्षण',Vajra:'वज्र',Siddhi:'सिद्धि',Vyatipata:'व्यतिपात',Variyana:'वरीयान',Parigha:'परिघ',Shiva:'शिव',Siddha:'सिद्ध',Sadhya:'साध्य',Shubha:'शुभ',Indra:'इंद्र',Vaidhriti:'वैधृति'},karanaNames:{Bava:'बव',Balava:'बालव',Kaulava:'कौलव',Taitila:'तैतिल',Garaja:'गर',Gara:'गर',Vanija:'वणिज',Vishti:'विष्टि',Shakuni:'शकुनि',Chatushpada:'चतुष्पद',Naga:'नाग',Kimstughna:'किंस्तुघ्न'} },
-      en: { button:'Gujarati Panchang',place:'Maa Meldi Dham · Jasalpur',loading:'Fetching today’s panchang…',error:'Panchang could not be loaded. Check your connection and try again.',retry:'Try again',date:'Date and weekday',year:'Samvatsara',monthLine:'Month · paksha · tithi',more:'Other information',badge:'Panchang details',weekday:'en-IN',paksha:{Shukla:'Shukla',Krishna:'Krishna'},tithis:['Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami','Shashthi','Saptami','Ashtami','Navami','Dashami','Ekadashi','Dwadashi','Trayodashi','Chaturdashi','Purnima','Amavasya'],months:{Chaitra:'Chaitra',Vaishakha:'Vaishakha',Jyeshtha:'Jyeshtha',Ashadha:'Ashadha',Shravana:'Shravana',Bhadrapada:'Bhadrapada',Ashwina:'Ashwina',Ashvina:'Ashwina',Ashwin:'Ashwina',Kartika:'Kartika',Margashirsha:'Margashirsha',Agrahayana:'Margashirsha',Pausha:'Pausha',Magha:'Magha',Phalguna:'Phalguna'},sun:['Sunrise','Sunset','Moonrise','Moonset'],muhurta:'Favorable time',inauspicious:'Avoid',ends:'until',fields:{tithi:'Tithi',nakshatra:'Nakshatra',yoga:'Yoga',karana:'Karana',moon:'Moon sign',sun:'Sun sign',abhijit:'Abhijit Muhurta',rahu:'Rahu Kaal',gulika:'Gulika Kaal',yamaganda:'Yamaganda'},nakshatras:['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishtha','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'],signs:{Aries:'Aries',Taurus:'Taurus',Gemini:'Gemini',Cancer:'Cancer',Leo:'Leo',Virgo:'Virgo',Libra:'Libra',Scorpio:'Scorpio',Sagittarius:'Sagittarius',Capricorn:'Capricorn',Aquarius:'Aquarius',Pisces:'Pisces'},yogaNames:{Shukla:'Shukla',Brahma:'Brahma',Priti:'Priti',Ayushman:'Ayushman',Saubhagya:'Saubhagya',Shobhana:'Shobhana',Atiganda:'Atiganda',Sukarma:'Sukarma',Dhriti:'Dhriti',Shula:'Shula',Ganda:'Ganda',Vriddhi:'Vriddhi',Dhruva:'Dhruva',Vyaghata:'Vyaghata',Harshana:'Harshana',Vajra:'Vajra',Siddhi:'Siddhi',Vyatipata:'Vyatipata',Variyana:'Variyana',Parigha:'Parigha',Shiva:'Shiva',Siddha:'Siddha',Sadhya:'Sadhya',Shubha:'Shubha',Indra:'Indra',Vaidhriti:'Vaidhriti'},karanaNames:{Bava:'Bava',Balava:'Balava',Kaulava:'Kaulava',Taitila:'Taitila',Garaja:'Garaja',Gara:'Gara',Vanija:'Vanija',Vishti:'Vishti',Shakuni:'Shakuni',Chatushpada:'Chatushpada',Naga:'Naga',Kimstughna:'Kimstughna'} }
+      gu: { button:'ગુજરાતી પંચાંગ', place:'માઁ મેલડી ધામ · જાસલપુર', loading:'આજનું પંચાંગ મેળવી રહ્યા છીએ…', error:'પંચાંગ હમણાં મેળવી શકાયું નથી. ઇન્ટરનેટ જોડાણ તપાસીને ફરી પ્રયાસ કરો.', retry:'ફરી પ્રયાસ કરો', date:'તારીખ અને વાર', year:'સંવત્સર', monthLine:'માસ-પક્ષ-તિથિ', more:'અન્ય માહિતી', badge:'સૂક્ષ્મ પંચાંગ વિગતો', weekday:'gu-IN', paksha:{Shukla:'સુદ',Krishna:'વદ'}, tithis:['પડવો','બીજ','ત્રીજ','ચોથ','પાંચમ','છઠ્ઠ','સાતમ','આઠમ','નોમ','દસમ','અગિયારસ','બારસ','તેરસ','ચૌદસ','પૂનમ','અમાસ'], months:{Chaitra:'ચૈત્ર',Vaishakha:'વૈશાખ',Jyeshtha:'જેઠ',Ashadha:'અષાઢ',Shravana:'શ્રાવણ',Bhadrapada:'ભાદરવો',Ashwina:'આસો',Ashvina:'આસો',Ashwin:'આસો',Kartika:'કારતક',Margashirsha:'માગશર',Agrahayana:'માગશર',Pausha:'પોષ',Magha:'મહા',Phalguna:'ફાગણ'}, sun:['સૂર્યોદય','સૂર્યાસ્ત','ચંદ્રોદય','ચંદ્રાસ્ત'], muhurta:'શુભ સમય', inauspicious:'અશુભ સમય', ends:'સુધી', tithiWas:'સુધી હતી', fields:{tithi:'તિથિ',nakshatra:'નક્ષત્ર',yoga:'યોગ',karana:'કરણ',moon:'ચંદ્રરાશિ',sun:'સૂર્યરાશિ',abhijit:'અભિજિત મુહૂર્ત',rahu:'રાહુકાળ',gulika:'ગુલિક કાળ',yamaganda:'યમગંડ'}, nakshatras:['અશ્વિની','ભરણી','કૃતિકા','રોહિણી','મૃગશીર્ષ','આર્દ્રા','પુનર્વસુ','પુષ્ય','આશ્લેષા','મઘા','પૂર્વા ફાલ્ગુની','ઉત્તરા ફાલ્ગુની','હસ્ત','ચિત્રા','સ્વાતિ','વિશાખા','અનુરાધા','જ્યેષ્ઠા','મૂળ','પૂર્વાષાઢા','ઉત્તરાષાઢા','શ્રવણ','ધનિષ્ઠા','શતભિષા','પૂર્વા ભાદ્રપદ','ઉત્તરા ભાદ્રપદ','રેવતી'], signs:{Aries:'મેષ',Taurus:'વૃષભ',Gemini:'મિથુન',Cancer:'કર્ક',Leo:'સિંહ',Virgo:'કન્યા',Libra:'તુલા',Scorpio:'વૃશ્ચિક',Sagittarius:'ધનુ',Capricorn:'મકર',Aquarius:'કુંભ',Pisces:'મીન'}, yogaNames:{Shukla:'શુક્લ',Brahma:'બ્રહ્મ',Priti:'પ્રીતિ',Ayushman:'આયુષ્માન',Saubhagya:'સૌભાગ્ય',Shobhana:'શોભન',Atiganda:'અતિગંડ',Sukarma:'સુકર્મા',Dhriti:'ધૃતિ',Shula:'શૂલ',Ganda:'ગંડ',Vriddhi:'વૃદ્ધિ',Dhruva:'ધ્રુવ',Vyaghata:'વ્યાઘાત',Harshana:'હર્ષણ',Vajra:'વજ્ર',Siddhi:'સિદ્ધિ',Vyatipata:'વ્યતિપાત',Variyana:'વરીયાન',Parigha:'પરિઘ',Shiva:'શિવ',Siddha:'સિદ્ધ',Sadhya:'સાધ્ય',Shubha:'શુભ',Indra:'ઇન્દ્ર',Vaidhriti:'વૈધૃતિ'}, karanaNames:{Bava:'બવ',Balava:'બાલવ',Kaulava:'કૌલવ',Taitila:'તૈતિલ',Garaja:'ગર',Gara:'ગર',Vanija:'વણિજ',Vishti:'વિષ્ટિ',Shakuni:'શકુનિ',Chatushpada:'ચતુષ્પદ',Naga:'નાગ',Kimstughna:'કિંસ્તુઘ્ન'} },
+      hi: { button:'गुजराती पंचांग',place:'माँ मेलडी धाम · जसालपुर',loading:'आज का पंचांग प्राप्त हो रहा है…',error:'पंचांग अभी प्राप्त नहीं हो सका। इंटरनेट जाँचकर फिर कोशिश करें।',retry:'फिर कोशिश करें',date:'तारीख और वार',year:'संवत्सर',monthLine:'मास-पक्ष-तिथि',more:'अन्य जानकारी',badge:'सूक्ष्म पंचांग विवरण',weekday:'hi-IN',paksha:{Shukla:'शुक्ल',Krishna:'कृष्ण'},tithis:['प्रतिपदा','द्वितीया','तृतीया','चतुर्थी','पंचमी','षष्ठी','सप्तमी','अष्टमी','नवमी','दशमी','एकादशी','द्वादशी','त्रयोदशी','चतुर्दशी','पूर्णिमा','अमावस्या'],months:{Chaitra:'चैत्र',Vaishakha:'वैशाख',Jyeshtha:'ज्येष्ठ',Ashadha:'आषाढ़',Shravana:'श्रावण',Bhadrapada:'भाद्रपद',Ashwina:'आश्विन',Ashvina:'आश्विन',Ashwin:'आश्विन',Kartika:'कार्तिक',Margashirsha:'मार्गशीर्ष',Agrahayana:'मार्गशीर्ष',Pausha:'पौष',Magha:'माघ',Phalguna:'फाल्गुन'},sun:['सूर्योदय','सूर्यास्त','चंद्रोदय','चंद्रास्त'],muhurta:'शुभ समय',inauspicious:'अशुभ समय',ends:'तक',tithiWas:'तक थी',fields:{tithi:'तिथि',nakshatra:'नक्षत्र',yoga:'योग',karana:'करण',moon:'चंद्र राशि',sun:'सूर्य राशि',abhijit:'अभिजित मुहूर्त',rahu:'राहु काल',gulika:'गुलिक काल',yamaganda:'यमगंड'},nakshatras:['अश्विनी','भरणी','कृत्तिका','रोहिणी','मृगशिरा','आर्द्रा','पुनर्वसु','पुष्य','आश्लेषा','मघा','पूर्वा फाल्गुनी','उत्तरा फाल्गुनी','हस्त','चित्रा','स्वाति','विशाखा','अनुराधा','ज्येष्ठा','मूल','पूर्वाषाढ़ा','उत्तराषाढ़ा','श्रवण','धनिष्ठा','शतभिषा','पूर्वा भाद्रपद','उत्तरा भाद्रपद','रेवती'],signs:{Aries:'मेष',Taurus:'वृषभ',Gemini:'मिथुन',Cancer:'कर्क',Leo:'सिंह',Virgo:'कन्या',Libra:'तुला',Scorpio:'वृश्चिक',Sagittarius:'धनु',Capricorn:'मकर',Aquarius:'कुंभ',Pisces:'मीन'},yogaNames:{Shukla:'शुक्ल',Brahma:'ब्रह्म',Priti:'प्रीति',Ayushman:'आयुष्मान',Saubhagya:'सौभाग्य',Shobhana:'शोभन',Atiganda:'अतिगंड',Sukarma:'सुकर्मा',Dhriti:'धृति',Shula:'शूल',Ganda:'गंड',Vriddhi:'वृद्धि',Dhruva:'ध्रुव',Vyaghata:'व्याघात',Harshana:'हर्षण',Vajra:'वज्र',Siddhi:'सिद्धि',Vyatipata:'व्यतिपात',Variyana:'वरीयान',Parigha:'परिघ',Shiva:'शिव',Siddha:'सिद्ध',Sadhya:'साध्य',Shubha:'शुभ',Indra:'इंद्र',Vaidhriti:'वैधृति'},karanaNames:{Bava:'बव',Balava:'बालव',Kaulava:'कौलव',Taitila:'तैतिल',Garaja:'गर',Gara:'गर',Vanija:'वणिज',Vishti:'विष्टि',Shakuni:'शकुनि',Chatushpada:'चतुष्पद',Naga:'नाग',Kimstughna:'किंस्तुघ्न'} },
+      en: { button:'Gujarati Panchang',place:'Maa Meldi Dham · Jasalpur',loading:'Fetching today’s panchang…',error:'Panchang could not be loaded. Check your connection and try again.',retry:'Try again',date:'Date and weekday',year:'Samvatsara',monthLine:'Month · paksha · tithi',more:'Other information',badge:'Panchang details',weekday:'en-IN',paksha:{Shukla:'Shukla',Krishna:'Krishna'},tithis:['Pratipada','Dwitiya','Tritiya','Chaturthi','Panchami','Shashthi','Saptami','Ashtami','Navami','Dashami','Ekadashi','Dwadashi','Trayodashi','Chaturdashi','Purnima','Amavasya'],months:{Chaitra:'Chaitra',Vaishakha:'Vaishakha',Jyeshtha:'Jyeshtha',Ashadha:'Ashadha',Shravana:'Shravana',Bhadrapada:'Bhadrapada',Ashwina:'Ashwina',Ashvina:'Ashwina',Ashwin:'Ashwina',Kartika:'Kartika',Margashirsha:'Margashirsha',Agrahayana:'Margashirsha',Pausha:'Pausha',Magha:'Magha',Phalguna:'Phalguna'},sun:['Sunrise','Sunset','Moonrise','Moonset'],muhurta:'Favorable time',inauspicious:'Avoid',ends:'until',tithiWas:'had ended at',fields:{tithi:'Tithi',nakshatra:'Nakshatra',yoga:'Yoga',karana:'Karana',moon:'Moon sign',sun:'Sun sign',abhijit:'Abhijit Muhurta',rahu:'Rahu Kaal',gulika:'Gulika Kaal',yamaganda:'Yamaganda'},nakshatras:['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishtha','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'],signs:{Aries:'Aries',Taurus:'Taurus',Gemini:'Gemini',Cancer:'Cancer',Leo:'Leo',Virgo:'Virgo',Libra:'Libra',Scorpio:'Scorpio',Sagittarius:'Sagittarius',Capricorn:'Capricorn',Aquarius:'Aquarius',Pisces:'Pisces'},yogaNames:{Shukla:'Shukla',Brahma:'Brahma',Priti:'Priti',Ayushman:'Ayushman',Saubhagya:'Saubhagya',Shobhana:'Shobhana',Atiganda:'Atiganda',Sukarma:'Sukarma',Dhriti:'Dhriti',Shula:'Shula',Ganda:'Ganda',Vriddhi:'Vriddhi',Dhruva:'Dhruva',Vyaghata:'Vyaghata',Harshana:'Harshana',Vajra:'Vajra',Siddhi:'Siddhi',Vyatipata:'Vyatipata',Variyana:'Variyana',Parigha:'Parigha',Shiva:'Shiva',Siddha:'Siddha',Sadhya:'Sadhya',Shubha:'Shubha',Indra:'Indra',Vaidhriti:'Vaidhriti'},karanaNames:{Bava:'Bava',Balava:'Balava',Kaulava:'Kaulava',Taitila:'Taitila',Garaja:'Garaja',Gara:'Gara',Vanija:'Vanija',Vishti:'Vishti',Shakuni:'Shakuni',Chatushpada:'Chatushpada',Naga:'Naga',Kimstughna:'Kimstughna'} }
     };
     let latestData = null;
     let failedDate = null;
@@ -759,6 +726,27 @@
       let index=names.findIndex(name => new RegExp(`\\b${name}\\b`,'i').test(String(value||'')));
       if(index<0 && /\b(Sashti|Shashti)\b/i.test(String(value||''))) index=5;
       return index;
+    };
+    const tithiForCurrentTime = panchang => {
+      const sourceIndex=tithiIndexFor(panchang.tithi?.name);
+      const sourcePaksha=panchang.paksha||'';
+      const sourceMonth=panchang.month?.amanta||panchang.month?.purnimanta||'';
+      const end=String(panchang.tithi?.end||'');
+      const endClock=end.match(/(\d{1,2}):(\d{2})/);
+      const dayOffset=Number(/\(\+(\d+)d\)/.exec(end)?.[1]||0);
+      const nowParts=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).filter(part=>part.type!=='literal').map(part=>[part.type,Number(part.value)]));
+      const nowMinute=nowParts.hour*60+nowParts.minute;
+      const endMinute=endClock?Number(endClock[1])*60+Number(endClock[2]):Infinity;
+      const hasEnded=sourceIndex>=0&&dayOffset===0&&nowMinute>=endMinute;
+      let index=sourceIndex;
+      let paksha=sourcePaksha;
+      let month=sourceMonth;
+      if(hasEnded){
+        if(sourceIndex===14){index=0;paksha='Krishna';}
+        else if(sourceIndex===15){index=0;paksha='Shukla';const months=['Chaitra','Vaishakha','Jyeshtha','Ashadha','Shravana','Bhadrapada','Ashwina','Kartika','Margashirsha','Agrahayana','Pausha','Magha','Phalguna'];const monthIndex=months.findIndex(name=>name.toLowerCase()===sourceMonth.toLowerCase());if(monthIndex>=0)month=months[(monthIndex+1)%months.length];}
+        else index=Math.min(sourceIndex+1,15);
+      }
+      return {index,paksha,month,hasEnded,sourceIndex,sourcePaksha,end};
     };
     const formatClock = value => {
       if(!value || typeof value !== 'string') return '—';
@@ -801,15 +789,16 @@
       card.querySelector('[data-calendar-place]').textContent=language.place;
       card.querySelector('[data-calendar-date-label]').textContent=language.date;
       card.querySelector('[data-calendar-date]').textContent=`${numericDate} (${weekday})`;
-      const monthRaw=panchang.month?.purnimanta||panchang.month?.amanta||'';
+      const calendarState=tithiForCurrentTime(panchang);
+      const monthRaw=calendarState.month;
       const month=translateName(monthRaw,language.months);
-      const paksha=panchang.paksha||'';
+      const paksha=calendarState.paksha;
       const vikrama=Number(panchang.samvat?.vikrama);
-      const gujaratiSamvat=Number.isFinite(vikrama)?vikrama-(/ashwina|ashvina|ashwin/i.test(monthRaw)&&/krishna/i.test(paksha)?1:0):'—';
+      const vikramYear=Number.isFinite(vikrama)?vikrama-(/ashwina|ashvina|ashwin/i.test(monthRaw)&&/krishna/i.test(paksha)?1:0):'—';
       const vikramLabel=document.documentElement.lang==='gu'?'વિક્રમ સંવત':document.documentElement.lang==='hi'?'विक्रम संवत':'Vikram Samvat';
-      card.querySelector('[data-calendar-samvat]').textContent=`${language.year}: ${vikramLabel} ${gujaratiSamvat}`;
+      card.querySelector('[data-calendar-samvat]').textContent=`${language.year}: ${vikramLabel} ${vikramYear}`;
       const tithiRaw=panchang.tithi?.name||'';
-      const tithiIndex=tithiIndexFor(tithiRaw);
+      const tithiIndex=calendarState.index;
       const tithi=tithiIndex>=0?language.tithis[tithiIndex]:tithiRaw;
       const tithiPhrase=`${month} ${translateName(paksha,language.paksha)} - ${tithi}`.trim();
       card.querySelector('[data-calendar-month]').textContent=`${language.monthLine}: ${tithiPhrase}`;
@@ -836,7 +825,8 @@
       card.querySelector('[data-calendar-more-title]').textContent=language.more;
       card.querySelector('[data-calendar-method]').textContent=language.badge;
       const list=card.querySelector('[data-calendar-details]');list.replaceChildren();
-      const tithiMeta=panchang.tithi?.end?`${formatEnd(panchang.tithi.end,date)} ${language.ends}`:'';
+      const previousTithi=calendarState.sourceIndex>=0?language.tithis[calendarState.sourceIndex]:tithiRaw;
+      const tithiMeta=panchang.tithi?.end?`${calendarState.hasEnded?`${previousTithi} `:''}${formatEnd(panchang.tithi.end,date)} ${calendarState.hasEnded?language.tithiWas:language.ends}`:'';
       const nakMeta=panchang.nakshatra?.end?`${formatEnd(panchang.nakshatra.end,date)} ${language.ends}`:'';
       const yogaMeta=panchang.yoga?.end?`${formatEnd(panchang.yoga.end,date)} ${language.ends}`:'';
       const karanaMeta=panchang.karana?.end?`${formatEnd(panchang.karana.end,date)} ${language.ends}`:'';
