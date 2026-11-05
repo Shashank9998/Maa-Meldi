@@ -64,7 +64,7 @@
       const attempt = await hashPassword(String(values.get('password')), account.salt);
       if (attempt !== account.passwordHash) { tell(form, 'authInvalidLogin'); return; }
       setSession(account.id);
-      window.location.href = 'profile.html';
+      window.location.href = 'index.html';
     } catch {
       tell(form, 'authStorageError');
     } finally { setBusy(form, false); }

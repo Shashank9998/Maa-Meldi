@@ -2,6 +2,21 @@
   'use strict';
 
   const translations = window.templeTranslations || {};
+  const donationPaymentText = {
+    gu: { title: 'QR કોડથી દાન કરો', intro: 'કોઈપણ UPI એપથી QR સ્કેન કરો અથવા UPI ID વાપરો.', scan: 'QR સ્કેન કરો', qrNote: 'Formમાં રકમ અને દાન આપનારનું નામ ઉમેરતાં QR અપડેટ થશે.', payee: 'લાભાર્થી', trust: 'MELDI MATA SEVA TRUST', bank: 'Union Bank of India', bankLabel: 'બેંક', upiLabel: 'UPI ID', copy: 'UPI ID કૉપી કરો', copied: 'UPI ID કૉપી થઈ ગઈ', open: 'UPI એપ ખોલો', note: 'ચુકવણી પહેલાં UPI એપમાં લાભાર્થીનું નામ ચકાસો. રકમ તમે દાખલ કરો.', accountNote: 'Account number / IFSC દ્વારા ટ્રાન્સફર માટે મંદિરનો સંપર્ક કરો.', paymentLocked: 'ચુકવણીની server-side ચકાસણી જોડાય પછી જ PDF રસીદ બનશે.' },
+    hi: { title: 'QR कोड से दान करें', intro: 'किसी भी UPI ऐप से QR स्कैन करें या UPI ID इस्तेमाल करें।', scan: 'QR स्कैन करें', qrNote: 'Form में राशि और दाता का नाम भरते ही QR अपडेट होगा।', payee: 'लाभार्थी', trust: 'MELDI MATA SEVA TRUST', bank: 'Union Bank of India', bankLabel: 'बैंक', upiLabel: 'UPI ID', copy: 'UPI ID कॉपी करें', copied: 'UPI ID कॉपी हो गई', open: 'UPI ऐप खोलें', note: 'भुगतान से पहले UPI ऐप में लाभार्थी का नाम जाँचें। राशि आप भरें।', accountNote: 'Account number / IFSC से ट्रांसफर के लिए मंदिर से संपर्क करें।', paymentLocked: 'Server-side payment verification जुड़ने के बाद ही PDF रसीद बनेगी।' },
+    en: { title: 'Donate by UPI', intro: 'Scan this QR with any UPI app or use the UPI ID.', scan: 'Scan QR to pay', qrNote: 'The QR updates when you enter the donation amount and donor name in the form.', payee: 'Beneficiary', trust: 'MELDI MATA SEVA TRUST', bank: 'Union Bank of India', bankLabel: 'Bank', upiLabel: 'UPI ID', copy: 'Copy UPI ID', copied: 'UPI ID copied', open: 'Open UPI app', note: 'Confirm the beneficiary name in your UPI app before paying. Enter your donation amount there.', accountNote: 'Contact the mandir for account number / IFSC bank transfers.', paymentLocked: 'The PDF receipt will be available only after server-side payment verification is connected.' }
+  };
+  const instagramText = {
+    gu: { heading: 'Instagram પર માઁ મેલડી ધામના તાજેતરના અપડેટ્સ', intro: 'માઁ મેલડી ધામ, જાસલપુરનાં નવા રીલ્સ, પોસ્ટ્સ અને મંદિરના અપડેટ્સ જુઓ.', viewAll: 'Instagram પર જુઓ' },
+    hi: { heading: 'Instagram पर मंदिर के नवीनतम अपडेट', intro: 'માઁ મેલડી ધામ, જાસલપુરનાં નવા રીલ્સ, પોસ્ટ્સ અને મંદિરના અપડેટ્સ જુઓ.', viewAll: 'Instagram पर देखें' },
+    en: { heading: 'Latest updates from our Mandir', intro: 'માઁ મેલડી ધામ, જાસલપુરનાં નવા રીલ્સ, પોસ્ટ્સ અને મંદિરના અપડેટ્સ જુઓ.', viewAll: 'Visit Instagram' }
+  };
+  const whatsappText = {
+    gu: { heading: 'માઁ મેલડી Daily Darshan WhatsApp Group', intro: 'રોજના દર્શન અને મંદિરના અપડેટ્સ મેળવવા ગ્રુપમાં જોડાઓ.', label: 'DAILY DARSHAN', community: 'માઁ મેલડી Daily Darshan WhatsApp Group', details: 'રોજના દર્શન · મંદિરના સમાચાર · ભક્તિ અપડેટ્સ', button: 'WhatsApp ગ્રુપમાં જોડાઓ' },
+    hi: { heading: 'माँ मेलडी Daily Darshan WhatsApp Group', intro: 'रोज़ाना दर्शन और मंदिर अपडेट पाने के लिए ग्रुप से जुड़ें।', label: 'DAILY DARSHAN', community: 'माँ मेलडी Daily Darshan WhatsApp Group', details: 'रोज़ाना दर्शन · मंदिर समाचार · भक्ति अपडेट', button: 'WhatsApp ग्रुप से जुड़ें' },
+    en: { heading: 'Maa Meldi Daily Darshan WhatsApp Group', intro: 'Join the group for daily darshan and mandir updates.', label: 'DAILY DARSHAN', community: 'Maa Meldi Daily Darshan WhatsApp Group', details: 'Daily darshan · Mandir news · Devotional updates', button: 'Join WhatsApp Group' }
+  };
   const faqContent = {
     gu: {
       eyebrow: 'ભક્તો માટે ઉપયોગી માહિતી', title: 'વારંવાર પૂછાતા પ્રશ્નો', intro: 'દર્શન, આરતી, સ્થળ અને સેવા વિશેની માહિતી અહીં મેળવો.',
@@ -159,7 +174,7 @@
     const mapUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1831.386168301262!2d72.33835438863909!3d23.36026124473463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c3d82f88368bf%3A0xeed5b4f0a36288f5!2sShree%20Meldi%20Mata%20Temple%20Jasalpur!5e0!3m2!1sen!2sin!4v1793607682803!5m2!1sen!2sin';
     const directionsUrl = 'https://www.google.com/maps/dir/?api=1&amp;destination=23.36026124473463%2C72.33835438863909';
     const contactFormNote = document.body.dataset.contactEmail ? '' : `<p class="contact-form-note">${words.contactFormNote || ''}</p>`;
-    return `<section class="contact-modern"><div class="contact-modern-shell"><header class="contact-modern-heading"><span class="section-eyebrow">${words.contactEyebrow || ''}</span><h1>${words[pageInfo.contact[0]] || ''}</h1><p>${words[pageInfo.contact[1]] || ''}</p></header><div class="contact-modern-grid"><article class="contact-location-card"><div class="contact-location-title"><span class="contact-location-icon"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i></span><div><small>${words.templeLocation || ''}</small><h2>${words.locationDetails || ''}</h2></div></div><div class="contact-hours-list"><div class="contact-hours-row"><i class="bi bi-clock" aria-hidden="true"></i><span><small>${words.openingHours || ''}</small><strong>${words.openingTimeDetails || ''}</strong></span></div><div class="contact-hours-row"><i class="bi bi-sun" aria-hidden="true"></i><span><small>${words.darshanSchedule || ''}</small><strong>${words.contactDarshanHours || ''}</strong><em>${words.contactVisitNote || ''}</em></span></div></div><a class="button-outline contact-directions" href="${directionsUrl}" target="_blank" rel="noopener noreferrer"><i class="bi bi-sign-turn-right" aria-hidden="true"></i>${words.mapDirections || 'Get directions in Google Maps'}</a><div class="contact-map contact-modern-map"><iframe src="${mapUrl}" title="Shree Meldi Mata Temple Jasalpur map" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></article><section class="contact-form-card"><div class="contact-form-heading"><span><i class="bi bi-chat-heart" aria-hidden="true"></i></span><div><h2>${words.contactFormTitle || ''}</h2><p>${words.contactFormIntro || ''}</p></div></div><form id="contactForm" data-contact-form><label><span>${words.contactName || ''}</span><input name="name" type="text" autocomplete="name" required></label><label><span>${words.contactEmail || ''}</span><input name="email" type="email" autocomplete="email" required></label><label><span>${words.contactSubject || ''}</span><select name="subject" required><option value="">${words.contactSubject || ''}</option><option>${words.contactSubjectGeneral || ''}</option><option>${words.contactSubjectDarshan || ''}</option><option>${words.contactSubjectEvent || ''}</option><option>${words.contactSubjectSeva || ''}</option></select></label><label><span>${words.contactMessage || ''}</span><textarea name="message" rows="5" required></textarea></label><button class="button-maroon contact-submit" type="submit"><i class="bi bi-send" aria-hidden="true"></i>${words.contactSend || ''}</button>${contactFormNote}<p class="contact-form-status" data-contact-form-status role="status" aria-live="polite"></p></form></section></div></div></section>`;
+    return `<section class="contact-modern"><div class="contact-modern-shell"><header class="contact-modern-heading"><span class="section-eyebrow">${words.contactEyebrow || ''}</span><h1>${words[pageInfo.contact[0]] || ''}</h1><p>${words[pageInfo.contact[1]] || ''}</p></header><div class="contact-modern-grid"><article class="contact-location-card"><div class="contact-location-title"><span class="contact-location-icon"><i class="bi bi-geo-alt-fill" aria-hidden="true"></i></span><div><small>${words.templeLocation || ''}</small><h2>${words.locationDetails || ''}</h2></div></div><div class="contact-details-list"><div class="contact-detail-row"><i class="bi bi-building" aria-hidden="true"></i><span><small>${words.trustLabel || ''}</small><strong>${words.trustName || ''}</strong></span></div><div class="contact-detail-row"><i class="bi bi-geo-alt" aria-hidden="true"></i><span><small>${words.addressLabel || ''}</small><strong>${words.trustAddress || ''}</strong></span></div></div><div class="contact-hours-list"><div class="contact-hours-row"><i class="bi bi-clock" aria-hidden="true"></i><span><small>${words.openingHours || ''}</small><strong>${words.openingTimeDetails || ''}</strong></span></div><div class="contact-hours-row"><i class="bi bi-sun" aria-hidden="true"></i><span><small>${words.darshanSchedule || ''}</small><strong>${words.contactDarshanHours || ''}</strong><em>${words.contactVisitNote || ''}</em></span></div></div><a class="button-outline contact-directions" href="${directionsUrl}" target="_blank" rel="noopener noreferrer"><i class="bi bi-sign-turn-right" aria-hidden="true"></i>${words.mapDirections || 'Get directions in Google Maps'}</a><div class="contact-map contact-modern-map"><iframe src="${mapUrl}" title="Shree Meldi Mata Temple Jasalpur map" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></article><section class="contact-form-card"><div class="contact-form-heading"><span><i class="bi bi-chat-heart" aria-hidden="true"></i></span><div><h2>${words.contactFormTitle || ''}</h2><p>${words.contactFormIntro || ''}</p></div></div><form id="contactForm" data-contact-form><label><span>${words.contactName || ''}</span><input name="name" type="text" autocomplete="name" required></label><label><span>${words.contactEmail || ''}</span><input name="email" type="email" autocomplete="email" required></label><label><span>${words.contactSubject || ''}</span><select name="subject" required><option value="">${words.contactSubject || ''}</option><option>${words.contactSubjectGeneral || ''}</option><option>${words.contactSubjectDarshan || ''}</option><option>${words.contactSubjectEvent || ''}</option><option>${words.contactSubjectSeva || ''}</option></select></label><label><span>${words.contactMessage || ''}</span><textarea name="message" rows="5" required></textarea></label><button class="button-maroon contact-submit" type="submit"><i class="bi bi-send" aria-hidden="true"></i>${words.contactSend || ''}</button>${contactFormNote}<p class="contact-form-status" data-contact-form-status role="status" aria-live="polite"></p></form><aside class="contact-quick-panel"><div class="contact-quick-heading"><span><i class="bi bi-headset" aria-hidden="true"></i></span><div><h3>${words.contactQuickTitle || ''}</h3><p>${words.contactQuickIntro || ''}</p></div></div><div class="contact-quick-links"><a href="tel:+919725298783"><i class="bi bi-telephone-fill" aria-hidden="true"></i><span><small>${words.contactPhoneLabel || ''}</small><strong>97252 98783</strong></span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a><a href="tel:+919925882883"><i class="bi bi-flower1" aria-hidden="true"></i><span><small>${words.prasadPhoneLabel || ''}</small><strong>99258 82883</strong></span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></div></aside></section></div></div></section>`;
   }
 
   function eventsPageMarkup(words) {
@@ -209,40 +224,134 @@
   }
 
   function donationPageMarkup(words) {
+    const payment = donationPaymentText[document.documentElement.lang] || donationPaymentText.gu;
+    const donationUpiId = 'QR919904317511-2755@unionbankofindia';
+    const donationUpiUri = `upi://pay?pa=${encodeURIComponent(donationUpiId)}&pn=${encodeURIComponent(payment.trust)}&cu=INR`;
     const copy = {
-      gu: { badge: 'શ્રદ્ધાથી કરો સહયોગ', intro: 'માતાજીના ધામની સેવા અને ધાર્મિક પ્રવૃત્તિઓમાં આપનો સહયોગ અમૂલ્ય છે.', why: 'તમારું દાન ક્યાં ઉપયોગી બને છે?', whyText: 'મંદિરની દૈનિક સેવા, ઉત્સવો, ભક્તોની સુવિધા અને પરિસરની જાળવણીમાં સહયોગ.', formTitle: 'દાનની વિગતો', formIntro: 'દાનની વિગતો ભરો અને acknowledgment PDF મેળવો.', name: 'દાન આપનારનું પૂરું નામ', email: 'ઈમેલ સરનામું', phone: 'મોબાઇલ નંબર (વૈકલ્પિક)', amount: 'દાનની રકમ (₹)', purpose: 'દાનનો હેતુ', general: 'સામાન્ય મંદિર સેવા', utsav: 'ઉત્સવ અને પાટોત્સવ', annadan: 'અન્નદાન / પ્રસાદ સેવા', maintenance: 'મંદિર જાળવણી', payment: 'ચુકવણીની રીત', upi: 'UPI', bank: 'બેંક ટ્રાન્સફર', cash: 'રોકડ / મંદિર ખાતે', reference: 'ટ્રાન્ઝેક્શન રેફરન્સ (વૈકલ્પિક)', consent: 'હું ખાતરી આપું છું કે ઉપરની વિગતો સાચી છે.', submit: 'રસીદ બનાવો અને PDF મેળવો', notice: 'આ વેબસાઇટ હાલમાં ચુકવણી સ્વીકારતી નથી. આ acknowledgment આપેલી વિગતો પરથી બને છે; ચુકવણીની ચકાસણી થતી નથી.', secure: 'તમારી વિગતો અહીંથી કોઈ server પર સંગ્રહાતી નથી.', receiptTitle: 'દાનની acknowledgment', receiptId: 'Acknowledgment ID', receiptDate: 'તારીખ', receiptName: 'દાન આપનાર', receiptAmount: 'રકમ', receiptPurpose: 'હેતુ', receiptMode: 'ચુકવણીની રીત', receiptRef: 'રેફરન્સ', download: 'PDF ડાઉનલોડ કરો', sending: 'રસીદ ઈમેલ થઈ રહી છે…', sent: 'રસીદ તમારા ઈમેલ પર મોકલી છે.', emailSetup: 'PDF તૈયાર છે. ઈમેલ મોકલવા EmailJS સેટઅપ બાકી છે.', emailFail: 'ઈમેલ મોકલાઈ નથી. PDF ડાઉનલોડ કરીને સાચવી લો.', required: 'કૃપા કરીને જરૂરી વિગતો ભરો.' },
-      hi: { badge: 'श्रद्धा से सहयोग करें', intro: 'माताजी के धाम की सेवा और धार्मिक गतिविधियों में आपका सहयोग अनमोल है।', why: 'आपका दान कहाँ उपयोगी होगा?', whyText: 'मंदिर की दैनिक सेवा, उत्सव, भक्तों की सुविधाओं और परिसर की देखभाल में सहयोग।', formTitle: 'दान का विवरण', formIntro: 'विवरण भरें और acknowledgment PDF प्राप्त करें।', name: 'दाता का पूरा नाम', email: 'ईमेल पता', phone: 'मोबाइल नंबर (वैकल्पिक)', amount: 'दान राशि (₹)', purpose: 'दान का उद्देश्य', general: 'सामान्य मंदिर सेवा', utsav: 'उत्सव और पाटोत्सव', annadan: 'अन्नदान / प्रसाद सेवा', maintenance: 'मंदिर रखरखाव', payment: 'भुगतान का तरीका', upi: 'UPI', bank: 'बैंक ट्रांसफर', cash: 'नकद / मंदिर में', reference: 'लेनदेन संदर्भ (वैकल्पिक)', consent: 'मैं पुष्टि करता/करती हूँ कि ऊपर दी गई जानकारी सही है।', submit: 'रसीद बनाएँ और PDF पाएँ', notice: 'यह वेबसाइट अभी भुगतान स्वीकार नहीं करती। यह acknowledgment आपके दिए विवरण पर बनेगा; भुगतान सत्यापित नहीं होगा।', secure: 'आपका विवरण यहाँ किसी server पर सहेजा नहीं जाता।', receiptTitle: 'दान acknowledgment', receiptId: 'Acknowledgment ID', receiptDate: 'तारीख', receiptName: 'दाता', receiptAmount: 'राशि', receiptPurpose: 'उद्देश्य', receiptMode: 'भुगतान तरीका', receiptRef: 'संदर्भ', download: 'PDF डाउनलोड करें', sending: 'रसीद ईमेल हो रही है…', sent: 'रसीद आपके ईमेल पर भेज दी गई।', emailSetup: 'PDF तैयार है। ईमेल भेजने के लिए EmailJS सेटअप बाकी है।', emailFail: 'ईमेल नहीं भेजा गया। PDF डाउनलोड करके सहेज लें।', required: 'कृपया आवश्यक जानकारी भरें।' },
-      en: { badge: 'Give with devotion', intro: 'Your support helps care for the mandir and its religious activities.', why: 'Your contribution supports', whyText: 'Daily mandir seva, festivals, visitor facilities, and upkeep of the temple grounds.', formTitle: 'Donation details', formIntro: 'Enter the details to prepare an acknowledgement PDF.', name: 'Donor full name', email: 'Email address', phone: 'Mobile number (optional)', amount: 'Donation amount (₹)', purpose: 'Donation purpose', general: 'General mandir seva', utsav: 'Festival and Patotsav', annadan: 'Annadan / prasad seva', maintenance: 'Mandir upkeep', payment: 'Payment method', upi: 'UPI', bank: 'Bank transfer', cash: 'Cash / at the mandir', reference: 'Transaction reference (optional)', consent: 'I confirm that the details above are accurate.', submit: 'Create acknowledgement & PDF', notice: 'This website does not currently accept payments. The acknowledgement uses the details you provide and does not verify payment.', secure: 'Your details are not saved to a server by this page.', receiptTitle: 'Donation acknowledgement', receiptId: 'Acknowledgement ID', receiptDate: 'Date', receiptName: 'Donor', receiptAmount: 'Amount', receiptPurpose: 'Purpose', receiptMode: 'Payment method', receiptRef: 'Reference', download: 'Download PDF', sending: 'Emailing the receipt…', sent: 'The receipt was sent to your email.', emailSetup: 'PDF is ready. EmailJS setup is required to email it.', emailFail: 'Email was not sent. Download and keep the PDF.', required: 'Please complete the required details.' }
+      gu: { badge: 'શ્રદ્ધાથી કરો સહયોગ', intro: 'માતાજીના ધામની સેવા અને ધાર્મિક પ્રવૃત્તિઓમાં આપનો સહયોગ અમૂલ્ય છે.', why: 'તમારું દાન ક્યાં ઉપયોગી બને છે?', whyText: 'મંદિરની દૈનિક સેવા, ઉત્સવો, ભક્તોની સુવિધા અને પરિસરની જાળવણીમાં સહયોગ.', formTitle: 'દાનની વિગતો', formIntro: 'દાનની વિગતો ભરો. ચુકવણી ચકાસ્યા પછી જ PDF રસીદ મળશે.', name: 'દાન આપનારનું પૂરું નામ', email: 'ઈમેલ સરનામું', phone: 'મોબાઇલ નંબર (વૈકલ્પિક)', amount: 'દાનની રકમ (₹)', purpose: 'દાનનો હેતુ', general: 'સામાન્ય મંદિર સેવા', utsav: 'ઉત્સવ અને પાટોત્સવ', annadan: 'અન્નદાન / પ્રસાદ સેવા', maintenance: 'મંદિર જાળવણી', payment: 'ચુકવણીની રીત', upi: 'UPI', bank: 'બેંક ટ્રાન્સફર', cash: 'રોકડ / મંદિર ખાતે', reference: 'ટ્રાન્ઝેક્શન રેફરન્સ (વૈકલ્પિક)', consent: 'હું ખાતરી આપું છું કે ઉપરની વિગતો સાચી છે.', submit: 'ચુકવણી ચકાસણી બાકી', notice: 'UPI અથવા બેંક ચુકવણી તમારી એપમાં કરો. આ વેબસાઇટ વ્યવહારની ચકાસણી કરતી નથી; UTR / reference સાચવી રાખો.', secure: 'તમારી વિગતો અહીંથી કોઈ server પર સંગ્રહાતી નથી.', receiptTitle: 'દાનની acknowledgment', receiptId: 'Acknowledgment ID', receiptDate: 'તારીખ', receiptName: 'દાન આપનાર', receiptAmount: 'રકમ', receiptPurpose: 'હેતુ', receiptMode: 'ચુકવણીની રીત', receiptRef: 'રેફરન્સ', download: 'PDF ડાઉનલોડ કરો', sending: 'રસીદ ઈમેલ થઈ રહી છે…', sent: 'રસીદ તમારા ઈમેલ પર મોકલી છે.', emailSetup: 'PDF તૈયાર છે. ઈમેલ મોકલવા EmailJS સેટઅપ બાકી છે.', emailFail: 'ઈમેલ મોકલાઈ નથી. PDF ડાઉનલોડ કરીને સાચવી લો.', required: 'કૃપા કરીને જરૂરી વિગતો ભરો.' },
+      hi: { badge: 'श्रद्धा से सहयोग करें', intro: 'माताजी के धाम की सेवा और धार्मिक गतिविधियों में आपका सहयोग अनमोल है।', why: 'आपका दान कहाँ उपयोगी होगा?', whyText: 'मंदिर की दैनिक सेवा, उत्सव, भक्तों की सुविधाओं और परिसर की देखभाल में सहयोग।', formTitle: 'दान का विवरण', formIntro: 'विवरण भरें। भुगतान सत्यापित होने के बाद ही PDF रसीद मिलेगी।', name: 'दाता का पूरा नाम', email: 'ईमेल पता', phone: 'मोबाइल नंबर (वैकल्पिक)', amount: 'दान राशि (₹)', purpose: 'दान का उद्देश्य', general: 'सामान्य मंदिर सेवा', utsav: 'उत्सव और पाटोत्सव', annadan: 'अन्नदान / प्रसाद सेवा', maintenance: 'मंदिर रखरखाव', payment: 'भुगतान का तरीका', upi: 'UPI', bank: 'बैंक ट्रांसफर', cash: 'नकद / मंदिर में', reference: 'लेनदेन संदर्भ (वैकल्पिक)', consent: 'मैं पुष्टि करता/करती हूँ कि ऊपर दी गई जानकारी सही है।', submit: 'भुगतान सत्यापन आवश्यक', notice: 'UPI या बैंक भुगतान अपने ऐप में करें। यह वेबसाइट लेनदेन सत्यापित नहीं करती; UTR / reference सुरक्षित रखें।', secure: 'आपका विवरण यहाँ किसी server पर सहेजा नहीं जाता।', receiptTitle: 'दान acknowledgment', receiptId: 'Acknowledgment ID', receiptDate: 'तारीख', receiptName: 'दाता', receiptAmount: 'राशि', receiptPurpose: 'उद्देश्य', receiptMode: 'भुगतान तरीका', receiptRef: 'संदर्भ', download: 'PDF डाउनलोड करें', sending: 'रसीद ईमेल हो रही है…', sent: 'रसीद आपके ईमेल पर भेज दी गई।', emailSetup: 'PDF तैयार है। ईमेल भेजने के लिए EmailJS सेटअप बाकी है।', emailFail: 'ईमेल नहीं भेजा गया। PDF डाउनलोड करके सहेज लें।', required: 'कृपया आवश्यक जानकारी भरें।' },
+      en: { badge: 'Give with devotion', intro: 'Your support helps care for the mandir and its religious activities.', why: 'Your contribution supports', whyText: 'Daily mandir seva, festivals, visitor facilities, and upkeep of the temple grounds.', formTitle: 'Donation details', formIntro: 'Enter your details. A PDF receipt will be available after payment is verified.', name: 'Donor full name', email: 'Email address', phone: 'Mobile number (optional)', amount: 'Donation amount (₹)', purpose: 'Donation purpose', general: 'General mandir seva', utsav: 'Festival and Patotsav', annadan: 'Annadan / prasad seva', maintenance: 'Mandir upkeep', payment: 'Payment method', upi: 'UPI', bank: 'Bank transfer', cash: 'Cash / at the mandir', reference: 'Transaction reference (optional)', consent: 'I confirm that the details above are accurate.', submit: 'Payment verification required', notice: 'Complete payment in your UPI or bank app. This website does not verify transactions; keep your UTR / reference.', secure: 'Your details are not saved to a server by this page.', receiptTitle: 'Donation acknowledgement', receiptId: 'Acknowledgement ID', receiptDate: 'Date', receiptName: 'Donor', receiptAmount: 'Amount', receiptPurpose: 'Purpose', receiptMode: 'Payment method', receiptRef: 'Reference', download: 'Download PDF', sending: 'Emailing the receipt…', sent: 'The receipt was sent to your email.', emailSetup: 'PDF is ready. EmailJS setup is required to email it.', emailFail: 'Email was not sent. Download and keep the PDF.', required: 'Please complete the required details.' }
     }[document.documentElement.lang] || {};
     const titleKey = pageInfo.donation[0];
     const introKey = pageInfo.donation[1];
-    return `<section class="donation-page"><div class="donation-shell"><header class="donation-heading"><span class="section-eyebrow">${copy.badge}</span><h1>${words[titleKey] || ''}</h1><p>${copy.intro}</p></header><div class="donation-layout"><aside class="donation-story-card"><span class="donation-story-icon"><i class="bi bi-heart-fill" aria-hidden="true"></i></span><h2>${copy.why}</h2><p>${copy.whyText}</p><div class="donation-blessing"><i class="bi bi-flower1" aria-hidden="true"></i><span>જય માતાજી</span></div><div class="donation-trust-note"><i class="bi bi-info-circle" aria-hidden="true"></i><span>${copy.notice}</span></div></aside><section class="donation-form-card"><header><span class="donation-form-icon"><i class="bi bi-receipt-cutoff" aria-hidden="true"></i></span><div><h2>${copy.formTitle}</h2><p>${copy.formIntro}</p></div></header><form data-donation-form><div class="donation-fields"><label><span>${copy.name} *</span><input name="donorName" autocomplete="name" maxlength="100" required></label><label><span>${copy.email} *</span><input name="donorEmail" type="email" autocomplete="email" required></label><label><span>${copy.phone}</span><input name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" minlength="10" pattern="[6-9][0-9]{9}" title="Enter a valid 10-digit mobile number"></label><label><span>${copy.amount} *</span><div class="donation-amount-wrap"><span>₹</span><input name="amount" type="number" min="1" max="10000000" step="1" required placeholder="501"></div></label><label><span>${copy.purpose} *</span><select name="purpose" required><option value="">${copy.purpose}</option><option>${copy.general}</option><option>${copy.utsav}</option><option>${copy.annadan}</option><option>${copy.maintenance}</option></select></label><label><span>${copy.payment} *</span><select name="paymentMethod" required><option value="">${copy.payment}</option><option>${copy.upi}</option><option>${copy.bank}</option><option>${copy.cash}</option></select></label><label class="donation-reference-field"><span>${copy.reference}</span><input name="reference" maxlength="80"></label></div><label class="donation-consent"><input name="confirmDetails" type="checkbox" required><span>${copy.consent}</span></label><p class="donation-form-notice"><i class="bi bi-shield-check" aria-hidden="true"></i>${copy.secure} ${copy.notice}</p><button class="button-maroon donation-submit" type="submit"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i>${copy.submit}</button><p class="donation-status" data-donation-status role="status" aria-live="polite"></p></form></section></div><section class="donation-receipt" data-donation-receipt hidden><div class="donation-receipt-paper" data-receipt-paper><div class="receipt-brand"><img src="assets/image/logo.png" alt="Maa Meldi Dham logo"><div><strong>Maa Meldi Dham (Jasalpur)</strong><span>Shree Ugtai Meldi Mataji Mandir</span></div></div><span class="receipt-kicker">${copy.receiptTitle}</span><h2>${words[titleKey] || ''}</h2><div class="receipt-id-row"><span>${copy.receiptId}</span><strong data-receipt-id></strong></div><dl><div><dt>${copy.receiptDate}</dt><dd data-receipt-date></dd></div><div><dt>${copy.receiptName}</dt><dd data-receipt-name></dd></div><div data-receipt-phone-row hidden><dt>${copy.phone}</dt><dd data-receipt-phone></dd></div><div><dt>${copy.receiptAmount}</dt><dd data-receipt-amount></dd></div><div><dt>${copy.receiptPurpose}</dt><dd data-receipt-purpose></dd></div><div><dt>${copy.receiptMode}</dt><dd data-receipt-mode></dd></div><div data-receipt-reference-row hidden><dt>${copy.receiptRef}</dt><dd data-receipt-reference></dd></div></dl><p class="receipt-disclaimer">${copy.notice}</p><div class="receipt-blessing">જય માતાજી</div></div><button class="button-outline receipt-download" type="button" data-receipt-download><i class="bi bi-download" aria-hidden="true"></i>${copy.download}</button></section></div></section>`;
+    return `<section class="donation-page"><div class="donation-shell"><header class="donation-heading"><span class="section-eyebrow">${copy.badge}</span><h1>${words[titleKey] || ''}</h1><p>${copy.intro}</p></header><section class="donation-payment-card" aria-labelledby="donationPaymentHeading"><div class="donation-payment-copy"><span class="donation-payment-kicker"><i class="bi bi-shield-heart-fill" aria-hidden="true"></i> ${payment.bank}</span><h2 id="donationPaymentHeading">${payment.title}</h2><p>${payment.intro}</p><div class="donation-bank-details"><div><span>${payment.payee}</span><strong>${payment.trust}</strong></div><div><span>${payment.bankLabel}</span><strong>${payment.bank}</strong></div><div class="donation-upi-detail"><span>${payment.upiLabel}</span><strong data-donation-upi-text>${donationUpiId}</strong></div></div><div class="donation-payment-actions"><button type="button" class="button-maroon" data-copy-donation-upi><i class="bi bi-copy" aria-hidden="true"></i><span>${payment.copy}</span></button></div><p class="donation-payment-note"><i class="bi bi-info-circle" aria-hidden="true"></i>${payment.note}</p><p class="donation-payment-account-note">${payment.accountNote}</p></div><div class="donation-qr-panel"><div class="donation-qr-frame"><div data-donation-qr role="img" aria-label="UPI donation QR code"></div></div><strong>${payment.scan}</strong><p class="donation-qr-note">${payment.qrNote}</p><span data-qr-upi-label>UPI ID: ${donationUpiId}</span></div></section><div class="donation-layout"><aside class="donation-story-card"><span class="donation-story-icon"><i class="bi bi-heart-fill" aria-hidden="true"></i></span><h2>${copy.why}</h2><p>${copy.whyText}</p><div class="donation-trust-note"><i class="bi bi-info-circle" aria-hidden="true"></i><span>${copy.notice}</span></div></aside><section class="donation-form-card"><header><span class="donation-form-icon"><i class="bi bi-receipt-cutoff" aria-hidden="true"></i></span><div><h2>${copy.formTitle}</h2><p>${copy.formIntro}</p></div></header><form data-donation-form><div class="donation-fields"><label><span>${copy.name} *</span><input name="donorName" autocomplete="name" maxlength="100" required></label><label><span>${copy.email} *</span><input name="donorEmail" type="email" autocomplete="email" required></label><label><span>${copy.phone}</span><input name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" minlength="10" pattern="[6-9][0-9]{9}" title="Enter a valid 10-digit mobile number"></label><label><span>${copy.amount} *</span><div class="donation-amount-wrap"><span>₹</span><input name="amount" type="number" min="1" max="10000000" step="1" required placeholder="501"></div></label><label><span>${copy.purpose} *</span><select name="purpose" required><option value="">${copy.purpose}</option><option>${copy.general}</option><option>${copy.utsav}</option><option>${copy.annadan}</option><option>${copy.maintenance}</option></select></label><label><span>${copy.payment} *</span><select name="paymentMethod" required><option value="">${copy.payment}</option><option>${copy.upi}</option><option>${copy.bank}</option><option>${copy.cash}</option></select></label><label class="donation-reference-field"><span>${copy.reference}</span><input name="reference" maxlength="80"></label></div><label class="donation-consent"><input name="confirmDetails" type="checkbox" required><span>${copy.consent}</span></label><p class="donation-form-notice"><i class="bi bi-shield-check" aria-hidden="true"></i>${copy.secure} ${copy.notice}</p><p class="donation-payment-lock"><i class="bi bi-lock-fill" aria-hidden="true"></i>${payment.paymentLocked}</p><button class="button-maroon donation-submit" type="submit" disabled><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i>${copy.submit}</button><p class="donation-status" data-donation-status role="status" aria-live="polite"></p></form></section></div></div></section>`;
   }
 
-  async function createDonationPdf(paper) {
-    if (!window.html2pdf) throw new Error('PDF library did not load');
-    await Promise.all([
-      document.fonts.load('16px "Noto Sans Gujarati"'),
-      document.fonts.load('16px "Hind Vadodara"'),
-      ...[...paper.querySelectorAll('img')].map(image => image.decode().catch(() => undefined))
-    ]);
-    paper.classList.add('pdf-exporting');
-    try {
-      return await window.html2pdf().set({
-        margin: [9, 10, 9, 10],
-        image: { type: 'jpeg', quality: .98 },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-        html2canvas: { scale: 3, useCORS: true, scrollY: 0, backgroundColor: '#fffdf7', letterRendering: true },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true }
-      }).from(paper).outputPdf('datauristring');
-    } finally { paper.classList.remove('pdf-exporting'); }
+  function setupDonationPayment() {
+    const upiId = 'QR919904317511-2755@unionbankofindia';
+    const payee = 'MELDI MATA SEVA TRUST';
+    const qrPanel = document.querySelector('.donation-qr-panel');
+    const form = document.querySelector('[data-donation-form]');
+    const formCard = form?.closest('.donation-form-card');
+    const layout = formCard?.closest('.donation-layout');
+    const paymentCard = document.querySelector('.donation-payment-card');
+    if (layout && paymentCard && formCard) layout.append(formCard, paymentCard);
+    const qrTarget = document.querySelector('[data-donation-qr]');
+    const amountInput = form?.elements.namedItem('amount');
+    const nameInput = form?.elements.namedItem('donorName');
+    const purposeInput = form?.elements.namedItem('purpose');
+    let qrCode = null;
+    const updateQr = () => {
+      const amount = Number(amountInput?.value);
+      const transactionDetails = [nameInput?.value.trim(), purposeInput?.value].filter(Boolean).join(' - ');
+      const note = (transactionDetails ? `Donation: ${transactionDetails}` : 'Donation to MELDI MATA SEVA TRUST').slice(0, 40);
+      const params = new URLSearchParams({ pa: upiId, pn: payee, cu: 'INR', tn: note });
+      if (Number.isFinite(amount) && amount > 0) params.set('am', amount.toFixed(2));
+      const upiUri = `upi://pay?${params.toString()}`;
+      if (!qrTarget || !window.QRCode) return;
+      if (!qrCode) qrCode = new window.QRCode(qrTarget, { text: upiUri, width: 240, height: 240, colorDark: '#171717', colorLight: '#ffffff', correctLevel: window.QRCode.CorrectLevel.H });
+      else qrCode.makeCode(upiUri);
+    };
+    updateQr();
+    amountInput?.addEventListener('input', updateQr);
+    nameInput?.addEventListener('input', updateQr);
+    purposeInput?.addEventListener('change', updateQr);
+    const copyButton = document.querySelector('[data-copy-donation-upi]');
+    copyButton?.addEventListener('click', async () => {
+      const copyText = donationPaymentText[document.documentElement.lang] || donationPaymentText.gu;
+      const label = copyButton.querySelector('span');
+      try {
+        await navigator.clipboard.writeText(upiId);
+        if (label) label.textContent = copyText.copied;
+      } catch {
+        if (label) label.textContent = upiId;
+      }
+      window.setTimeout(() => { if (label) label.textContent = copyText.copy; }, 1800);
+    });
   }
 
   function liveDarshanMarkup(words) {
-    const videoUrl = 'https://www.youtube.com/embed/RiUkaehpG-k?si=9UcJttA9mnbOs5LW';
-    const watchUrl = 'https://www.youtube.com/watch?v=RiUkaehpG-k';
-    const chatUrl = `https://www.youtube.com/live_chat?v=RiUkaehpG-k&embed_domain=${encodeURIComponent(window.location.hostname)}`;
-    return `<section class="live-darshan-page"><div class="live-page-shell"><header class="live-page-heading"><div><span class="section-eyebrow">${words.liveEyebrow || ''}</span><h1>${words.liveHeading || words.liveTitle || ''}</h1><p>${words.liveDescription || words.liveIntro || ''}</p></div><span class="live-video-badge"><i class="bi bi-camera-video-fill" aria-hidden="true"></i>${words.liveVideoLabel || ''}</span></header><div class="live-page-layout"><article class="live-player-card"><div class="live-player-topline"><span><i class="bi bi-play-circle-fill" aria-hidden="true"></i>${words.liveVideoLabel || ''}</span><span class="live-platform-label"><i class="bi bi-youtube" aria-hidden="true"></i>YouTube</span></div><div class="live-video live-page-video"><iframe src="${videoUrl}" title="Maa Meldi Dham Jasalpur darshan video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="live-player-caption"><span class="live-caption-icon"><i class="bi bi-flower1" aria-hidden="true"></i></span><div><h2>${words.liveHeading || ''}</h2><p>${words.liveVideoHint || ''}</p></div><div class="live-player-actions"><a class="live-youtube-button" href="${watchUrl}" target="_blank" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i><span>${words.liveWatchYoutube || ''}</span></a><button class="live-chat-button" type="button" data-live-chat-toggle aria-expanded="false" aria-controls="liveChatPanel"><i class="bi bi-chat-dots-fill" aria-hidden="true"></i><span>${words.liveChat || ''}</span></button></div></div><section class="live-chat-panel" id="liveChatPanel" data-live-chat-panel data-chat-url="${chatUrl}" hidden><header class="live-chat-heading"><div><span class="live-chat-heading-icon"><i class="bi bi-chat-square-text-fill" aria-hidden="true"></i></span><div><h2>${words.liveChat || ''}</h2><p>${words.liveChatNote || ''}</p></div></div><button class="live-chat-close" type="button" data-live-chat-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button></header><div class="live-chat-frame"><iframe title="Maa Meldi Dham YouTube live chat" loading="lazy" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" data-live-chat-frame></iframe></div></section></article><aside class="live-schedule-card"><div class="live-schedule-icon"><i class="bi bi-bell-fill" aria-hidden="true"></i></div><span class="live-schedule-eyebrow">${words.aartiEyebrow || ''}</span><h2>${words.liveScheduleHeading || ''}</h2><p class="live-schedule-note">${words.liveScheduleNote || ''}</p><div class="live-aarti-times"><div class="live-aarti-time"><span class="live-time-icon"><i class="bi bi-sunrise-fill" aria-hidden="true"></i></span><span><small>${words.morningAarti || ''}</small><strong>${words.morningAartiTime || ''}</strong></span></div><div class="live-aarti-time"><span class="live-time-icon evening"><i class="bi bi-sunset-fill" aria-hidden="true"></i></span><span><small>${words.eveningAarti || ''}</small><strong>${words.eveningAartiTime || ''}</strong></span></div></div><a class="live-aarti-link" href="index.html#aarti"><span>${words.aartiTitle || ''}</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></aside></div></div></section>`;
+    const videoId = window.MELDI_YOUTUBE_CONFIG?.fallbackVideoId || '';
+    const videoUrl = videoId ? `https://www.youtube.com/embed/${encodeURIComponent(videoId)}` : 'about:blank';
+    const handle = window.MELDI_YOUTUBE_CONFIG?.channelHandle;
+    const watchUrl = videoId ? `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}` : (window.MELDI_YOUTUBE_CONFIG?.channelLiveUrl || (handle ? `https://www.youtube.com/${encodeURIComponent(handle).replace('%40', '@')}/live` : `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`));
+    const chatUrl = `https://www.youtube.com/live_chat?v=${encodeURIComponent(videoId)}&embed_domain=${encodeURIComponent(window.location.hostname)}&dark_theme=1`;
+    return `<section class="live-darshan-page"><div class="live-page-shell"><header class="live-page-heading"><div><span class="section-eyebrow">${words.liveEyebrow || ''}</span><h1>${words.liveHeading || words.liveTitle || ''}</h1><p>${words.liveDescription || words.liveIntro || ''}</p></div><span class="live-video-badge"><i class="bi bi-camera-video-fill" aria-hidden="true"></i>${words.liveVideoLabel || ''}</span></header><div class="live-page-layout"><article class="live-player-card"><div class="live-player-topline"><span><i class="bi bi-play-circle-fill" aria-hidden="true"></i>${words.liveVideoLabel || ''}</span><span class="live-platform-label"><i class="bi bi-youtube" aria-hidden="true"></i>YouTube</span></div><div class="live-video live-page-video"><iframe data-live-video ${videoId ? '' : 'hidden'} src="${videoUrl}" title="Maa Meldi Dham Jasalpur darshan video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="live-player-caption"><span class="live-caption-icon"><i class="bi bi-flower1" aria-hidden="true"></i></span><div><h2>${words.liveHeading || ''}</h2><p data-live-status role="status" aria-live="polite">${words.liveVideoHint || ''}</p></div><div class="live-player-actions"><a class="live-youtube-button" data-live-watch href="${watchUrl}" target="_blank" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i><span>${words.liveWatchYoutube || ''}</span></a><button class="live-chat-button" type="button" data-live-chat-toggle ${videoId ? '' : 'disabled'} aria-expanded="false" aria-controls="liveChatPanel"><i class="bi bi-chat-dots-fill" aria-hidden="true"></i><span>${words.liveChat || ''}</span></button></div></div><section class="live-chat-panel" id="liveChatPanel" data-live-chat-panel data-chat-url="${chatUrl}" hidden><header class="live-chat-heading"><div><span class="live-chat-heading-icon"><i class="bi bi-chat-square-text-fill" aria-hidden="true"></i></span><div><h2>${words.liveChat || ''}</h2><p>${words.liveChatNote || ''}</p></div></div><button class="live-chat-close" type="button" data-live-chat-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button></header><div class="live-chat-frame"><iframe title="Maa Meldi Dham YouTube live chat" loading="lazy" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" data-live-chat-frame></iframe></div></section></article><aside class="live-schedule-card"><div class="live-schedule-icon"><i class="bi bi-bell-fill" aria-hidden="true"></i></div><span class="live-schedule-eyebrow">${words.aartiEyebrow || ''}</span><h2>${words.liveScheduleHeading || ''}</h2><p class="live-schedule-note">${words.liveScheduleNote || ''}</p><div class="live-aarti-times"><div class="live-aarti-time"><span class="live-time-icon"><i class="bi bi-sunrise-fill" aria-hidden="true"></i></span><span><small>${words.morningAarti || ''}</small><strong>${words.morningAartiTime || ''}</strong></span></div><div class="live-aarti-time"><span class="live-time-icon evening"><i class="bi bi-sunset-fill" aria-hidden="true"></i></span><span><small>${words.eveningAarti || ''}</small><strong>${words.eveningAartiTime || ''}</strong></span></div></div><a class="live-aarti-link" href="index.html#aarti"><span>${words.aartiTitle || ''}</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></aside></div><section class="instagram-section section-tint" id="instagram"><header class="section-heading instagram-heading"><span class="section-eyebrow"><i class="bi bi-instagram" aria-hidden="true"></i> Instagram</span><h2 data-instagram-heading>Follow Us on Instagram</h2><p data-instagram-intro>See the latest Reels, posts, and updates from Maa Meldi Dham Jasalpur.</p></header><article class="instagram-redirect-card"><div class="instagram-redirect-icon" aria-hidden="true"><i class="bi bi-instagram"></i></div><div class="instagram-redirect-copy"><span class="instagram-redirect-label">OFFICIAL INSTAGRAM</span><strong>@official_meldidham_jasalpur</strong><p>Reels <span aria-hidden="true">·</span> Posts <span aria-hidden="true">·</span> Temple updates</p></div><a class="instagram-redirect-button" data-instagram-cta href="https://www.instagram.com/official_meldidham_jasalpur/" target="_blank" rel="noopener noreferrer"><span>Visit Instagram</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></article></section><section class="whatsapp-section section-tint"><header class="section-heading whatsapp-heading"><span class="section-eyebrow"><i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp</span><h2 data-whatsapp-heading>માઁ મેલડી Daily Darshan WhatsApp Group</h2><p data-whatsapp-intro>મંદિરના સમાચાર, કાર્યક્રમો અને ભક્તિ અપડેટ્સ માટે ગ્રુપમાં જોડાઓ.</p></header><article class="whatsapp-redirect-card"><div class="whatsapp-redirect-icon" aria-hidden="true"><i class="bi bi-whatsapp"></i></div><div class="instagram-redirect-copy"><span class="instagram-redirect-label" data-whatsapp-label>ભક્તિ પરિવાર</span><strong data-whatsapp-community>માઁ મેલડી Daily Darshan WhatsApp Group</strong><p data-whatsapp-details>રોજના દર્શન · મંદિરના સમાચાર · ભક્તિ અપડેટ્સ</p></div><a class="instagram-redirect-button whatsapp-redirect-button" data-whatsapp-cta href="https://chat.whatsapp.com/JtAljIvONDmBh8nvSKRVR7" target="_blank" rel="noopener noreferrer"><span>WhatsApp ગ્રુપમાં જોડાઓ</span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></article></section></div></section>`;
+  }
+
+  let youtubeChannelId = '';
+  let youtubeChannelLookup = null;
+  async function refreshYouTubeLive() {
+    const config = window.MELDI_YOUTUBE_CONFIG || {};
+    if (!config.apiKey || pageKey !== 'live-darshan') return;
+    try {
+      if (!youtubeChannelId) {
+        if (!youtubeChannelLookup) {
+          const channelParams = new URLSearchParams({ part: 'id', forHandle: config.channelHandle || '', key: config.apiKey });
+          youtubeChannelLookup = fetch(`https://www.googleapis.com/youtube/v3/channels?${channelParams}`)
+            .then(response => { if (!response.ok) throw new Error(`YouTube channel lookup returned ${response.status}`); return response.json(); })
+            .then(data => data.items?.[0]?.id || '');
+        }
+        youtubeChannelId = await youtubeChannelLookup;
+        if (!youtubeChannelId) { youtubeChannelLookup = null; return; }
+      }
+      const params = new URLSearchParams({ part: 'snippet', channelId: youtubeChannelId, eventType: 'live', type: 'video', maxResults: '1', key: config.apiKey });
+      const response = await fetch(`https://www.googleapis.com/youtube/v3/search?${params}`);
+      if (!response.ok) throw new Error(`YouTube API returned ${response.status}`);
+      const data = await response.json();
+      const videoId = data.items?.[0]?.id?.videoId;
+      if (!videoId) return;
+      const player = document.querySelector('[data-live-video]');
+      const watch = document.querySelector('[data-live-watch]');
+      const chat = document.querySelector('[data-live-chat-panel]');
+      if (!player || !watch || !chat || player.dataset.videoId === videoId) return;
+      player.dataset.videoId = videoId;
+      player.src = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?autoplay=1`;
+      player.hidden = false;
+      document.querySelector('[data-live-chat-toggle]')?.removeAttribute('disabled');
+      watch.href = `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`;
+      chat.dataset.chatUrl = `https://www.youtube.com/live_chat?v=${encodeURIComponent(videoId)}&embed_domain=${encodeURIComponent(window.location.hostname)}&dark_theme=1`;
+      const chatFrame = chat.querySelector('[data-live-chat-frame]');
+      if (chatFrame?.src) chatFrame.src = chat.dataset.chatUrl;
+      const status = document.querySelector('[data-live-status]');
+      if (status) status.textContent = ({ gu: 'હાલનું લાઈવ પ્રસારણ', hi: 'अभी लाइव प्रसारण', en: 'Live now' })[document.documentElement.lang] || 'Live now';
+    } catch (error) {
+      console.warn('Could not check the mandir YouTube live stream.', error);
+    }
+  }
+
+  function translateInstagramSection(language) {
+    const section = document.querySelector('.instagram-section');
+    if (!section) return;
+    const copy = instagramText[language] || instagramText.gu;
+    const heading = section.querySelector('[data-instagram-heading]');
+    const intro = section.querySelector('[data-instagram-intro]');
+    const button = section.querySelector('[data-instagram-cta] span');
+    if (heading) heading.textContent = copy.heading;
+    if (intro) intro.textContent = copy.intro;
+    if (button) button.textContent = copy.viewAll;
+  }
+
+  function translateWhatsAppSection(language) {
+    const section = document.querySelector('.whatsapp-section');
+    if (!section) return;
+    const copy = whatsappText[language] || whatsappText.gu;
+    section.querySelector('[data-whatsapp-heading]').textContent = copy.heading;
+    section.querySelector('[data-whatsapp-intro]').textContent = copy.intro;
+    section.querySelector('[data-whatsapp-label]').textContent = copy.label;
+    section.querySelector('[data-whatsapp-community]').textContent = copy.community;
+    section.querySelector('[data-whatsapp-details]').textContent = copy.details;
+    section.querySelector('[data-whatsapp-cta] span').textContent = copy.button;
   }
 
   const safeReadLanguage = () => {
@@ -340,6 +449,7 @@
       document.title = `${words.galleryTitle || 'Gallery'} | Shree Ugtai Meldi Mataji Mandir`;
     } else if (pageKey === 'donation' && pageContent) {
       pageContent.innerHTML = donationPageMarkup(words);
+      setupDonationPayment();
       document.title = `${words.donationPageTitle || 'Donation'} | Shree Ugtai Meldi Mataji Mandir`;
     } else if (pageKey !== 'home' && pageKey !== 'about' && pageKey !== 'contact' && pageContent && pageInfo[pageKey]) {
       const [titleKey, introKey, noteKey] = pageInfo[pageKey];
@@ -350,10 +460,44 @@
     } else if (pageKey === 'about') {
       document.title = `${words.aboutHeroTitle || 'About the Mandir'} | Shree Ugtai Meldi Mataji Mandir`;
     }
+    const breadcrumbLabels = {
+      'live-darshan': words.navLive || 'Live Darshan & Aarti',
+      events: words.navEvents || 'Events',
+      gallery: words.navGallery || 'Gallery',
+      donation: words.navDonation || 'Donation',
+      contact: words.navContact || 'Contact'
+    };
+    if (pageContent && breadcrumbLabels[pageKey]) {
+      const breadcrumbHost = pageContent.querySelector(':scope > section > .contact-modern-shell, :scope > section > .live-page-shell, :scope > section > .events-page-shell, :scope > section > .gallery-page-shell, :scope > section > .donation-shell');
+      if (breadcrumbHost) {
+        const breadcrumb = document.createElement('nav');
+        breadcrumb.className = 'about-breadcrumb page-section-breadcrumb';
+        breadcrumb.setAttribute('aria-label', code === 'gu' ? 'પેજ નેવિગેશન' : code === 'hi' ? 'पेज नेविगेशन' : 'Page navigation');
+        const homeLink = document.createElement('a');
+        homeLink.href = 'index.html';
+        homeLink.textContent = words.navHome || 'Home';
+        const divider = document.createElement('i');
+        divider.className = 'bi bi-chevron-right';
+        divider.setAttribute('aria-hidden', 'true');
+        const currentPage = document.createElement('span');
+        currentPage.textContent = breadcrumbLabels[pageKey];
+        currentPage.setAttribute('aria-current', 'page');
+        breadcrumb.append(homeLink, divider, currentPage);
+        breadcrumbHost.prepend(breadcrumb);
+      }
+    }
+    if (pageKey === 'live-darshan') {
+      translateInstagramSection(code);
+      translateWhatsAppSection(code);
+    }
     if (announce) document.dispatchEvent(new CustomEvent('temple:languagechange', { detail: { language: code } }));
   }
 
   applyLanguage(safeReadLanguage() || 'gu');
+  refreshYouTubeLive();
+  // search.list has a strict per-day request limit. Keep browser polling modest;
+  // a server-side cache is preferable for a site with regular traffic.
+  if (pageKey === 'live-darshan') window.setInterval(refreshYouTubeLive, 15 * 60_000);
   setupGujaratiCalendar();
   languageOptions.forEach(option => option.addEventListener('click', () => applyLanguage(option.dataset.language, true)));
   document.addEventListener('input', event => {
@@ -400,14 +544,6 @@
       dialog.showModal();
     } else if (close || event.target === dialog) dialog.close();
   });
-  document.addEventListener('click', async event => {
-    if (!(event.target instanceof Element) || !event.target.closest('[data-receipt-download]')) return;
-    const paper = document.querySelector('[data-receipt-paper]');
-    if (!paper || !window.html2pdf) return;
-    const id = document.querySelector('[data-receipt-id]')?.textContent || 'Meldi-Dham-Receipt';
-    const pdfUri = await createDonationPdf(paper);
-    const link = document.createElement('a'); link.href = pdfUri; link.download = `${id}.pdf`; document.body.append(link); link.click(); link.remove();
-  });
   const sessionKey = 'meldi-session-v1';
   const readSession = () => {
     try { return JSON.parse(localStorage.getItem(sessionKey) || 'null'); } catch { return null; }
@@ -424,64 +560,8 @@
     const form = event.target;
     if (form instanceof HTMLFormElement && form.matches('[data-donation-form]')) {
       event.preventDefault();
-      if (!form.reportValidity()) return;
-      const language = document.documentElement.lang;
-      const statusText = {
-        gu: { setup: 'PDF તૈયાર છે. EmailJS સેટઅપ કર્યા પછી જ રસીદ ઈમેલ કરી શકાશે.', sending: 'રસીદ PDF ઈમેલ થઈ રહી છે…', sent: 'રસીદ PDF તમારા ઈમેલ પર મોકલી છે.', failed: 'ઈમેલ મોકલી શકાયો નથી. PDF ડાઉનલોડ કરીને સાચવો.' },
-        hi: { setup: 'PDF तैयार है। EmailJS सेटअप के बाद ही रसीद ईमेल की जा सकेगी।', sending: 'रसीद PDF ईमेल हो रही है…', sent: 'रसीद PDF आपके ईमेल पर भेज दी गई।', failed: 'ईमेल नहीं भेजा जा सका। PDF डाउनलोड करके सहेजें।' },
-        en: { setup: 'PDF is ready. Configure EmailJS to email the receipt.', sending: 'Emailing the receipt PDF…', sent: 'The receipt PDF was sent to your email.', failed: 'Email could not be sent. Download and save the PDF.' }
-      }[language] || {};
-      const data = new FormData(form);
-      const now = new Date();
-      const receiptId = `MD-${now.toISOString().slice(0,10).replaceAll('-','')}-${Math.random().toString(36).slice(2,7).toUpperCase()}`;
-      const setReceipt = (selector, value) => { const el = document.querySelector(selector); if (el) el.textContent = value; };
-      const receipt = document.querySelector('[data-donation-receipt]');
-      const paper = document.querySelector('[data-receipt-paper]');
-      const status = form.querySelector('[data-donation-status]');
-      const reference = String(data.get('reference') || '').trim();
-      setReceipt('[data-receipt-id]', receiptId);
-      setReceipt('[data-receipt-date]', new Intl.DateTimeFormat(language, { dateStyle: 'long' }).format(now));
-      setReceipt('[data-receipt-name]', String(data.get('donorName')).trim());
-      const phone = String(data.get('phone') || '').trim();
-      setReceipt('[data-receipt-phone]', phone);
-      const phoneRow = document.querySelector('[data-receipt-phone-row]');
-      if (phoneRow) phoneRow.hidden = !phone;
-      setReceipt('[data-receipt-amount]', new Intl.NumberFormat(language, { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(Number(data.get('amount'))));
-      setReceipt('[data-receipt-purpose]', String(data.get('purpose')));
-      setReceipt('[data-receipt-mode]', String(data.get('paymentMethod')));
-      setReceipt('[data-receipt-reference]', reference);
-      const referenceRow = document.querySelector('[data-receipt-reference-row]');
-      if (referenceRow) referenceRow.hidden = !reference;
-      receipt.hidden = false;
-      receipt.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
-      (async () => {
-        try {
-          const pdfUri = await createDonationPdf(paper);
-          const link = document.createElement('a');
-          link.href = pdfUri;
-          link.download = `${receiptId}.pdf`;
-          document.body.append(link);
-          link.click();
-          link.remove();
-          const config = window.templeDonationConfig || {};
-          if (!config.publicKey || !config.serviceId || !config.templateId || !window.emailjs) {
-            status.textContent = statusText.setup;
-            return;
-          }
-          status.textContent = statusText.sending;
-          window.emailjs.init({ publicKey: config.publicKey, limitRate: { id: 'meldi-donation-receipt', throttle: 3000 } });
-          await window.emailjs.send(config.serviceId, config.templateId, {
-            to_email: String(data.get('donorEmail')).trim(), donor_name: String(data.get('donorName')).trim(), donor_phone: phone, receipt_id: receiptId,
-            donation_amount: new Intl.NumberFormat(language, { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(Number(data.get('amount'))),
-            donation_purpose: String(data.get('purpose')), payment_method: String(data.get('paymentMethod')), transaction_reference: reference || '—',
-            receipt_date: new Intl.DateTimeFormat(language, { dateStyle: 'long' }).format(now), receipt_pdf: pdfUri
-          });
-          status.textContent = statusText.sent;
-        } catch (error) {
-          console.error('Donation receipt generation/email failed:', error);
-          status.textContent = statusText.failed;
-        }
-      })();
+      const copy = donationPaymentText[document.documentElement.lang] || donationPaymentText.gu;
+      form.querySelector('[data-donation-status]').textContent = copy.paymentLocked;
       return;
     }
     if (!(form instanceof HTMLFormElement) || !form.matches('[data-contact-form]')) return;

@@ -111,6 +111,23 @@ body { margin: 0; color: var(--ink); background: var(--white); font-family: "Pop
 .button-outline:hover { transform: translateY(-2px); background: #fff2d2; color: var(--maroon); }
 .button-outline:disabled { cursor: default; opacity: .66; transform: none; }
 .live-frame { min-height: 330px; padding: 10px; border: 1px solid var(--gold); border-radius: 22px; background: linear-gradient(135deg,var(--maroon),#3d1821); box-shadow: 0 18px 36px #3f151f20; }
+.instagram-section { padding: clamp(46px, 7vw, 78px) 0; }
+.whatsapp-section { padding: 0 0 clamp(46px, 7vw, 78px); }
+.instagram-heading .section-eyebrow { display: inline-flex; align-items: center; gap: 8px; }
+.instagram-heading .section-eyebrow .bi-instagram { color: #b52d78; font-size: 18px; }
+.whatsapp-heading .section-eyebrow .bi-whatsapp { color: #12845d; font-size: 18px; }
+.instagram-redirect-card, .whatsapp-redirect-card { display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: 20px; max-width: 920px; margin: 28px auto 0; padding: 24px 28px; border: 1px solid rgba(212,175,55,.48); border-radius: 20px; background: linear-gradient(120deg,#fffdf8,#fff5df); box-shadow: 0 16px 38px rgba(57,31,13,.09); }
+.instagram-redirect-icon, .whatsapp-redirect-icon { display: grid; width: 62px; height: 62px; place-items: center; border-radius: 18px; background: linear-gradient(145deg,#a40045,#db3d79 58%,#f4a339); color: #fff; font-size: 29px; box-shadow: 0 8px 18px rgba(164,0,69,.2); }
+.whatsapp-redirect-icon { background: linear-gradient(145deg,#08764c,#1caa69); box-shadow: 0 8px 18px rgba(8,118,76,.2); }
+.instagram-redirect-copy { display: grid; gap: 5px; min-width: 0; }
+.instagram-redirect-label { color: #a06e12; font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+.instagram-redirect-copy strong { overflow-wrap: anywhere; color: var(--maroon); font-size: clamp(17px,2vw,22px); }
+.instagram-redirect-copy p { margin: 0; color: #786154; font-size: 14px; }
+.instagram-redirect-button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 11px; padding: 0 20px; border: 1px solid var(--gold); border-radius: 999px; background: var(--maroon); color: #fff8e8; font-weight: 700; text-decoration: none; transition: transform .2s ease,background .2s ease; }
+.instagram-redirect-button:hover { transform: translateY(-2px); background: #650020; color: #fff; }
+.whatsapp-redirect-button { border-color: #168c64; background: #12845d; }
+.whatsapp-redirect-button:hover { background: #086744; }
+@media (max-width: 575.98px) { .instagram-redirect-card, .whatsapp-redirect-card { grid-template-columns: auto minmax(0,1fr); gap: 15px; padding: 20px; } .instagram-redirect-icon, .whatsapp-redirect-icon { width: 52px; height: 52px; border-radius: 15px; font-size: 25px; } .instagram-redirect-button { grid-column: 1 / -1; width: 100%; } }
 .live-placeholder { display: flex; min-height: 308px; flex-direction: column; align-items: center; justify-content: center; gap: 12px; border: 1px solid #d4af376e; border-radius: 14px; background: radial-gradient(circle at 50% 35%,#8a362a,#451b25 60%,#28151c); color: #fff5dd; text-align: center; }
 .placeholder-mandala { display: grid; width: 94px; height: 94px; margin-bottom: 4px; place-items: center; border: 1px solid #d4af37a8; border-radius: 50%; color: #f6d479; font-size: 34px; box-shadow: 0 0 0 12px #d4af3714,0 0 0 25px #d4af370d; }
 .live-placeholder strong { max-width: 80%; font-size: 16px; }
@@ -230,14 +247,38 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .donation-heading { max-width: 760px; margin: 0 auto 34px; text-align: center; }
 .donation-heading h1 { margin: 8px 0 12px; color: var(--maroon); font-size: clamp(34px,5vw,54px); font-weight: 700; }
 .donation-heading p { margin: 0; color: #786655; font-size: 17px; line-height: 1.65; }
-.donation-layout { display: grid; grid-template-columns: minmax(250px,.78fr) minmax(0,1.45fr); align-items: start; gap: 22px; }
+.donation-layout { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(300px,.8fr); align-items: start; gap: 20px; }
+.donation-payment-card { grid-column: 2; grid-row: 1; display: grid; grid-template-columns: minmax(0,1fr); align-items: start; gap: 18px; margin: 0; padding: 22px; border: 1px solid rgba(212,175,55,.45); border-radius: 24px; background: linear-gradient(125deg,#fff 0%,#fff8e8 100%); box-shadow: 0 18px 45px rgba(63,32,17,.09); }
+.donation-payment-kicker { display: inline-flex; align-items: center; gap: 8px; color: #a36b00; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.donation-payment-kicker i { font-size: 16px; }
+.donation-payment-copy > h2 { margin: 6px 0 7px; color: var(--maroon); font-size: clamp(22px,2.5vw,28px); font-weight: 700; }
+.donation-payment-copy > p { margin: 8px 0; color: #786655; font-size: 13px; line-height: 1.55; }
+.donation-bank-details { display: grid; gap: 0; margin: 14px 0; border: 1px solid #eee1c8; border-radius: 14px; background: rgba(255,255,255,.9); }
+.donation-bank-details > div { display: grid; gap: 3px; padding: 10px 13px; border-bottom: 1px solid #f0e8d9; }
+.donation-bank-details > div:last-child { border-bottom: 0; }
+.donation-bank-details span { color: #8b7967; font-size: 12px; }
+.donation-bank-details strong { color: #382b22; font-size: 14px; overflow-wrap: anywhere; }
+.donation-upi-detail strong { color: var(--maroon); font-family: ui-monospace,Consolas,monospace; }
+.donation-payment-actions { display: grid; grid-template-columns: minmax(0,1fr); gap: 10px; }
+.donation-payment-actions button { display: inline-flex; width: 100%; min-height: 48px; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 14px; box-shadow: 0 8px 18px rgba(133,0,42,.14); cursor: pointer; }
+.donation-payment-note,.donation-payment-account-note { display: flex; align-items: flex-start; gap: 8px; margin: 13px 0 0 !important; color: #786655; font-size: 12px; line-height: 1.55; }
+.donation-payment-note i { flex: 0 0 auto; color: #b37a00; }
+.donation-payment-account-note { padding-left: 24px; font-style: italic; }
+.donation-qr-panel { order: -1; display: flex; min-width: 0; flex-direction: column; align-items: center; gap: 10px; padding: 18px 14px; border: 1px solid rgba(212,175,55,.35); border-radius: 18px; background: linear-gradient(145deg,#fffdf7,#fff6df); text-align: center; }
+.donation-qr-frame { display: grid; width: min(100%,250px); aspect-ratio: 1; place-items: center; padding: 10px; border: 1px solid #eee7db; border-radius: 18px; background: #fff; box-shadow: 0 10px 28px rgba(63,32,17,.09); }
+.donation-qr-frame canvas,.donation-qr-frame img { display: block; width: 100% !important; height: 100% !important; image-rendering: pixelated; }
+.donation-qr-panel > strong { color: var(--maroon); font-size: 16px; font-weight: 700; }
+.donation-qr-note { max-width: 270px; margin: 0; color: #786655; font-size: 12px; line-height: 1.55; }
+.donation-qr-panel > span { color: #756451; font-family: ui-monospace,Consolas,monospace; font-size: 11px; overflow-wrap: anywhere; }
 .donation-story-card,.donation-form-card { min-width: 0; padding: clamp(21px,3vw,32px); border: 1px solid rgba(212,175,55,.4); border-radius: 22px; background: rgba(255,255,255,.94); box-shadow: 0 16px 42px rgba(63,32,17,.075); }
-.donation-story-card { position: sticky; top: 24px; overflow: hidden; background: linear-gradient(150deg,#fff 5%,#fff3d4); }
+.donation-story-card { grid-column: 1/-1; grid-row: 2; display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: 12px 16px; position: static; overflow: hidden; padding: 17px 22px; background: linear-gradient(100deg,#fff 5%,#fff3d4); }
+.donation-story-card h2 { margin: 0 0 4px; font-size: 18px; }
+.donation-story-card > p { margin: 0; font-size: 13px; }
+.donation-story-card .donation-trust-note { display: none; }
 .donation-story-icon,.donation-form-icon { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 15px; background: #fff0c8; color: #9a0031; font-size: 20px; }
-.donation-story-card h2 { margin: 22px 0 9px; color: var(--maroon); font-size: 22px; font-weight: 700; }
-.donation-story-card > p { color: #786655; line-height: 1.7; }
-.donation-blessing { display: flex; align-items: center; gap: 9px; margin: 23px 0; color: #a46a00; font-weight: 700; }
-.donation-blessing i { color: #ef7500; font-size: 22px; }
+.donation-story-card h2 { margin: 0 0 4px; color: var(--maroon); font-size: 18px; font-weight: 700; }
+.donation-form-card { grid-column: 1; grid-row: 1; }
+.donation-story-card > p { margin: 0; color: #786655; font-size: 13px; line-height: 1.55; }
 .donation-trust-note { display: flex; align-items: flex-start; gap: 9px; padding: 13px; border: 1px solid #f0dfb7; border-radius: 13px; background: rgba(255,255,255,.75); color: #766653; font-size: 12px; line-height: 1.6; }
 .donation-trust-note i { flex: 0 0 auto; margin-top: 2px; color: #c47a00; }
 .donation-form-card > header { display: flex; align-items: center; gap: 13px; margin-bottom: 21px; }
@@ -257,34 +298,13 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .donation-form-notice { display: flex; gap: 8px; margin: 12px 0 17px; padding: 11px 12px; border-radius: 11px; background: #fff7e5; color: #786655; font-size: 12px; line-height: 1.6; }
 .donation-form-notice i { flex: 0 0 auto; color: #b37a00; }
 .donation-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 48px; }
+.donation-payment-lock { display: flex; align-items: flex-start; gap: 8px; margin: 14px 0 9px; color: #7a5410; font-size: 12px; line-height: 1.55; }
+.donation-payment-lock i { flex: 0 0 auto; margin-top: 2px; }
+.donation-submit:disabled { cursor: not-allowed; opacity: .56; filter: saturate(.55); }
 .donation-status { min-height: 20px; margin: 11px 0 0; color: #775a17; font-size: 13px; line-height: 1.5; }
-.donation-receipt { width: min(100%,720px); margin: 30px auto 0; padding: 18px; border: 1px solid rgba(212,175,55,.45); border-radius: 20px; background: #fff; box-shadow: 0 16px 40px rgba(63,32,17,.08); animation: eventCardEnter .45s both; }
-.donation-receipt[hidden] { display: none; }
-.donation-receipt-paper { padding: 30px; border: 1px solid #e6d4a8; background: #fffdf7; color: #33261e; }
-.donation-receipt-paper { box-sizing: border-box; font-family: "Noto Sans Gujarati", "Hind Vadodara", sans-serif; }
-.donation-receipt-paper.pdf-exporting { width: 190mm; max-width: none; min-height: 0; margin: 0; padding: 12mm; border: 1px solid #e6d4a8; box-shadow: none; font-size: 12pt; }
-.donation-receipt-paper.pdf-exporting .receipt-brand { padding-bottom: 6mm; }
-.donation-receipt-paper.pdf-exporting .receipt-brand img { width: 18mm; height: 18mm; }
-.donation-receipt-paper.pdf-exporting .receipt-kicker { margin-top: 7mm; }
-.donation-receipt-paper.pdf-exporting dl > div { break-inside: avoid; page-break-inside: avoid; }
-.donation-receipt-paper dl > div[hidden] { display: none; }
-.receipt-brand { display: flex; align-items: center; gap: 13px; padding-bottom: 18px; border-bottom: 2px solid #d5a638; }
-.receipt-brand img { width: 58px; height: 58px; object-fit: contain; }
-.receipt-brand div { display: grid; gap: 3px; color: var(--maroon); }
-.receipt-brand span { color: #786655; font-size: 12px; }
-.receipt-kicker { display: block; margin-top: 24px; color: #a36b00; font-size: 12px; font-weight: 700; text-transform: uppercase; }
-.donation-receipt-paper > h2 { margin: 5px 0 18px; color: var(--maroon); font-size: 26px; }
-.receipt-id-row { display: flex; justify-content: space-between; gap: 14px; padding: 11px 13px; border-radius: 9px; background: #fff1cf; color: #6e5017; font-size: 13px; }
-.donation-receipt-paper dl { margin: 16px 0; }
-.donation-receipt-paper dl > div { display: flex; justify-content: space-between; gap: 18px; padding: 10px 2px; border-bottom: 1px solid #eee5d4; }
-.donation-receipt-paper dt { color: #766653; font-weight: 500; }
-.donation-receipt-paper dd { margin: 0; color: #3b2b21; font-weight: 700; text-align: right; }
-.receipt-disclaimer { margin: 16px 0; padding: 10px; border: 1px solid #f0dfb7; border-radius: 8px; color: #786655; font-size: 11px; line-height: 1.55; }
-.receipt-blessing { padding-top: 14px; border-top: 1px solid #e6d4a8; color: #a36b00; font-weight: 700; text-align: center; }
-.receipt-download { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 15px auto 0; }
-@media (max-width: 760px) { .donation-layout { grid-template-columns: 1fr; } .donation-story-card { position: static; } }
-@media (max-width: 520px) { .donation-page { padding: 34px 14px 58px; } .donation-heading { margin-bottom: 23px; } .donation-heading p { font-size: 15px; } .donation-layout { gap: 14px; } .donation-story-card,.donation-form-card { padding: 19px; border-radius: 17px; } .donation-fields { grid-template-columns: 1fr; gap: 12px; } .donation-reference-field { grid-column: auto; } .donation-form-card > header h2 { font-size: 19px; } .donation-receipt { padding: 9px; } .donation-receipt-paper { padding: 18px 14px; } .receipt-brand img { width: 48px; height: 48px; } .receipt-id-row,.donation-receipt-paper dl > div { font-size: 12px; } }
-@media print { body * { visibility: hidden !important; } [data-receipt-paper], [data-receipt-paper] * { visibility: visible !important; } [data-receipt-paper] { position: absolute; inset: 0; width: 100%; border: 0; } }
+@media (max-width: 760px) { .donation-layout { grid-template-columns: 1fr; } .donation-form-card,.donation-payment-card,.donation-story-card { grid-column: 1; } .donation-form-card { grid-row: 1; } .donation-payment-card { grid-row: 2; } .donation-story-card { grid-row: 3; grid-template-columns: auto minmax(0,1fr); } .donation-story-card .donation-blessing { grid-column: 2; } .donation-qr-panel { position: static; } }
+.donation-story-icon { width: 42px; height: 42px; }
+@media (max-width: 520px) { .donation-page { padding: 34px 14px 58px; } .donation-heading { margin-bottom: 23px; } .donation-heading p { font-size: 15px; } .donation-layout { gap: 14px; } .donation-story-card,.donation-form-card { padding: 19px; border-radius: 17px; } .donation-fields { grid-template-columns: 1fr; gap: 12px; } .donation-reference-field { grid-column: auto; } .donation-form-card > header h2 { font-size: 19px; } }
 .center-action { margin-top: 28px; text-align: center; }
 .seva-section { background: linear-gradient(120deg,#5b1027,#800020 52%,#591a22); color: white; }
 .seva-wrap { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 55px; }
@@ -357,18 +377,18 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .about-breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; color: #866f5a; font-size: 13px; }
 .about-breadcrumb a { color: var(--maroon); text-decoration: none; }
 .about-breadcrumb i { color: var(--gold); font-size: 10px; }
+.page-section-breadcrumb { margin-bottom: 20px; }
 .about-hero-copy h1 { max-width: 680px; margin: 0 0 11px; color: var(--maroon); font-family: "Noto Sans Gujarati","Hind Vadodara",sans-serif; font-size: clamp(36px,5vw,58px); font-weight: 700; line-height: 1.22; text-wrap: balance; }
 .about-hero-subtitle { margin: 0 0 12px; color: #a17b24; font-family: "Noto Sans Gujarati",sans-serif; font-size: 20px; font-weight: 600; }
 .about-hero-text { max-width: 580px; margin: 0 0 22px; color: #6e5a4b; font-size: 17px; line-height: 1.8; }
 .about-hero-art { position: relative; display: grid; min-height: 390px; place-items: center; }
-.about-mandala { position: absolute; width: min(100%,350px); aspect-ratio: 1; border: 1px solid #d4af377d; border-radius: 50%; background: repeating-conic-gradient(from 0deg,#d4af3712 0deg 8deg,transparent 8deg 15deg); box-shadow: 0 0 0 14px #d4af370c,0 0 0 30px #d4af3708; animation: mandala-turn 90s linear infinite; }
+.about-mandala { position: absolute; width: min(100%,350px); aspect-ratio: 1; border: 1px solid #d4af377d; border-radius: 50%; background: repeating-conic-gradient(from 0deg,#d4af3712 0deg 8deg,transparent 8deg 15deg); box-shadow: 0 0 0 14px #d4af370c,0 0 0 30px #d4af3708; animation: mandala-turn 35s linear infinite; }
 .about-emblem { position: relative; display: flex; width: min(78%,280px); aspect-ratio: 1; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #d4af37a8; border-radius: 50%; background: #fff9eb; box-shadow: 0 18px 45px #40241326,0 0 0 8px #fff9eb8c; }
-.about-emblem img { width: 75%; height: 75%; object-fit: contain; mix-blend-mode: multiply; }
-.about-emblem span { position: absolute; right: 0; bottom: 14px; left: 0; color: #806323; font-family: "Noto Sans Gujarati",sans-serif; font-size: 13px; text-align: center; }
+.about-emblem img { width: 100%; height: 100%; object-fit: cover; object-position: center; mix-blend-mode: normal; }
 .about-art-caption { position: absolute; right: 0; bottom: 7px; left: 0; color: #917743; font-size: 12px; text-align: center; }
 .about-welcome-section { padding: 52px 0 18px; background: #fffdf8; }
 .about-welcome-card { position: relative; display: grid; grid-template-columns: 70px 1fr; gap: 17px; padding: clamp(26px,4vw,44px); border: 1px solid #d4af375e; border-radius: 20px; background: linear-gradient(130deg,#fff8e7,#fff); box-shadow: 0 13px 36px #3925150b; }
-.about-quote-mark { color: #e4c05b; font-family: Georgia,serif; font-size: 92px; line-height: .8; }
+.about-quote-mark { display: block; width: 70px; height: 160px; align-self: center; justify-self: center; object-fit: contain; }
 .about-welcome-card h2 { margin: 0 0 12px; color: var(--maroon); font-family: "Noto Sans Gujarati",sans-serif; font-size: clamp(24px,3vw,32px); }
 .about-welcome-card p { margin: 0; color: #6e5a4b; font-size: 16px; line-height: 1.85; }
 .about-milestones-section { padding: 72px 0 55px; background: #fffdf8; }
@@ -409,7 +429,7 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
   .about-hero-copy { order: 1; }
   .about-hero-art { order: 2; }
   .about-welcome-card { grid-template-columns: 40px 1fr; gap: 10px; }
-  .about-quote-mark { font-size: 60px; }
+  .about-quote-mark { width: 40px; height: 112px; }
   .about-visit-card { align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 575.98px) {
@@ -505,7 +525,7 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .home-hero { width: 100%; padding: 0; background: linear-gradient(180deg, #fff8e7 0%, #fffdf7 100%); }
 .home-carousel { position: relative; width: 100%; height: clamp(430px, 57vw, 650px); min-height: 430px; margin: 0; overflow: hidden; border: 0; border-bottom: 1px solid rgba(212,175,55,.7); border-radius: 0; background: #45161d; box-shadow: 0 12px 32px rgba(65,28,19,.14); isolation: isolate; }
 .home-carousel .carousel-inner, .home-carousel .carousel-item { height: 100%; }
-.hero-image { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center; background: radial-gradient(ellipse at 72% 40%, rgba(245,124,0,.35), transparent 24%), linear-gradient(125deg, #37121e, #7e2524 52%, #321822); }
+.hero-image { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; background: radial-gradient(ellipse at 72% 40%, rgba(245,124,0,.35), transparent 24%), linear-gradient(125deg, #37121e, #7e2524 52%, #321822); }
 .hero-shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(28,12,20,.88) 0%, rgba(42,17,24,.74) 42%, rgba(36,14,20,.19) 100%), linear-gradient(0deg, rgba(25,10,16,.3), transparent 44%); }
 .hero-content { position: relative; display: flex; width: min(760px, 72%); height: 100%; flex-direction: column; align-items: flex-start; justify-content: center; padding: 70px clamp(36px, 8vw, 120px) 90px; color: var(--white); }
 .hero-kicker { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 20px; color: #f1cf73; font-family: "Noto Sans Gujarati", "Hind Vadodara", sans-serif; font-size: 16px; font-weight: 600; letter-spacing: .05em; }
@@ -590,8 +610,7 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
-.welcome-stamp .trishul-icon { width: 32px; height: 32px; }
-.welcome-stamp .trishul-icon { width: 25px; height: 50px; overflow: visible; }
+.welcome-stamp .trishul-icon { display: block; width: 25px; height: 50px; object-fit: contain; }
 
 
 /* Compact, branded controls for the morning and evening aarti cards. */
@@ -771,6 +790,14 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .contact-location-icon { display: grid; width: 52px; height: 52px; flex: 0 0 52px; place-items: center; border: 1px solid rgba(212,175,55,.3); border-radius: 16px; background: linear-gradient(145deg,#fff2d3,#fffaf0); color: var(--saffron); font-size: 22px; }
 .contact-location-title small, .contact-hours-row small { display: block; margin-bottom: 4px; color: #94722d; font-size: 12px; font-weight: 600; }
 .contact-location-title h2 { margin: 0; color: var(--maroon); font-family: "Noto Sans Gujarati","Hind Vadodara",sans-serif; font-size: clamp(19px,2.2vw,24px); font-weight: 700; line-height: 1.4; }
+.contact-details-list { display: grid; gap: 9px; margin: 0 0 20px; }
+.contact-detail-row { display: flex; align-items: flex-start; gap: 11px; padding: 12px 13px; border: 1px solid rgba(212,175,55,.2); border-radius: 13px; background: #fffdf8; }
+.contact-detail-row > i { margin-top: 2px; color: var(--saffron); font-size: 17px; }
+.contact-detail-row span { display: grid; min-width: 0; gap: 3px; }
+.contact-detail-row small { color: #94722d; font-size: 12px; font-weight: 600; }
+.contact-detail-row strong,.contact-detail-row a { color: #523b2d; font-size: 14px; font-weight: 600; line-height: 1.55; overflow-wrap: anywhere; }
+.contact-detail-row a { color: var(--maroon); text-decoration: none; }
+.contact-detail-row a:hover { text-decoration: underline; }
 .contact-hours-list { display: grid; gap: 14px; margin-bottom: 22px; }
 .contact-hours-row { display: flex; align-items: flex-start; gap: 12px; padding: 14px; border: 1px solid rgba(212,175,55,.2); border-radius: 14px; background: #fffdf8; }
 .contact-hours-row > i { margin-top: 2px; color: var(--saffron); font-size: 19px; }
@@ -779,6 +806,18 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .contact-hours-row em { color: #9a5d29; font-size: 12px; font-style: normal; line-height: 1.5; }
 .contact-directions { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 18px; text-decoration: none; }
 .contact-modern-map { width: 100%; min-height: 0; aspect-ratio: 16 / 10; border-radius: 16px; }
+.contact-form-card { display: flex; flex-direction: column; }
+.contact-quick-panel { margin-top: auto; padding-top: 22px; }
+.contact-quick-heading { display: flex; align-items: center; gap: 11px; margin-bottom: 12px; padding-top: 18px; border-top: 1px solid rgba(212,175,55,.28); }
+.contact-quick-heading > span { display: grid; width: 38px; height: 38px; flex: 0 0 auto; place-items: center; border-radius: 12px; background: #fff0c8; color: var(--maroon); }
+.contact-quick-heading h3 { margin: 0 0 2px; color: var(--maroon); font-size: 16px; font-weight: 700; }
+.contact-quick-heading p { margin: 0; color: #786655; font-size: 12px; }
+.contact-quick-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.contact-quick-links a { display: flex; min-width: 0; align-items: center; gap: 9px; padding: 12px; border: 1px solid rgba(212,175,55,.3); border-radius: 13px; background: #fffdf8; color: var(--maroon); text-decoration: none; transition: background .2s ease,transform .2s ease; }
+.contact-quick-links a:hover { transform: translateY(-2px); background: #fff7e5; }
+.contact-quick-links a > span { display: grid; min-width: 0; flex: 1; gap: 3px; }
+.contact-quick-links small { color: #8b7967; font-size: 11px; line-height: 1.35; }
+.contact-quick-links strong { color: #3b2b21; font-size: 13px; white-space: nowrap; }
 .contact-form-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
 .contact-form-heading > span { display: grid; width: 50px; height: 50px; flex: 0 0 50px; place-items: center; border: 1px solid rgba(212,175,55,.3); border-radius: 15px; background: linear-gradient(145deg,#fff2d3,#fffaf0); color: var(--saffron); font-size: 22px; }
 .contact-form-heading h2 { margin: 0 0 4px; color: var(--maroon); font-family: "Noto Sans Gujarati","Hind Vadodara",sans-serif; font-size: 24px; font-weight: 700; }
@@ -920,13 +959,13 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .live-player-topline > span i { color: #e87500; font-size: 17px; }
 .live-platform-label { color: #846c58; font-size: 12px; font-weight: 600; }
 .live-platform-label i { color: #d82424; font-size: 18px; }
-.live-page-video { margin: 0; aspect-ratio: 16 / 9; border: 0; border-radius: 17px; background: #1c1014; box-shadow: none; }
+.live-page-video { position: relative; margin: 0; aspect-ratio: 16 / 9; border: 0; border-radius: 17px; background: #1c1014; box-shadow: none; } .live-page-video iframe[hidden] { display: none; } .live-page-video:has(iframe[hidden])::before { content: "Live stream અહીં દેખાશે"; position: absolute; inset: 0; display: grid; place-items: center; padding: 20px; color: #fff8e9; font-size: clamp(16px,2vw,22px); font-weight: 700; text-align: center; background: radial-gradient(ellipse at center, #6b1831, #1c1014 72%); } .live-chat-button:disabled { opacity: .55; cursor: not-allowed; }
 .live-player-caption { display: flex; align-items: center; gap: 13px; padding: 17px 4px 2px; }
 .live-caption-icon { width: 42px; height: 42px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 14px; background: #fff2d1; color: #9a0030; font-size: 20px; }
 .live-player-caption > div { min-width: 0; flex: 1; }
 .live-player-caption h2 { margin: 0; color: #780022; font-size: 17px; font-weight: 700; }
 .live-player-caption p { margin: 3px 0 0; color: #806f5c; font-size: 13px; line-height: 1.5; }
-.live-player-actions { flex: 0 0 auto; display: flex; flex-wrap: wrap; gap: 8px; }
+.live-player-actions { flex: 0 0 auto; display: flex; flex-wrap: nowrap; align-items: center; gap: 8px; }
 .live-youtube-button { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid #e8d9bc; border-radius: 999px; color: #810027; font-size: 12px; font-weight: 700; text-decoration: none; }
 .live-youtube-button:hover { border-color: #c99b3b; background: #fff8e9; color: #810027; }
 .live-chat-button { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid rgba(128,0,32,.2); border-radius: 999px; background: #85002a; color: #fffaf0; cursor: pointer; font: inherit; font-size: 12px; font-weight: 700; text-decoration: none; }
@@ -940,7 +979,7 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .live-chat-heading p { margin: 3px 0 0; color: #806f5c; font-size: 12px; line-height: 1.5; }
 .live-chat-close { width: 36px; height: 36px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #eadcbf; border-radius: 50%; background: #fff; color: #800020; cursor: pointer; }
 .live-chat-close:hover { background: #fff0ca; }
-.live-chat-frame { height: 510px; overflow: hidden; border: 1px solid #eadcbf; border-radius: 14px; background: #fff; }
+.live-chat-frame { height: 510px; overflow: hidden; border: 1px solid #302a2c; border-radius: 14px; background: #0f0f0f; }
 .live-chat-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
 @keyframes liveChatReveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 .live-schedule-card { display: flex; align-self: start; flex-direction: column; padding: clamp(22px, 3vw, 32px); background: linear-gradient(150deg, #fff, #fff8e9); }
@@ -957,8 +996,8 @@ button.gallery-tile:disabled { cursor: default; opacity: 1; }
 .live-aarti-time strong { color: #7e0027; font-size: 15px; }
 .live-aarti-link { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 20px; color: #87002a; font-size: 13px; font-weight: 700; text-decoration: none; }
 .live-aarti-link i { color: #e87500; }
-@media (max-width: 900px) { .live-page-layout { grid-template-columns: minmax(0, 1fr); max-width: 760px; margin: 0 auto; } .live-schedule-card { display: grid; grid-template-columns: auto 1fr; column-gap: 18px; } .live-schedule-icon { grid-row: 1 / 4; } .live-schedule-note { margin-bottom: 16px; } .live-aarti-times { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); } .live-aarti-link { grid-column: 1 / -1; margin-top: 8px; } }
-@media (max-width: 575.98px) { .live-darshan-page { padding: 38px 14px; } .live-page-heading { align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 20px; } .live-page-heading h1 { font-size: 31px; } .live-page-heading p { font-size: 15px; } .live-video-badge { padding: 8px 12px; } .live-page-layout { gap: 14px; } .live-player-card { padding: 11px; border-radius: 19px; } .live-player-topline { font-size: 12px; } .live-player-caption { align-items: flex-start; flex-wrap: wrap; padding: 14px 2px 2px; } .live-player-caption > div:not(.live-player-actions) { flex-basis: calc(100% - 60px); } .live-player-caption h2 { font-size: 15px; } .live-player-actions { width: 100%; flex-basis: auto; margin-left: 55px; } .live-youtube-button, .live-chat-button { padding: 9px 11px; } .live-chat-panel { margin-top: 14px; padding: 11px; border-radius: 15px; } .live-chat-heading p { max-width: 260px; } .live-schedule-card { display: block; align-self: start; padding: 21px; border-radius: 19px; } .live-schedule-icon { margin-bottom: 15px; } .live-aarti-times { grid-template-columns: 1fr; } .live-aarti-link { margin-top: 4px; } }
+@media (max-width: 900px) { .live-page-layout { grid-template-columns: minmax(0, 1fr); max-width: 760px; margin: 0 auto; } .live-player-caption { flex-wrap: wrap; } .live-player-caption > div:not(.live-player-actions) { flex: 1 1 calc(100% - 60px); } .live-player-caption > .live-player-actions { flex: 1 1 100%; min-width: 0; flex-wrap: wrap; justify-content: flex-start; margin: 0; }  .live-schedule-card { display: block; align-self: start; padding: 21px; } .live-schedule-icon { margin-bottom: 15px; } .live-schedule-note { margin-bottom: 16px; } .live-aarti-times { grid-template-columns: repeat(2, minmax(0, 1fr)); } .live-aarti-link { margin-top: 8px; } }
+@media (max-width: 575.98px) { .live-darshan-page { padding: 38px 14px; } .live-page-heading { align-items: flex-start; flex-direction: column; gap: 14px; margin-bottom: 20px; } .live-page-heading h1 { font-size: 31px; } .live-page-heading p { font-size: 15px; } .live-video-badge { padding: 8px 12px; } .live-page-layout { gap: 14px; } .live-player-card { padding: 11px; border-radius: 19px; } .live-player-topline { font-size: 12px; } .live-player-caption { align-items: flex-start; flex-wrap: wrap; padding: 14px 2px 2px; } .live-player-caption > div:not(.live-player-actions) { flex-basis: calc(100% - 60px); } .live-player-caption h2 { font-size: 15px; } .live-player-caption > .live-player-actions { width: 100%; min-width: 0; flex: 1 1 100%; flex-wrap: wrap; justify-content: flex-start; gap: 8px; margin: 0; } .live-youtube-button, .live-chat-button { flex: 0 1 auto; justify-content: center; white-space: nowrap; font-size: 11px; } .live-youtube-button, .live-chat-button { padding: 9px 11px; } .live-chat-panel { margin-top: 14px; padding: 11px; border-radius: 15px; } .live-chat-heading p { max-width: 260px; } .live-schedule-card { display: block; align-self: start; padding: 21px; border-radius: 19px; } .live-schedule-icon { margin-bottom: 15px; } .live-aarti-times { grid-template-columns: 1fr; } .live-aarti-link { margin-top: 4px; } }
 
 /* Devotee FAQ section on the home page. */
 .faq-section { padding: clamp(58px, 7vw, 94px) 0; background: linear-gradient(180deg, #fffaf0, #fff 92%); border-top: 1px solid rgba(194,143,39,.16); }
