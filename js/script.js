@@ -193,7 +193,7 @@
     });
     window.MELDI_EVENT_DETAILS = events;
     const rows = events.map((event, index) => `<article class="event-listing-card" style="--event-index:${index}"><div class="event-card-art${event.image ? ' has-photo' : ''}">${event.image ? `<img class="event-card-image" src="${event.image}" alt="${event.title}" loading="lazy">` : `<span class="event-art-orbit"></span><i class="bi ${event.icon}" aria-hidden="true"></i><span class="event-art-label">${words.eventsEyebrow || ''}</span>`}</div><div class="event-listing-content"><span class="event-listing-date"><i class="bi bi-calendar-event" aria-hidden="true"></i>${event.date ? `<time datetime="${event.date}">${event.dateLabel}</time>` : `<span>${event.dateLabel}</span>`}</span><h2>${event.title}</h2><p>${event.description}</p><button type="button" class="event-details-link" data-event-details="${index}" aria-haspopup="dialog">${words.moreInfo || words.navContact || ''}<i class="bi bi-arrow-up-right" aria-hidden="true"></i></button></div></article>`).join('');
-    return `<section class="events-page"><div class="events-page-shell"><header class="events-page-heading"><span class="section-eyebrow">${words.eventsEyebrow || ''}</span><h1>${words.eventsPageTitle || ''}</h1><p>${words.eventsPageIntro || ''}</p></header><div class="events-card-grid" aria-label="${words.eventsPageTitle || ''}">${rows}</div></div><dialog class="event-detail-dialog" aria-labelledby="eventDetailTitle"><article class="event-detail-card"><button type="button" class="event-detail-close" data-event-detail-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button><div class="event-detail-art" data-event-detail-art><img data-event-detail-image alt="" hidden><i class="bi bi-flower1" data-event-detail-icon aria-hidden="true"></i></div><div class="event-detail-content"><span class="event-listing-date" data-event-detail-date><i class="bi bi-calendar-event" aria-hidden="true"></i><span data-event-detail-date-label></span></span><h2 id="eventDetailTitle" data-event-detail-title></h2><p data-event-detail-description></p><a class="button-maroon event-detail-contact" href="contact.html"><i class="bi bi-chat-dots" aria-hidden="true"></i>${words.navContact || ''}</a></div></article></dialog></section>`;
+    return `<section class="events-page"><div class="events-page-shell"><header class="events-page-heading"><span class="section-eyebrow">${words.eventsEyebrow || ''}</span><h1>${words.eventsPageTitle || ''}</h1><p>${words.eventsPageIntro || ''}</p></header><div class="events-card-grid" aria-label="${words.eventsPageTitle || ''}">${rows}</div></div><dialog class="event-detail-dialog" aria-labelledby="eventDetailTitle"><article class="event-detail-card"><button type="button" class="event-detail-close" data-event-detail-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button><div class="event-detail-art" data-event-detail-art><img data-event-detail-image alt="" hidden><i class="bi bi-flower1" data-event-detail-icon aria-hidden="true"></i></div><div class="event-detail-content"><span class="event-listing-date" data-event-detail-date><i class="bi bi-calendar-event" aria-hidden="true"></i><span data-event-detail-date-label></span></span><h2 id="eventDetailTitle" data-event-detail-title></h2><div class="event-detail-facts" data-event-detail-description></div><a class="button-maroon event-detail-contact" href="contact.html"><i class="bi bi-chat-dots" aria-hidden="true"></i>${words.navContact || ''}</a></div></article></dialog></section>`;
   }
 
   function galleryPageMarkup(words) {
@@ -530,7 +530,15 @@
       const icon = dialog.querySelector('[data-event-detail-icon]');
       if (title) title.textContent = item.title;
       if (date) date.textContent = item.dateLabel;
-      if (description) description.textContent = item.details || item.description;
+      if (description) {
+        description.replaceChildren();
+        String(item.details || item.description).split(' · ').forEach(line => {
+          const fact = document.createElement('span');
+          fact.className = 'event-detail-fact';
+          fact.textContent = line;
+          description.append(fact);
+        });
+      }
       if (image && icon) {
         image.hidden = !item.image;
         icon.hidden = Boolean(item.image);
