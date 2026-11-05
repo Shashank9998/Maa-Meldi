@@ -293,7 +293,7 @@
   let youtubeChannelLookup = null;
   async function refreshYouTubeLive() {
     const config = window.MELDI_YOUTUBE_CONFIG || {};
-    if (!config.apiKey || pageKey !== 'live-darshan') return;
+    if (!config.apiKey || (pageKey !== 'live-darshan' && pageKey !== 'home')) return;
     try {
       if (!youtubeChannelId) {
         if (!youtubeChannelLookup) {
@@ -309,20 +309,24 @@
       const response = await fetch(`https://www.googleapis.com/youtube/v3/search?${params}`);
       if (!response.ok) throw new Error(`YouTube API returned ${response.status}`);
       const data = await response.json();
-      const videoId = data.items?.[0]?.id?.videoId;
+      const liveVideoId = data.items?.[0]?.id?.videoId || '';
+      const videoId = liveVideoId || config.fallbackVideoId || '';
       if (!videoId) return;
       const player = document.querySelector('[data-live-video]');
       const watch = document.querySelector('[data-live-watch]');
       const chat = document.querySelector('[data-live-chat-panel]');
-      if (!player || !watch || !chat || player.dataset.videoId === videoId) return;
+      if (!player || player.dataset.videoId === videoId) return;
       player.dataset.videoId = videoId;
-      player.src = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?autoplay=1`;
+      player.src = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}${liveVideoId ? '?autoplay=1' : ''}`;
       player.hidden = false;
-      document.querySelector('[data-live-chat-toggle]')?.removeAttribute('disabled');
-      watch.href = `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`;
-      chat.dataset.chatUrl = `https://www.youtube.com/live_chat?v=${encodeURIComponent(videoId)}&embed_domain=${encodeURIComponent(window.location.hostname)}&dark_theme=1`;
-      const chatFrame = chat.querySelector('[data-live-chat-frame]');
-      if (chatFrame?.src) chatFrame.src = chat.dataset.chatUrl;
+      if (watch) watch.href = `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`;
+      if (chat) {
+        chat.dataset.chatUrl = `https://www.youtube.com/live_chat?v=${encodeURIComponent(videoId)}&embed_domain=${encodeURIComponent(window.location.hostname)}&dark_theme=1`;
+        const chatFrame = chat.querySelector('[data-live-chat-frame]');
+        if (chatFrame?.src) chatFrame.src = chat.dataset.chatUrl;
+      }
+      const chatToggle = document.querySelector('[data-live-chat-toggle]');
+      if (chatToggle) chatToggle.disabled = !liveVideoId;
       const status = document.querySelector('[data-live-status]');
       if (status) status.textContent = ({ gu: 'હાલનું લાઈવ પ્રસારણ', hi: 'अभी लाइव प्रसारण', en: 'Live now' })[document.documentElement.lang] || 'Live now';
     } catch (error) {
@@ -497,7 +501,7 @@
   refreshYouTubeLive();
   // search.list has a strict per-day request limit. Keep browser polling modest;
   // a server-side cache is preferable for a site with regular traffic.
-  if (pageKey === 'live-darshan') window.setInterval(refreshYouTubeLive, 15 * 60_000);
+  if (pageKey === 'live-darshan' || pageKey === 'home') window.setInterval(refreshYouTubeLive, 15 * 60_000);
   setupGujaratiCalendar();
   languageOptions.forEach(option => option.addEventListener('click', () => applyLanguage(option.dataset.language, true)));
   document.addEventListener('input', event => {

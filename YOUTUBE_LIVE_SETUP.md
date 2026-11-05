@@ -1,6 +1,6 @@
 # YouTube Live auto-detection setup
 
-The Live Darshan page is already wired to find the channel's active public live stream. It uses YouTube Data API v3 `channels.list` to resolve `@kpgaming5353`, then `search.list` with `eventType=live` to find the active broadcast. When one is found, the embedded player, YouTube link, and live chat are switched to that stream. It checks again every 15 minutes.
+The Live Darshan page is already wired to find the channel's active public live stream. It uses YouTube Data API v3 `channels.list` to resolve `@meldidham.jasalpur`, then `search.list` with `eventType=live` to find the active broadcast. When one is found, the embedded player, YouTube link, and live chat are switched to that stream. It checks again every 15 minutes.
 
 ## Add the API key
 
