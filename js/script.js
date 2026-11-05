@@ -183,8 +183,9 @@
       { date: '', dateLabel: words.datePending, title: words.eventTwo, description: words.eventPending, icon: 'bi-sunrise' },
       { date: '', dateLabel: words.datePending, title: words.eventThree, description: words.eventPending, icon: 'bi-heart' }
     ].sort((a, b) => (a.date || '9999-12-31').localeCompare(b.date || '9999-12-31'));
-    const rows = events.map((event, index) => `<article class="event-listing-card" style="--event-index:${index}"><div class="event-card-art${event.image ? ' has-photo' : ''}">${event.image ? `<img class="event-card-image" src="${event.image}" alt="${event.title}" loading="lazy">` : `<span class="event-art-orbit"></span><i class="bi ${event.icon}" aria-hidden="true"></i><span class="event-art-label">${words.eventsEyebrow || ''}</span>`}</div><div class="event-listing-content"><span class="event-listing-date"><i class="bi bi-calendar-event" aria-hidden="true"></i>${event.date ? `<time datetime="${event.date}">${event.dateLabel}</time>` : `<span>${event.dateLabel}</span>`}</span><h2>${event.title}</h2><p>${event.description}</p><a href="contact.html" class="event-details-link">${words.moreInfo || words.navContact || ''}<i class="bi bi-arrow-up-right" aria-hidden="true"></i></a></div></article>`).join('');
-    return `<section class="events-page"><div class="events-page-shell"><header class="events-page-heading"><span class="section-eyebrow">${words.eventsEyebrow || ''}</span><h1>${words.eventsPageTitle || ''}</h1><p>${words.eventsPageIntro || ''}</p></header><div class="events-card-grid" aria-label="${words.eventsPageTitle || ''}">${rows}</div><a class="button-outline events-contact-link" href="contact.html"><i class="bi bi-chat-dots" aria-hidden="true"></i>${words.navContact || ''}</a></div></section>`;
+    window.MELDI_EVENT_DETAILS = events;
+    const rows = events.map((event, index) => `<article class="event-listing-card" style="--event-index:${index}"><div class="event-card-art${event.image ? ' has-photo' : ''}">${event.image ? `<img class="event-card-image" src="${event.image}" alt="${event.title}" loading="lazy">` : `<span class="event-art-orbit"></span><i class="bi ${event.icon}" aria-hidden="true"></i><span class="event-art-label">${words.eventsEyebrow || ''}</span>`}</div><div class="event-listing-content"><span class="event-listing-date"><i class="bi bi-calendar-event" aria-hidden="true"></i>${event.date ? `<time datetime="${event.date}">${event.dateLabel}</time>` : `<span>${event.dateLabel}</span>`}</span><h2>${event.title}</h2><p>${event.description}</p><button type="button" class="event-details-link" data-event-details="${index}" aria-haspopup="dialog">${words.moreInfo || words.navContact || ''}<i class="bi bi-arrow-up-right" aria-hidden="true"></i></button></div></article>`).join('');
+    return `<section class="events-page"><div class="events-page-shell"><header class="events-page-heading"><span class="section-eyebrow">${words.eventsEyebrow || ''}</span><h1>${words.eventsPageTitle || ''}</h1><p>${words.eventsPageIntro || ''}</p></header><div class="events-card-grid" aria-label="${words.eventsPageTitle || ''}">${rows}</div><a class="button-outline events-contact-link" href="contact.html"><i class="bi bi-chat-dots" aria-hidden="true"></i>${words.navContact || ''}</a></div><dialog class="event-detail-dialog" aria-labelledby="eventDetailTitle"><article class="event-detail-card"><button type="button" class="event-detail-close" data-event-detail-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button><div class="event-detail-art" data-event-detail-art><img data-event-detail-image alt="" hidden><i class="bi bi-flower1" data-event-detail-icon aria-hidden="true"></i></div><div class="event-detail-content"><span class="event-listing-date" data-event-detail-date><i class="bi bi-calendar-event" aria-hidden="true"></i><span data-event-detail-date-label></span></span><h2 id="eventDetailTitle" data-event-detail-title></h2><p data-event-detail-description></p><a class="button-maroon event-detail-contact" href="contact.html"><i class="bi bi-chat-dots" aria-hidden="true"></i>${words.navContact || ''}</a></div></article></dialog></section>`;
   }
 
   function galleryPageMarkup(words) {
@@ -220,7 +221,7 @@
     const filters = [['all',words.galleryAll],['temple',words.galleryTemplePhoto],['darshan',words.galleryMatajiDarshan],['festival',words.galleryFestivalMoment],['aarti',words.galleryAartiMoment]];
     const filterMarkup = filters.map(([key,label],index) => `<button class="gallery-filter${index === 0 ? ' is-active' : ''}" type="button" data-gallery-filter="${key}" aria-pressed="${index === 0}">${label}</button>`).join('');
     const tiles = photos.map(([src,captionKey,category],index) => `<button class="gallery-photo" style="--gallery-index:${index}" type="button" data-gallery-open data-gallery-category="${category}" data-gallery-src="${src}" data-gallery-caption-key="${captionKey}" aria-label="${words[captionKey] || ''}"><img src="${src}" alt="${words[captionKey] || ''}" loading="lazy"><span class="gallery-photo-shade"><span>${words[captionKey] || ''}</span><i class="bi bi-arrows-angle-expand" aria-hidden="true"></i></span></button>`).join('');
-    return `<section class="gallery-page"><div class="gallery-page-shell"><header class="gallery-page-heading"><span class="section-eyebrow">${words.galleryEyebrow || words.galleryTitle || ''}</span><h1>${words.galleryTitle || ''}</h1><p>${words.galleryIntro || ''}</p></header><nav class="gallery-filters" aria-label="${words.galleryTitle || ''}">${filterMarkup}</nav><div class="gallery-photo-grid">${tiles}</div></div><dialog class="gallery-lightbox" data-gallery-dialog aria-label="${words.galleryTitle || ''}"><button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button><img data-gallery-dialog-image alt=""><p data-gallery-dialog-caption></p></dialog></section>`;
+    return `<section class="gallery-page"><div class="gallery-page-shell"><header class="gallery-page-heading"><span class="section-eyebrow">${words.galleryEyebrow || words.galleryTitle || ''}</span><h1>${words.galleryTitle || ''}</h1><p>${words.galleryIntro || ''}</p></header><nav class="gallery-filters" aria-label="${words.galleryTitle || ''}">${filterMarkup}</nav><div class="gallery-photo-grid">${tiles}</div></div><dialog class="gallery-lightbox" data-gallery-dialog aria-label="${words.galleryTitle || ''}"><header class="gallery-lightbox-toolbar"><div class="gallery-lightbox-heading"><span class="gallery-lightbox-kicker"><i class="bi bi-flower1" aria-hidden="true"></i>${words.galleryEyebrow || ''}</span><p data-gallery-dialog-caption></p></div><div class="gallery-lightbox-actions"><a class="gallery-lightbox-download" data-gallery-download href="#" download><i class="bi bi-download" aria-hidden="true"></i><span>${words.downloadPhoto || 'Download photo'}</span></a><button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button></div></header><img data-gallery-dialog-image alt=""></dialog></section>`;
   }
 
   function donationPageMarkup(words) {
@@ -509,6 +510,36 @@
   });
   document.addEventListener('click', event => {
     if (!(event.target instanceof Element)) return;
+    const trigger = event.target.closest('[data-event-details]');
+    const dialog = document.querySelector('.event-detail-dialog');
+    if (trigger && dialog) {
+      const item = window.MELDI_EVENT_DETAILS?.[Number(trigger.dataset.eventDetails)];
+      if (!item) return;
+      const title = dialog.querySelector('[data-event-detail-title]');
+      const date = dialog.querySelector('[data-event-detail-date-label]');
+      const description = dialog.querySelector('[data-event-detail-description]');
+      const image = dialog.querySelector('[data-event-detail-image]');
+      const icon = dialog.querySelector('[data-event-detail-icon]');
+      if (title) title.textContent = item.title;
+      if (date) date.textContent = item.dateLabel;
+      if (description) description.textContent = item.description;
+      if (image && icon) {
+        image.hidden = !item.image;
+        icon.hidden = Boolean(item.image);
+        if (item.image) { image.src = item.image; image.alt = item.title; }
+        else icon.className = `bi ${item.icon}`;
+      }
+      dialog.showModal();
+      return;
+    }
+    if (event.target.closest('[data-event-detail-close]')) {
+      dialog?.close();
+      return;
+    }
+    if (event.target === dialog) dialog.close();
+  });
+  document.addEventListener('click', event => {
+    if (!(event.target instanceof Element)) return;
     const toggle = event.target.closest('[data-live-chat-toggle]');
     const close = event.target.closest('[data-live-chat-close]');
     if (!toggle && !close) return;
@@ -545,6 +576,11 @@
       image.src = photo.dataset.gallerySrc;
       image.alt = words[photo.dataset.galleryCaptionKey] || '';
       caption.textContent = image.alt;
+      const download = dialog.querySelector('[data-gallery-download]');
+      if (download) {
+        download.href = image.src;
+        download.download = decodeURIComponent(image.src.split('/').pop() || 'maa-meldi-photo.jpg');
+      }
       dialog.showModal();
     } else if (close || event.target === dialog) dialog.close();
   });
@@ -963,9 +999,15 @@
     const galleryModal = bootstrap.Modal.getOrCreateInstance(galleryModalElement);
     const image = document.getElementById('lightboxImage');
     const caption = document.getElementById('lightboxCaption');
+    const galleryDialog = galleryModalElement.querySelector('.gallery-lightbox-dialog');
+    const fitGalleryDialog = () => {
+      if (galleryDialog && image.naturalWidth && image.naturalHeight) galleryDialog.classList.toggle('is-portrait', image.naturalHeight > image.naturalWidth);
+    };
+    image.addEventListener('load', fitGalleryDialog);
     document.querySelectorAll('[data-gallery-image]').forEach(button => button.addEventListener('click', () => {
       image.src = button.dataset.galleryImage;
       image.alt = button.dataset.galleryCaption || 'Mandir gallery image';
+      if (image.complete) fitGalleryDialog();
       const language = translations[document.documentElement.lang] || translations.gu || {};
       caption.textContent = language[button.dataset.galleryCaptionKey] || button.dataset.galleryCaption || '';
       galleryModal.show();
