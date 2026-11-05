@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   'use strict';
 
   const translations = window.templeTranslations || {};
@@ -178,14 +178,22 @@
   }
 
   function eventsPageMarkup(words) {
+    const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata' }).format(new Date());
     const events = [
-      { date: '2026-11-02', dateLabel: words.patotsavDate, title: words.eventOne, description: words.patotsavDescription, icon: 'bi-flower1', image: 'assets/image/Maa%20Event.jpeg' },
-      { date: '', dateLabel: words.datePending, title: words.eventTwo, description: words.eventPending, icon: 'bi-sunrise' },
-      { date: '', dateLabel: words.datePending, title: words.eventThree, description: words.eventPending, icon: 'bi-heart' }
-    ].sort((a, b) => (a.date || '9999-12-31').localeCompare(b.date || '9999-12-31'));
+      { date: '2026-11-08', dateLabel: words.eventDivyaDate, title: words.eventDivya, description: words.eventDivyaDesc, details: words.eventDivyaDetail, icon: 'bi-music-note-beamed', image: 'assets/image/Divya.PNG' },
+      { date: '2026-11-09', dateLabel: words.eventNitinDate, title: words.eventNitin, description: words.eventNitinDesc, details: words.eventNitinDetail, icon: 'bi-music-note-beamed', image: 'assets/image/Nitin.PNG' },
+      { date: '2026-11-10', dateLabel: words.eventKaushikDate, title: words.eventKaushik, description: words.eventKaushikDesc, details: words.eventKaushikDetail, icon: 'bi-music-note-beamed', image: 'assets/image/Kaushik.PNG' },
+      { date: '2026-11-02', dateLabel: words.patotsavDate, title: words.eventOne, description: words.patotsavDescription, icon: 'bi-flower1', image: 'assets/image/Maa%20Event.jpeg' }
+    ].sort((a, b) => {
+      const aUpcoming = Boolean(a.date && a.date >= today);
+      const bUpcoming = Boolean(b.date && b.date >= today);
+      if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
+      if (a.date && b.date) return aUpcoming ? a.date.localeCompare(b.date) : b.date.localeCompare(a.date);
+      return a.date ? -1 : b.date ? 1 : 0;
+    });
     window.MELDI_EVENT_DETAILS = events;
     const rows = events.map((event, index) => `<article class="event-listing-card" style="--event-index:${index}"><div class="event-card-art${event.image ? ' has-photo' : ''}">${event.image ? `<img class="event-card-image" src="${event.image}" alt="${event.title}" loading="lazy">` : `<span class="event-art-orbit"></span><i class="bi ${event.icon}" aria-hidden="true"></i><span class="event-art-label">${words.eventsEyebrow || ''}</span>`}</div><div class="event-listing-content"><span class="event-listing-date"><i class="bi bi-calendar-event" aria-hidden="true"></i>${event.date ? `<time datetime="${event.date}">${event.dateLabel}</time>` : `<span>${event.dateLabel}</span>`}</span><h2>${event.title}</h2><p>${event.description}</p><button type="button" class="event-details-link" data-event-details="${index}" aria-haspopup="dialog">${words.moreInfo || words.navContact || ''}<i class="bi bi-arrow-up-right" aria-hidden="true"></i></button></div></article>`).join('');
-    return `<section class="events-page"><div class="events-page-shell"><header class="events-page-heading"><span class="section-eyebrow">${words.eventsEyebrow || ''}</span><h1>${words.eventsPageTitle || ''}</h1><p>${words.eventsPageIntro || ''}</p></header><div class="events-card-grid" aria-label="${words.eventsPageTitle || ''}">${rows}</div><a class="button-outline events-contact-link" href="contact.html"><i class="bi bi-chat-dots" aria-hidden="true"></i>${words.navContact || ''}</a></div><dialog class="event-detail-dialog" aria-labelledby="eventDetailTitle"><article class="event-detail-card"><button type="button" class="event-detail-close" data-event-detail-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button><div class="event-detail-art" data-event-detail-art><img data-event-detail-image alt="" hidden><i class="bi bi-flower1" data-event-detail-icon aria-hidden="true"></i></div><div class="event-detail-content"><span class="event-listing-date" data-event-detail-date><i class="bi bi-calendar-event" aria-hidden="true"></i><span data-event-detail-date-label></span></span><h2 id="eventDetailTitle" data-event-detail-title></h2><p data-event-detail-description></p><a class="button-maroon event-detail-contact" href="contact.html"><i class="bi bi-chat-dots" aria-hidden="true"></i>${words.navContact || ''}</a></div></article></dialog></section>`;
+    return `<section class="events-page"><div class="events-page-shell"><header class="events-page-heading"><span class="section-eyebrow">${words.eventsEyebrow || ''}</span><h1>${words.eventsPageTitle || ''}</h1><p>${words.eventsPageIntro || ''}</p></header><div class="events-card-grid" aria-label="${words.eventsPageTitle || ''}">${rows}</div></div><dialog class="event-detail-dialog" aria-labelledby="eventDetailTitle"><article class="event-detail-card"><button type="button" class="event-detail-close" data-event-detail-close aria-label="${words.close || 'Close'}"><i class="bi bi-x-lg" aria-hidden="true"></i></button><div class="event-detail-art" data-event-detail-art><img data-event-detail-image alt="" hidden><i class="bi bi-flower1" data-event-detail-icon aria-hidden="true"></i></div><div class="event-detail-content"><span class="event-listing-date" data-event-detail-date><i class="bi bi-calendar-event" aria-hidden="true"></i><span data-event-detail-date-label></span></span><h2 id="eventDetailTitle" data-event-detail-title></h2><p data-event-detail-description></p><a class="button-maroon event-detail-contact" href="contact.html"><i class="bi bi-chat-dots" aria-hidden="true"></i>${words.navContact || ''}</a></div></article></dialog></section>`;
   }
 
   function galleryPageMarkup(words) {
@@ -522,7 +530,7 @@
       const icon = dialog.querySelector('[data-event-detail-icon]');
       if (title) title.textContent = item.title;
       if (date) date.textContent = item.dateLabel;
-      if (description) description.textContent = item.description;
+      if (description) description.textContent = item.details || item.description;
       if (image && icon) {
         image.hidden = !item.image;
         icon.hidden = Boolean(item.image);
